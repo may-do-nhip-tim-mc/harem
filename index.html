@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hậu Cung Của Công Chúa - Máy đo nhịp tim MC</title>
+    <!-- Sử dụng Tailwind CSS để làm giao diện nhanh, đẹp -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #181619 0%, #241d22 100%);
+        }
+        .custom-pink { background-color: #d37381; }
+        .custom-pink:hover { background-color: #be5f6c; }
+        .card-bg { background-color: #2d252b; }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col justify-between">
+
+    <!-- ================= TRANG CHÀO (WELCOME SCREEN) ================= -->
+    <div id="welcome-screen" class="flex-grow flex flex-col items-center justify-center px-4 text-center py-12">
+        <h1 class="text-3xl md:text-4xl italic text-pink-300 font-semibold tracking-wide lowercase">
+            welcome my princesses
+        </h1>
+        <p class="text-xs tracking-[0.3em] uppercase text-gray-400 mt-2">
+            Máy đo nhịp tim MC
+        </p>
+
+        <blockquote class="mt-12 max-w-md text-sm md:text-base text-gray-300 italic leading-relaxed border-l-2 border-pink-400 pl-4 text-left mx-auto">
+            "Your heart can tell you no lies<br>
+            And when you're true to your heart<br>
+            I know it's gonna lead you straight to me"
+        </blockquote>
+
+        <button onclick="enterHarem()" class="mt-12 custom-pink text-white font-semibold px-8 py-4 rounded-full text-lg shadow-lg transform hover:scale-105 transition duration-200 animate-pulse">
+            Hậu cung của công chúa 💖
+        </button>
+
+        <div class="mt-8 flex gap-4">
+            <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-xs px-4 py-2 rounded-full transition">Discord</a>
+            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-xs px-4 py-2 rounded-full transition">Facebook</a>
+        </div>
+    </div>
+
+    <!-- ================= TRANG DANH SÁCH (HAREM SCREEN) ================= -->
+    <div id="harem-screen" class="hidden max-w-4xl w-full mx-auto px-4 py-6 flex-grow">
+        <!-- Header điều hướng -->
+        <div class="flex justify-between items-center mb-6">
+            <button onclick="goBack()" class="bg-gray-700 hover:bg-gray-600 text-sm px-4 py-2 rounded-lg transition">
+                ⬅ Quay lại
+            </button>
+            <span class="text-pink-300 font-semibold text-sm">Tổng cộng: <span id="total-count">0</span> nam thần</span>
+        </div>
+
+        <!-- Bộ lọc & Tính năng Tiện ích -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <!-- Tìm kiếm & Gợi ý ngẫu nhiên -->
+            <div class="space-y-3">
+                <input type="text" id="search-input" oninput="filterCharacters()" placeholder="Tìm tên chồng..." 
+                       class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-pink-400 transition text-white">
+                
+                <button onclick="randomPick()" class="w-full custom-pink text-sm font-semibold py-2.5 rounded-xl transition text-white">
+                    🎲 Hôm nay nên thị tẩm ai? (Ngẫu nhiên)
+                </button>
+            </div>
+
+            <!-- Các nút bấm Filter nhanh -->
+            <div class="flex flex-wrap gap-2 content-start">
+                <button onclick="filterTag('Tất cả')" class="tag-filter bg-pink-500 text-white text-xs px-4 py-2 rounded-full transition">Tất cả</button>
+                <button onclick="filterTag('Cổ đại')" class="tag-filter bg-zinc-800 text-gray-300 text-xs px-4 py-2 rounded-full transition">#Cổ đại</button>
+                <button onclick="filterTag('Hiện đại')" class="tag-filter bg-zinc-800 text-gray-300 text-xs px-4 py-2 rounded-full transition">#Hiện đại</button>
+                <button onclick="filterTag('CEO')" class="tag-filter bg-zinc-800 text-gray-300 text-xs px-4 py-2 rounded-full transition">#CEO</button>
+                <button onclick="filterTag('Hài hước')" class="tag-filter bg-zinc-800 text-gray-300 text-xs px-4 py-2 rounded-full transition">#Hài hước</button>
+            </div>
+        </div>
+
+        <!-- DANH SÁCH NHÂN VẬT -->
+        <div id="character-list" class="space-y-3">
+            <!-- Dữ liệu sẽ tự động render vào đây bằng Javascript -->
+        </div>
+    </div>
+
+    <!-- Footer bản quyền -->
+    <footer class="text-center text-xs text-gray-600 py-4 w-full">
+        © 2026 Designed by Máy đo nhịp tim MC
+    </footer>
+
+    <!-- ================= LOGIC XỬ LÝ DỮ LIỆU (JAVASCRIPT) ================= -->
+    <script>
+        // 1. DATABASE CỦA BẠN: Bạn cứ thoải mái thêm/sửa/xoá các chồng ở đây nhé!
+        const database = [
+            {
+                name: "Khương Chính Huyền",
+                tags: ["Cổ đại", "Tu tiên", "Hài hước"],
+                aiLink: "https://aistudio.google.com/...", // Thay link chatbot của bạn vào đây
+                storyLink: "#" // Link đọc cốt truyện (nếu có)
+            },
+            {
+                name: "Khương Viết Lâm",
+                tags: ["VN xưa", "Hài hước", "Trinh thám"],
+                aiLink: "https://aistudio.google.com/...",
+                storyLink: "#"
+            },
+            {
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap"],
+                aiLink: "https://aistudio.google.com/...",
+                storyLink: "#"
+            }
+        ];
+
+        let currentTag = "Tất cả";
+
+        // Chuyển màn hình
+        function enterHarem() {
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('harem-screen').classList.remove('hidden');
+            renderList(database);
+        }
+
+        function goBack() {
+            document.getElementById('harem-screen').classList.add('hidden');
+            document.getElementById('welcome-screen').classList.remove('hidden');
+        }
+
+        // Render danh sách ra màn hình
+        function renderList(data) {
+            const listContainer = document.getElementById('character-list');
+            document.getElementById('total-count').innerText = data.length;
+            listContainer.innerHTML = "";
+
+            if(data.length === 0) {
+                listContainer.innerHTML = `<p class="text-center text-gray-500 py-8 text-sm">Không tìm thấy nam thần nào phù hợp...</p>`;
+                return;
+            }
+
+            data.forEach(char => {
+                const tagsHTML = char.tags.map(t => `<span class="text-pink-400/80 text-xs mr-2">#\${t}</span>`).join('');
+                
+                const card = `
+                    <div class="card-bg p-4 rounded-xl flex justify-between items-center border border-zinc-800 hover:border-zinc-700 transition">
+                        <div>
+                            <h3 class="text-base font-semibold text-gray-100">\${char.name}</h3>
+                            <div class="mt-1 flex flex-wrap">\${tagsHTML}</div>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="\${char.aiLink}" target="_blank" class="custom-pink text-white text-xs font-semibold px-3 py-2 rounded-lg transition shadow-sm">Link ggAI</a>
+                            <a href="\${char.storyLink}" target="_blank" class="bg-zinc-700 hover:bg-zinc-600 text-gray-200 text-xs font-semibold px-3 py-2 rounded-lg transition">Đọc cốt truyện ↗</a>
+                        </div>
+                    </div>
+                `;
+                listContainer.innerHTML += card;
+            });
+        }
+
+        // Tìm kiếm và lọc theo tag liên hoàn
+        function filterCharacters() {
+            const searchText = document.getElementById('search-input').value.toLowerCase();
+            
+            const filtered = database.filter(char => {
+                const matchesSearch = char.name.toLowerCase().includes(searchText);
+                const matchesTag = (currentTag === "Tất cả") || char.tags.includes(currentTag);
+                return matchesSearch && matchesTag;
+            });
+            
+            renderList(filtered);
+        }
+
+        // Lọc khi bấm vào tag tuyển chọn
+        function filterTag(tag) {
+            currentTag = tag;
+            
+            // Đổi màu nút được chọn
+            document.querySelectorAll('.tag-filter').forEach(btn => {
+                if(btn.innerText.includes(tag)) {
+                    btn.className = "tag-filter bg-pink-500 text-white text-xs px-4 py-2 rounded-full transition";
+                } else {
+                    btn.className = "tag-filter bg-zinc-800 text-gray-300 text-xs px-4 py-2 rounded-full transition";
+                }
+            });
+
+            filterCharacters();
+        }
+
+        // Tính năng Random "Thị tẩm" ngẫu nhiên
+        function randomPick() {
+            if(database.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * database.length);
+            const chosenOne = database[randomIndex];
+            alert(`🎉 Hôm nay công chúa hãy sủng ái: 【 \${chosenOne.name} 】 nhé!`);
+        }
+    </script>
+</body>
+</html>
