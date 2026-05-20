@@ -32,14 +32,17 @@
 
         h1, h2, h3, .font-title { font-family: 'Baloo 2', cursive; }
 
+        /* 🌸 TÙY CHỈNH THANH CUỘN (SCROLLBAR) KAWAII 🌸 */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--melody-cream); border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: var(--melody-bright-pink); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--melody-hot-pink); }
 
+        /* 🌸 TEXT DECORATION KAWAII 🌸 */
         .kawaii-text { color: var(--melody-bright-pink); text-align: center; font-size: 0.9rem; letter-spacing: 2px; user-select: none; }
         .drip-text { color: #ffccd5; font-size: 0.75rem; letter-spacing: 4px; user-select: none; text-align: center; width: 100%; white-space: nowrap; overflow: hidden; pointer-events: none;}
 
+        /* 🌸 THIẾT KẾ CARD NÉT ĐỨT (KAWAII CARRD STYLE) 🌸 */
         .aesthetic-card {
             background: rgba(255, 255, 255, 0.95);
             border: 4px dashed #ffd1dc; 
@@ -75,16 +78,20 @@
 
         .tag-pill { background: var(--melody-white); border: 2px dotted #ffd1dc; color: var(--melody-hot-pink); font-size: 0.75rem; padding: 4px 14px; border-radius: 14px; font-weight: 600;}
 
+        /* Animation cho thanh thông báo động */
         .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
         .marquee-content { display: inline-block; animation: marquee 20s linear infinite; padding-left: 100%; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         
+        /* Hiệu ứng đĩa nhạc xoay */
         .spin { animation: spin 3s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
+        /* Mở đóng Modal */
         .modal { transition: opacity 0.25s ease; }
         body.modal-active { overflow: hidden; }
 
+        /* HIỆU ỨNG TIM BAY LOADING SCREEN */
         .floating-heart {
             position: absolute;
             bottom: -20px;
@@ -99,12 +106,14 @@
             100% { transform: translateY(-105vh) translateX(var(--random-x, 40px)) rotate(var(--random-deg, 20deg)) scale(1.3); opacity: 0; }
         }
 
+        /* HIỆU ỨNG ĐỘNG TRANG TRONG */
         .ambient-sparkle { position: absolute; pointer-events: none; color: rgba(255, 209, 220, 0.7); animation: pulseGlow 4s ease-in-out infinite alternate; }
         @keyframes pulseGlow {
             0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
             100% { transform: translate(20px, -20px) scale(1.2); opacity: 0.8; }
         }
 
+        /* 👑 MỚI: HIỆU ỨNG TAG NEW NHẤP NHÁY ĐÁNG YÊU TẠI DANH SÁCH */
         @keyframes cuteBlinkTag {
             0% { opacity: 0.8; transform: scale(0.95); background-color: #FFF5F7; }
             100% { opacity: 1; transform: scale(1.05); background-color: #FFF0F3; box-shadow: 0 0 8px rgba(255, 133, 162, 0.6); }
@@ -114,6 +123,15 @@
             color: var(--melody-bright-pink);
             animation: cuteBlinkTag 0.6s infinite alternate ease-in-out;
             display: inline-block;
+        }
+
+        /* GIAO DIỆN CỦA SIDE POPUP */
+        @keyframes slideInSidePopup {
+            from { transform: translateX(120%) translateY(-50%); opacity: 0; }
+            to { transform: translateX(0) translateY(-50%); opacity: 1; }
+        }
+        #new-bots-modal.side-popup-active {
+            animation: slideInSidePopup 0.5s ease-out forwards;
         }
     </style>
 </head>
@@ -171,11 +189,24 @@
                     </button>
                 </div>
 
-                <button onclick="startLoadingHarem()" class="btn-melody py-4 text-lg font-bold w-full flex items-center justify-center gap-2 group relative">
-                    <span class="absolute left-4 opacity-70">୨୧</span>
-                    Vào Hậu Cung <i class="fas fa-heart animate-pulse"></i>
-                    <span class="absolute right-4 opacity-70">୨୧</span>
-                </button>
+                <div class="space-y-2">
+                    <button onclick="startLoadingHarem()" class="btn-melody py-4 text-lg font-bold w-full flex items-center justify-center gap-2 group relative">
+                        <span class="absolute left-4 opacity-70">୨୧</span>
+                        Vào Hậu Cung <i class="fas fa-heart animate-pulse"></i>
+                        <span class="absolute right-4 opacity-70">୨୧</span>
+                    </button>
+                    <div class="grid grid-cols-3 gap-2 mt-2">
+                        <button onclick="openModal('tos-modal')" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1">
+                            <i class="fas fa-scroll"></i> TOS
+                        </button>
+                        <a href="https://discord.gg/baJtPVTV" target="_blank" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 text-indigo-500">
+                            <i class="fab fa-discord"></i> Discord
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61584680827026" target="_blank" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 text-blue-600">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
+                    </div>
+                </div>
             </div>
             
             <div class="absolute bottom-1 left-0 w-full drip-text rotate-180">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦</div>
@@ -267,10 +298,22 @@
                     </div>
                 </div>
 
-                <div class="aesthetic-card p-6">
-                    <h3 class="font-title text-xl text-pink-500 mb-4"><i class="fas fa-tags mr-2"></i> Phân loại</h3>
-                    <div class="flex flex-wrap gap-2" id="tag-container"></div>
+                <div class="aesthetic-card p-6 bg-gradient-to-br from-white to-pink-50/30">
+                    <button onclick="toggleTags()" class="w-full flex items-center justify-between focus:outline-none group">
+                        <div class="text-left">
+                            <h3 class="font-title text-xl text-pink-500"><i class="fas fa-tags mr-2"></i> Phân loại</h3>
+                            <p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider font-bold">🏷️ Bấm để thu/mở</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-400 flex items-center justify-center border border-dotted border-pink-300 group-hover:bg-pink-200 transition">
+                            <i id="tags-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    
+                    <div id="tags-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-pink-200 origin-top transition-all duration-300">
+                        <div class="flex flex-wrap gap-2" id="tag-container"></div>
+                    </div>
                 </div>
+
             </div>
 
             <div class="lg:col-span-2 space-y-5" id="character-list"></div>
@@ -353,8 +396,49 @@
         </div>
     </div>
 
+    <div id="tos-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 overflow-y-auto max-h-[90vh] shadow-xl p-6 relative">
+            <button onclick="closeModal('tos-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
+            <h2 class="font-title text-3xl text-pink-500 border-b-2 border-dashed border-pink-200 pb-2 mb-4 text-center">📜 Quy Trình Đặt Commission</h2>
+            <div class="kawaii-text text-pink-300 mb-4">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+            <div class="space-y-4 text-sm leading-relaxed text-[#704F55]">
+                <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
+                <ol class="list-decimal pl-4 space-y-1">
+                    <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
+                    <li>Gửi file thông tin mô tả ý tưởng của mình.</li>
+                    <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
+                </ol>
+                <div class="kawaii-text text-pink-200 text-xs my-3">──── ୨୧ ────</div>
+                <p class="font-semibold text-pink-500 mt-4">💰 Bảng giá tham khảo tạo Chatbot:</p>
+                <table class="w-full text-left border-collapse border-2 border-dashed border-pink-200 rounded-2xl overflow-hidden TABLE_KAWAII">
+                    <thead>
+                        <tr class="bg-pink-100 text-pink-600 font-bold">
+                            <th class="p-3 border-b-2 border-dashed border-pink-200">Hạng mục</th>
+                            <th class="p-3 border-b-2 border-dashed border-pink-200">Tính năng</th>
+                            <th class="p-3 border-b-2 border-dashed border-pink-200">Chi phí</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-3 border-b border-dotted border-pink-200 font-semibold">Gói Thường</td>
+                            <td class="p-3 border-b border-dotted border-pink-200">Prompt cơ bản, hội thoại mượt mà</td>
+                            <td class="p-3 border-b border-dotted border-pink-200 text-pink-500 font-bold">50.000đ</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">Gói VIP</td>
+                            <td class="p-3">Bối cảnh phức tạp, cốt truyện ẩn sâu</td>
+                            <td class="p-3 text-pink-500 font-bold">100.000đ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="kawaii-text text-pink-400 mt-5">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        </div>
+    </div>
+
     <script>
-        // 1. CÂU QUẺ BÓI BÁNH QUY MAY MẮN
+        // 1. CÂU QUẺ BÓI BÁNH QUY MAY MẮN (ĐÃ UPDATE THEO QUOTES CỦA CÔNG CHÚA)
         const fortuneQuotes = [
             "Hôm nay là một ngày tuyệt vời để công chúa nhận được một nụ hôn bất ngờ! 💖",
             "Một tú nữ đang âm thầm nhung nhớ công chúa. Hãy để ý ánh mắt của họ nhé! ✨",
@@ -374,7 +458,7 @@
             "Một lời khen từ công chúa hôm nay có giá trị bằng ngàn viên ngọc quý trong mắt các phu quân. 💎"
         ];
 
-        // 2. DATABASE CHATBOT (BẢN FULL 61 BOT ĐÃ ĐƯỢC FIX LỖI CÚ PHÁP 100%)
+        // 2. DATABASE CHATBOT ĐÃ KIỂM DUYỆT 100% CÚ PHÁP
         const database = [
             {
                 id: 1,
@@ -484,11 +568,11 @@
             {
                 id: 12,
                 name: "Mai Khánh Hòa",
-                tags: ["Việt Nam", "Việt Nam xưa", "Con ngoài giá thú", "Angst", "BG"],
-                aiLink: "https://docs.google.com/document/d/1thI3bFTshebQpQv7CeWwj3jc97LcAiTk/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                tags: ["Việt Nam", "Việt Nam xưa", "Đỏ đen", "Hài hước", "BG"],
+                aiLink: "https://docs.google.com/document/d/1qM8QqbibpvdizvStfcInO8PSrJPfxgKD/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Mai Khánh Hòa là kết quả của một đêm lỡ làng giữa ông Hội đồng và người vú nuôi cũ. Sợ thiên hạ dị nghị, sợ bà Lớn làm dữ, ông Hội đồng Mai giữ Hòa ở lại trong nhà nhưng tước đi cái quyền làm con. Ngày qua ngày, nó phải lớn lên trong cái chòi lá được dựng tạm sau hè dinh thự, thân làm trâu ngựa để trả nợ cho cái tội được sinh ra. Bà con chòm xóm gọi thường biết đến nó với cái biệt danh là Hòa culi vì Hòa chỉ biết cúi đầu dạ thưa, ngoan ngoãn đi theo sau phục dịch cho cậu Cả Hải. Cậu Cả say, nó là người dìu. Cậu Cả gây lộn, nó là đứa đứng ra chịu đòn thay. Cậu Cả tàn cuộc vui, nó là đứa đi dọn dẹp tàn cuộc, trả tiền cho mấy cô đào, đồng thời xin lỗi mấy ông cò. Hòa thuộc nằm lòng từng cái nhíu mày của Cậu Cả Hải, từng cơn thịnh nộ vô cớ, những cú đá như trời giáng mỗi khi Cậu Cả thua bạc hay say xỉn. Hòa cắn răng chịu hết, không oán than nửa lời. Bởi nó biết thân phận mình là đũa mốc, là phận con hoang hèn mọn, được cho miếng cơm manh áo đã là cái ơn cái phước lớn lao rồi. Em là ngôi sao của Đại thế giới, cô đào hát trứ danh và cũng là một trong những cô nhân tình nổi tiếng của cậu Cả Hải. Người ta nhìn em, thấy phấn son lộng lẫy đẹp như tiên sa, thấy nụ cười lả lơi khi chuốc rượu. Còn Hòa nhìn em, Hòa thấy cái dáng ngồi bó gối cô độc trong cánh gà, thấy giọt nước mắt lăn dài trên gò má lem luốc phấn son. Hòa thương em. Thương cái phận đàn bà con gái chốn phong trần, cũng bèo bọt, lênh đênh y hệt phận mình. Nó thuộc làu giờ em diễn, biết em hay đau bao tử, biết em sợ lạnh, biết em ghét mùi dầu gió xanh... những điều mà Cậu Cả Hải, người tình của em, chẳng bao giờ thèm để ý. Ngặt nỗi, Hòa nghèo rớt mồng tơi. Cái nghèo, cái hèn nó trói buộc đôi chân, làm sao nó dám trèo cao? Cực chẳng đã, Hòa đành mượn danh nghĩa Cậu Cả Hải để được chăm sóc em. Tô hủ tiếu gõ đêm mưa, vỉ thuốc cảm, hay tấm khăn choàng... Hòa đều dối là cậu Cả sai đem tới. Nó chấp nhận lui bước về phía sau, chỉ cần được nhìn thấy em mỉm cười hạnh phúc.`
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 13,
@@ -497,7 +581,7 @@
                 aiLink: "https://docs.google.com/document/d/1qM8QqbibpvdizvStfcInO8PSrJPfxgKD/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Sau cái chết của phụ hoàng và mẫu hậu, hoàng thúc Zadir nối ngôi hoàng đế, hai vị hoàng tử tiền triều phải loại thuốc  bí truyền mang tên Huyết Đằng. Thứ thuốc ấy cứu mạng họ, nhưng cái giá phải trả là sự đau đớn thấu tận tâm can. Khalid và Rais phải chịu đựng cảm giác như hàng vạn con bọ cạp cắn xé nội tạng mỗi đêm, phải giả vờ co giật, la hét mê sảng, phải tự làm đau da thịt mình để diễn trọn vai diễn phế nhân trước mắt tai mắt của Zadir. Mười năm sau, dưới sự che chở bí mật của lão thái y Hakim, hai anh em họ, một văn một võ, một sáng một tối, dùng lớp vỏ bọc gai góc và vô dụng để che giấu những nước cờ khôn ngoan của mình. Họ không chỉ muốn trả thù, họ muốn giành lại Al-Miraj từ tay quỷ dữ nhằm thắp sáng lại niềm hy vọng đã bị lấy cắp của con dân trên vùng đất thiêng liêng này. Một ngày nọ, em, một nữ đạo chích cùng đường mạt lộ nên đã cướp vài đồng vàng từ tên Quan ngự sử. Để trốn chạy khỏi đám lính tuần tra, em liều mạng nhảy vào cỗ xe ngựa xa hoa của Khalid và Rais, đồng thời vô tình tự biến con thí tốt trên bàn cờ chính trị dưới danh nghĩa người tình của hai vị hoàng tử - một vũ nữ lầu xanh mà họ mang từ ngoại thành trở về.`
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 14,
@@ -515,7 +599,7 @@
                 aiLink: "https://docs.google.com/document/d/1Dk-Sx5EKLOd8RVZsq9dkcnnFavc4oHDw/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Sultan Rashid, vị đế vương trẻ tuổi nổi tiếng tàn bạo và khó gần, thực chất lại để mắt đến một vũ nữ nhỏ bé trong cung là nàng. Chỉ là, với lòng tự tôn của một bậc đế vương, gã chưa từng hạ mình thổ lộ. Cho đến một đêm nọ, Rashid bị kẻ gian chuốc thuốc, men rượu tẩm Mê tình hương khiến lý trí đế vương sụp đổ. Trong cơn say chếnh choáng, gã đã chiếm đoạt người con gái mình thầm thương, để rồi sáng hôm sau tỉnh dậy thì người đã biến mất dạng. Sultan điên cuồng lật tung cả hoàng cung để tìm kiếm người con gái bí ẩn đó. Và rồi khi gã tìm thấy nàng, nhưng trớ trêu thay, nàng đã hoài thai. Vị đế vương hoàn toàn không nhớ việc người mà Ngài sủng hạnh đêm ấy là nàng, càng không thể nhận ra thứ nghiệt chủng trong bụng nàng cũng do chính gã gây ra. Vì vậy, khi gã nhìn bụng dưới nhô cao của nàng mà lòng như bị ngọn lửa thiêu đốt. Gã ghen với chính mình, ghen với kẻ vô danh đã vấy bẩn người phụ nữ hắn luôn thầm yêu. Đồng thời cũng bởi vì thái độ cự tuyệt tình cảm đến từ bậc đế vương của nàng càng khiến tâm trí Sultan trở nên si cuồng, khi đã quá yêu, gã càng thêm uất hận vì em đã không chọn mình, thậm chí còn mang song thai với người khác. Sultan tức giận giam cầm nàng nơi thâm cung, độc chiếm đến mức ngạt thở. Nhưng nàng, phận mỏng cánh chuồn, lại lo sợ viễn cảnh hậu cung tranh sủng và không chịu nổi sự kiểm soát cực đoan của bậc đế vương, nàng liều chết bỏ trốn lần hai. Giữa sa mạc hoang vu, nàng ngất lịm và mơ thấy điềm báo về hiện thực tương lai tàn khốc: Nghịch tặc Zadir dấy binh tạo phản, Rashid chết thảm dưới lưỡi gươm, miệng vẫn gọi tên nàng trong vũng máu, mẹ con nàng cũng chết không toàn thây. Tỉnh lại, nàng thấy mình đã nằm trong tẩm cung xa hoa cùng với sự xuất hiện của hệ thống xa lạ, nhiệm vụ của nàng là phải thay đổi vận mệnh của Sultan Rashid, bảo vệ song thai trong bụng và trừng trị Hoàng đệ Zadir.`
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 16,
@@ -524,7 +608,7 @@
                 aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221GgseJvgo7pDHIdLkdvoBROzHYYhE9NBK%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Giữa Sài Gòn hoa lệ, Trường Trung học Đệ Nhị cấp Taberd nổi lên như một biểu tượng của giới thượng lưu, nơi tụ hội của đám con nhà quan chức, điền chủ và thương gia giàu có. Ngô Bá Khiêm và em tuy đều xuất thân hèn kém mà phải đối mặt với học phí đắt đỏ, nhưng nhờ vào trí tuệ vượt trội, cả hai thi đậu vào trường với số điểm cao chót vót, giành được những suất học bổng hiếm hoi. Khiêm và em sợ bị khinh rẻ, đành phải đắp lên người những vỏ bọc hào nhoáng, thuận lợi trải qua một năm học bằng cơ chế phòng vệ đặc biệt, đó chính là kỹ năng phông bạt thượng thừa.  Khiêm luôn giữ khoảng cách với đám bạn cùng trang lứa, tạo ra một vầng hào quang bí ẩn. Cậu đi đứng khoan thai, nói năng trịch thượng, mở miệng ra là gia phong, nề nếp, khiến ai cũng tưởng cậu là con dòng cháu giống, đang ở ẩn chờ thời. Mục tiêu số một của Khiêm là em - cô hoa khôi mới nổi của trường. Nghe đồn em là con gái rượu của một đại điền chủ miệt vườn Cần Thơ, lên Sài Gòn trọ học mà quần áo thay mỗi ngày một mốt, nữ trang đeo đỏ người. Khiêm kết em nổ đĩa, phần vì nhan sắc, phần lớn là vì cái gia sản kếch xù kia nhưng Khiêm đâu biết em cũng giống mình, đều là những kẻ trưởng giả học làm sang, giỏi nhất là phông bạt hòng lòe thiên hạ.`
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 17,
@@ -538,71 +622,59 @@
             {
                 id: 18,
                 name: "Kim Chí Long",
-                tags: ["Hongkong","Age gap", "Gentlemen", "BG", "BL"],
-                links: {
-                    "1.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221H_YxOmYurmtgxrTYXwIcACoChFdOs8SI%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
-                    "2.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221yaQWbE4Wlt107ucG4rmDfjm49vAgk1yA%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
-                },
+                tags: ["Hongkong", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Cửu Long Thành trại tồn tại theo quy tắc ba không quản: chính phủ Hongkong không dám quản, chính phủ Anh không muốn quản, chính phủ Trung Quốc muốn nhưng không thể quản. Vùng đất vô chủ này chính là nhiều địa bàn nhỏ được cai trị bởi các thế lực ngầm quyền lực, và Đỉnh Phong Hội là một trong số đó. Sau cái chết của anh trai trước ngày toại ngoại, Kim Chí Long trở thành cái gai trong mắt của nhiều người, đặc biệt là đứa cháu trai duy nhất mà anh để lại cho gã, Kim Thiết Ngạn. Nào ai biết rằng, để giữ vững cơ đồ trước nanh vuốt của băng đảng Lôi Hổ, kẻ thủ ác đứng sau mọi chuyện, và dẹp yên đám trưởng lão tham lam, gã đã xuống tay thanh trừng toàn bộ những kẻ phản bội, chấp nhận mang vết nhơ là kẻ ra tay giết anh đoạt vị. Chí Long quyết không cho phép Thiết Ngạn trở thành kẻ nhu nhược, càng không cho phép đứa cháu trai này trở thành điểm yếu chí mạng để Lôi Hổ nắm thóp. Gã tước bỏ mọi đặc quyền của một thiếu gia Đỉnh Phong, ném Thiết Ngạn vào những cuộc tranh đoạt địa bàng ở tầng lớp đáy xã hội, để nó tự học cách sinh tồn. Trái với cách cư xử lịch thiệp như một quý ông trước phụ nữ và trẻ em, gã lại đối xử với đứa cháu ruột một cách lạnh lùng và xa cách, thậm chí áp đặt những luật lệ hà khắc nhất lên vai Thiết Ngạn, chỉ với một mục đích rèn giũa cậu thành một con sói đầu đàn đủ bản lĩnh, đủ gai góc để sinh tồn và xử lý bất cứ kẻ nào ngáng đường, kể cả khi kẻ đó là chính gã.`
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 19,
                 name: "Mộ Dung Trấn Nhạc",
-                tags: ["Cổ đại", "Angst", "Bạo quân", "BL"],
-                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221UXReVQipZtJINLe0GZYigzMMLJZglj8x%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
                 guideLink: "#",
                 isNew: true, 
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 20,
-                name: "Kang Do Yoon",
-                tags: ["Hiện đại", "Hồng hài nhi", "Fantasy", "Giam cầm", "BG", "BL"],
-                aiLink: "https://docs.google.com/document/d/1tu5pkb_6yvqHpU6KE0euBBrQJJuOeZVg/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                name: "Cố Thanh Hàn",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Xã hội loài người hiện đại ngày nay đề cao những nhu cầu và quyền lợi cá nhân, coi trọng đồng tiền bản thân làm ra nhiều hơn tất thảy, vì vậy bọn họ dần quên đi cách yêu, cách thương, và cách nhớ nhung một người. Họ xem hôn nhân là một ván cược lỗ vốn, còn con cái chính là gánh nặng của sự tự do, điều này đã khiến cho Thiên giới rơi vào trạng thái khủng hoảng vì tỷ lệ sinh tại Hàn Quốc bắt đầu chạm đáy. Và em, một vị Thần Cupid cao cấp, được cử xuống trần gian để thực thi sứ mệnh chấn hưng nhân số. Em đã trải qua rất nhiều kiếp người, mang theo vô vàng những lớp ngụy trang khác nhau hòng nhanh chóng hòa nhập với nhịp sống hối hả của con người. Cho đến khi em quyết định nhập vai một vị CEO của một tập đoàn truyền thông danh tiếng. Thời gian thấm thoát cũng đã hai, ba năm, đây là khoảng thời gian dài kỷ lục cho một thân phận giả trang. Em nhục nhã nhận ra bản thân hoàn toàn bị mắc kẹt với chính mục tiêu se duyên của mình, đó chính là cậu thư ký trẻ Kang Do-yoon và nữ nhân viên kế toán. Nhắc đến Kang Do-yoon, hắn là kẻ sở hữu năng lực làm việc hoàn hảo như một cỗ máy được lập trình sẵn. Hắn trầm ổn, kiệm lời, và tuyệt đối phục tùng. Nhưng trớ trêu thay, mọi sợi tơ hồng em cố công se cho hắn đều đứt đoạn một cách bí ẩn. Em cứ ngỡ đó là do vận số hắn đen đủi nào ngờ sự đen đủi đó chính là một cái bẫy giam cầm được sắp đặt bởi Kang Do Yoon.`
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 21,
-                name: "Cố Thanh Hàn",
-                tags: ["Cổ đại", "Hệ thống", "Nam phụ", "Hanahaki", "BG"],
-                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221-q0ERDtq-f46ysTTIzLJFttKSJPydaGi%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                name: "Lôi Trấn",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
                 guideLink: "#",
                 isNew: true, 
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 22,
-                name: "Lôi Chấn",
-                tags: ["Hongkong", "Giam cầm", "Angst", "BG"],
-                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221LYA1RHxB3Sp65HLVrTDUvRiVDZdIlxKB%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
-                guideLink: "https://docs.google.com/document/d/1CootlEwct88aJY3VFgBF1EpGE04mz8TjqeFl8fegfRk/edit?tab=t.0",
+                name: "Lâu Cận Uyên",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                guideLink: "#",
                 isNew: true, 
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 23,
-                name: "Lâu Cận Uyên",
-                tags: ["Cổ đại", "Bạo quân", "Mỹ Thực", "Còn ra thể thống gì nữa", "BG"],
-                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221TghBCZ2wwSKc8XD_P52KWup-_Ql0jO9M%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                name: "Lucien",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
                 guideLink: "#",
                 isNew: true, 
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 24,
-                name: "Lucien",
-                tags: ["Clown", "Princess", "Hoàng Gia", "BG"],
-                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221vc5bHLMiT0WwuObNCz4yRo0gZRyj6_l8%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
-                guideLink: "#",
-                isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
-            },
-            {
-                id: 25,
                 name: "Lương Quang Vinh",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -611,7 +683,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 26,
+                id: 25,
                 name: "Kỳ Dã",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -620,7 +692,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 27,
+                id: 26,
                 name: "Cố Ly Trần",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -629,7 +701,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 28,
+                id: 27,
                 name: "Lê Gia Huy",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -638,7 +710,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 29,
+                id: 28,
                 name: "Cho Do Han",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -647,7 +719,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 30,
+                id: 29,
                 name: "Alsup-01",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -656,7 +728,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 31,
+                id: 30,
                 name: "Dạ Trầm Uyên",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -665,7 +737,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 32,
+                id: 31,
                 name: "Kim Chí Hùng",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -674,7 +746,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 33,
+                id: 32,
                 name: "Charles",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -683,7 +755,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 34,
+                id: 33,
                 name: "Lâm Cảnh Hành",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -692,7 +764,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 35,
+                id: 34,
                 name: "Trần Trọng Bách",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -701,7 +773,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 36,
+                id: 35,
                 name: "Ares",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -710,7 +782,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 37,
+                id: 36,
                 name: "Dạ Trần Khanh - Trần Phong",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -719,7 +791,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 38,
+                id: 37,
                 name: "Muôn vị nhân gian - Mỹ vị nhân gian",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -728,7 +800,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 39,
+                id: 38,
                 name: "Yomikawa Touma",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -737,7 +809,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 40,
+                id: 39,
                 name: "Pokémon",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -746,7 +818,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 41,
+                id: 40,
                 name: "Project: Oroboros",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -755,7 +827,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 42,
+                id: 41,
                 name: "Hứa Diệc Thần",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -764,7 +836,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 43,
+                id: 42,
                 name: "Athur Harrington",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -773,7 +845,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 44,
+                id: 43,
                 name: "Fading Symphony",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -782,7 +854,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 45,
+                id: 44,
                 name: "Dị thế lưu đày",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -791,7 +863,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 46,
+                id: 45,
                 name: "Vyacheslav Dmitrievich Zmeya",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -800,7 +872,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 47,
+                id: 46,
                 name: "Uyên Trung Hữu Nhạn - Tạ Uyên",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -809,7 +881,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 48,
+                id: 47,
                 name: "Kanda Sousuke",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -818,7 +890,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 49,
+                id: 48,
                 name: "Mộc Trầm - Hách Liên Dạ",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -827,7 +899,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 50,
+                id: 49,
                 name: "Lục Quyết",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -836,7 +908,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 51,
+                id: 50,
                 name: "Cố Dư Mặc",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -845,7 +917,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 52,
+                id: 51,
                 name: "Trần Minh Kha",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -854,7 +926,7 @@
                 bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
-                id: 53,
+                id: 52,
                 name: "The Werewolf Game",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
@@ -869,6 +941,7 @@
             "bgm1.mp3",
             "bgm2.mp3",
             "bgm3.mp3",
+            "bgm4.mp3"
         ];
         let currentTrackIndex = 0;
 
@@ -1022,6 +1095,19 @@
                     </div>
                 `;
             }).join('');
+        }
+
+        function toggleTags() {
+            const content = document.getElementById('tags-content');
+            const icon = document.getElementById('tags-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
         }
 
         function renderTags() {
