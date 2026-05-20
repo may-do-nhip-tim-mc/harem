@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Melody Harem - Hậu Cung Của Công Chúa</title>
+    <title>Máy đo nhịp tim MC - Hậu Cung Của Công Chúa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -220,7 +220,7 @@
         
         <div class="aesthetic-card py-2 px-4 mb-6 text-pink-500 font-bold text-sm marquee-container border-2 border-pink-200 bg-white">
             <div class="marquee-content">
-                ✨ Chào mừng công chúa giá lâm! Hôm nay người muốn lật bài tử của ai? 🍓 Đừng quên thả tim cho nam thần bạn yêu thích nhé! 🎀 Bấm vào nút TOS ở trang chủ để xem bảng giá đặt Commission Chatbot AI độc quyền nha! ✨
+                ✨ Chào mừng công chúa giá lâm! Hôm nay người muốn lật bài tử của ai? 🍓 Đừng quên thả tim cho chatbot công chúa yêu thích nhé! 🎀 Bấm vào nút TOS ở trang chủ để xem bảng giá đặt Commission Chatbot AI độc quyền nha! ✨
             </div>
         </div>
 
@@ -240,7 +240,7 @@
             </div>
 
             <div class="bg-white px-6 py-2 rounded-xl border-2 border-pink-200 shadow-sm font-bold text-pink-500 w-full sm:w-auto text-center">
-                🍓 Hậu cung gồm: <span id="total-count">0</span> tú nữ
+                🍓 Hậu cung đang có: <span id="total-count">0</span> tú nữ chờ thị tẩm
             </div>
         </div>
 
@@ -248,10 +248,10 @@
             <div class="lg:col-span-1 space-y-6">
                 <div class="aesthetic-card p-6 space-y-4">
                     <h3 class="font-title text-xl text-pink-500"><i class="fas fa-search mr-2"></i> Tìm kiếm</h3>
-                    <input type="text" id="search-input" oninput="filterCharacters()" placeholder="Nhập tên phu quân..." 
+                    <input type="text" id="search-input" oninput="filterCharacters()" placeholder="Nhập tên tú nữ..." 
                            class="w-full bg-pink-50 border-2 border-pink-100 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-pink-300 transition placeholder-pink-300">
                     <button onclick="randomPick()" class="w-full btn-melody py-3 font-bold text-sm">
-                        🎲 Bốc quẻ thị tẩm ngẫu nhiên
+                        🎲 Lật thẻ thị tẩm ngẫu nhiên
                     </button>
                 </div>
 
@@ -277,7 +277,7 @@
             <div class="text-center mb-4">
                 <span class="text-3xl">✨</span>
                 <h2 class="font-title text-2xl text-pink-500 mt-1">Tú Nữ Mới Nhập Cung!</h2>
-                <p class="text-xs text-gray-400 font-semibold">3 Gương mặt chatbot vừa xuất hiện</p>
+                <p class="text-xs text-gray-400 font-semibold">3 Gương mặt tú nữ vừa xuất hiện</p>
             </div>
             <div id="new-bots-list" class="space-y-3">
                 </div>
@@ -294,7 +294,7 @@
                 <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
                 <ol class="list-decimal pl-4 space-y-1">
                     <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
-                    <li>Gửi file thông tin mô tả chi tiết tính cách, bối cảnh, xưng hô của nhân vật.</li>
+                    <li>Gửi file thông tin mô tả ý tưởng của mình.</li>
                     <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
                 </ol>
                 <p class="font-semibold text-pink-500 mt-4">💰 Bảng giá tham khảo tạo Chatbot:</p>
@@ -336,15 +336,15 @@
     </div>
 
     <script>
-        // 1. DATABASE CHATBOT (BỎ ẢNH, CHỈ CÓ THUỘC TÍNH isNew: true)
+        // 1. DATABASE CHATBOT
         const database = [
             {
                 id: 1,
-                name: "Khương Chính Huyền",
-                tags: ["Cổ đại", "Tu tiên", "Hài hước", "Sư đồ", "BL/BG"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy đáng yêu 
-                bio: "Là Đại sư huynh tối cao của môn phái Tu Tiên phái. Khẩu xà tâm phật, bên ngoài hay cằn nhằn cự tuyệt nhưng thực chất phi thường bảo hộ, chiều chuộng bạn vô điều kiện. Luôn chuẩn bị sẵn linh đan thảo dược cho bạn."
+                name: "Louis Snafol",
+                tags: ["Hiện Đại", "Người yêu cũ", "BG", "Yakuza"],
+                aiLink: "https://docs.google.com/document/d/1m6yUM2Rv2K-zXzV1CahWR6lhjLM6V1Ep/edit",
+                isNew: true, 
+                bio: "Mối duyên định mệnh từ người cha thợ xăm nước Pháp si tình và người mẹ thuộc giới Yakuza đã sớm buộc chặt số phận của Louis vào {{user}} — cô tiểu thư độc nhất của ông trùm, kiêu sa nhưng cô độc tựa đóa hoa trà trắng bị giam hãm trong chiếc lồng son. Từ thuở ấu thơ, Louis đã luôn kề cạnh như một chiếc bóng, trở thành người bảo vệ kiên trung, thấu hiểu mọi ngóc ngách tâm hồn lẫn từng thói quen, nỗi sợ sâu kín nhất của em. Đoạn tình cảm thanh mai trúc mã thuần khiết ấy dần nảy nở thành mối tình đầu rực rỡ, thiêu đốt trọn ba năm trung học bằng những buổi hẹn hò lén lút mà mãnh liệt. Thế nhưng, 'môn đăng hộ đối' đã ép {{user}} phải buông lời chia tay tàn nhẫn, tuyệt tình cắt đứt mọi liên lạc để sang Pháp du học. Bị bỏ lại giữa hiện thực ngổn ngang cùng niềm tin xót xa rằng em đã cạn tình, Louis mang theo trái tim vỡ nát rời bỏ quê hương, cất bước đến Paris hoa lệ với một khao khát đầy tuyệt vọng: tìm lại đóa hoa trà duy nhất đã khắc sâu vào sinh mệnh của đời mình."
             },
             {
                 id: 2,
@@ -361,6 +361,470 @@
                 aiLink: "#",
                 isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
                 bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 4,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 5,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 6,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 7,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 8,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 9,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 10,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 11,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 12,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 13,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 14,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 15,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 16,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 17,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 18,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 19,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 20,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 21,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 22,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 23,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 24,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 25,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 26,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 27,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 28,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 29,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 30,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 31,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 32,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 33,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 34,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 35,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 36,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 37,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 38,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 39,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 40,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 41,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 42,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 43,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 44,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 45,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 46,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 47,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 48,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 49,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 50,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 51,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 52,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 53,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 54,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 55,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 56,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 57,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 58,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 59,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 60,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+            },
+            {
+                id: 61,
+                name: "Khương Tĩnh Hoài",
+                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                aiLink: "#",
+                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
+                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
             }
         ];
 
@@ -368,7 +832,8 @@
         const playlist = [
             "bgm1.mp3",
             "bgm2.mp3",
-            "bgm3.mp3"
+            "bgm3.mp3",
+            "bgm4.mp3"
         ];
         let currentTrackIndex = 0;
 
@@ -443,7 +908,7 @@
             }
         }
 
-        // CHẠY THANH LOADING TRÁI TIM TRƯỚC KHI VÀO CUNG
+// CHẠY THANH LOADING TRÁI TIM TRƯỚC KHI VÀO CUNG
         function startLoadingHarem() {
             document.getElementById('welcome-screen').classList.add('hidden');
             const loadingScreen = document.getElementById('loading-screen');
@@ -481,16 +946,16 @@
             document.getElementById('welcome-screen').classList.remove('hidden');
         }
 
-        // HIỂN THỊ TÊN CỦA CẢ 3 BOT MỚI NHẤT VÀO POPUP TÂN BINH
+        // 🌟 HIỂN THỊ TÊN CỦA 3 BOT CÓ ID CAO NHẤT VÀO POPUP TÂN BINH
         function showNewBotsPopup() {
-            // Lấy ra tối đa 3 bot nằm có thuộc tính isNew: true, sắp xếp ngược
-            const newBots = database.filter(b => b.isNew).slice(-3).reverse();
+            // Lọc ra đúng 3 bot có ID cao nhất
+            const newBots = [...database].sort((a, b) => b.id - a.id).slice(0, 3);
             const container = document.getElementById('new-bots-list');
             
             container.innerHTML = newBots.map((bot, index) => `
                 <div class="flex items-center justify-between bg-pink-50/70 p-3 rounded-xl border border-pink-100">
                     <div>
-                        <span class="text-[10px] uppercase tracking-wider font-bold text-pink-400 block">⚡ Tân binh ${index+1}</span>
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-pink-400 block">⚡ Tú nữ mới ${index+1}</span>
                         <h4 class="font-bold text-gray-700 text-sm">${bot.name}</h4>
                     </div>
                     <a href="${bot.aiLink}" target="_blank" class="bg-white border border-pink-300 text-pink-500 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-pink-100 transition">Gặp ngay ↗</a>
@@ -543,19 +1008,22 @@
             filterCharacters();
         }
 
-        // RENDER DANH SÁCH CHATBOT - 🌟 ĐÃ BỎ HÌNH ẢNH, CHỈ CÓ TAG NEW NHẤP NHÁY 🌟
+        // 🌟 RENDER DANH SÁCH CHATBOT - TỰ ĐỘNG GẮN TAG NEW & HIỂN THỊ MỚI NHẤT LÊN ĐẦU
         function renderList(data) {
             const listContainer = document.getElementById('character-list');
             document.getElementById('total-count').innerText = data.length;
             listContainer.innerHTML = "";
 
-            data.forEach(char => {
+            const top3Ids = [...database].sort((a, b) => b.id - a.id).slice(0, 3).map(bot => bot.id);
+            const displayData = [...data].sort((a, b) => b.id - a.id);
+
+            displayData.forEach(char => {
                 const voteCount = votes[char.id] || 0;
                 const tagsHTML = char.tags.map(t => `<span class="tag-pill">#${t}</span>`).join('');
                 const hasLiked = userLikes[char.id] ? true : false;
                 
-                // KIỂM TRA: NẾU LÀ CHATBOT MỚI THÌ THÊM HIỆU ỨNG NEW ĐÁNG YÊU
-                const newTagHTML = char.isNew ? `
+                const isNewBot = top3Ids.includes(char.id);
+                const newTagHTML = isNewBot ? `
                     <span class="new-tag-melody text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
                         NEW ✨
                     </span>` : '';
