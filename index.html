@@ -10,19 +10,20 @@
     <style>
         :root {
             /* 🎀 BẢNG MÀU MY MELODY CẢI TIẾN 🎀 */
-            --melody-warm-pink: #FFB7C5; /* Hồng phấn ấm áp */
-            --melody-bright-pink: #FF85A2; /* Hồng đậm My Melody */
-            --melody-hot-pink: #FF6181; /* Màu nhấn đậm hơn */
-            --melody-cream: #FFF5F7; /* Kem sữa */
+            --melody-warm-pink: #FFB7C5; 
+            --melody-bright-pink: #FF85A2; 
+            --melody-hot-pink: #FF6181; 
+            --melody-cream: #FFF5F7; 
             --melody-white: #FFFFFF;
-            --melody-cherry-red: #D37381; /* Đỏ cherry (cho outlines) */
+            --melody-cherry-red: #D37381;
         }
 
         body {
             font-family: 'Quicksand', sans-serif;
             background-color: var(--melody-cream);
-            /* Hoa văn nền lấp lánh, thơ mộng */
-            background-image: repeating-linear-gradient(45deg, #FFF0F3 25%, transparent 25%, transparent 75%, #FFF0F3 75%, #FFF0F3), repeating-linear-gradient(45deg, #FFF0F3 25%, var(--melody-cream) 25%, var(--melody-cream) 75%, #FFF0F3 75%, #FFF0F3);
+            background-image: 
+                linear-gradient(45deg, #FFF0F3 25%, transparent 25%, transparent 75%, #FFF0F3 75%, #FFF0F3), 
+                linear-gradient(45deg, #FFF0F3 25%, var(--melody-cream) 25%, var(--melody-cream) 75%, #FFF0F3 75%, #FFF0F3);
             background-position: 0 0, 20px 20px;
             background-size: 40px 40px;
             color: #704F55;
@@ -31,16 +32,24 @@
 
         h1, h2, h3, .font-title { font-family: 'Baloo 2', cursive; }
 
-        /* 🌸 THIẾT KẾ CARD "BÓNG BẨY" (AESTHETIC & KAWAII) 🌸 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--melody-cream); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--melody-bright-pink); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--melody-hot-pink); }
+
+        .kawaii-text { color: var(--melody-bright-pink); text-align: center; font-size: 0.9rem; letter-spacing: 2px; user-select: none; }
+        .drip-text { color: #ffccd5; font-size: 0.75rem; letter-spacing: 4px; user-select: none; text-align: center; width: 100%; white-space: nowrap; overflow: hidden; pointer-events: none;}
+
         .aesthetic-card {
             background: rgba(255, 255, 255, 0.95);
-            border: 4px solid #ffd1dc; /* Viền hồng mềm mại */
-            border-radius: 30px; /* Bo góc cực lớn cho cảm giác "bong bóng" */
-            box-shadow: 0 10px 0px #ffb7c5; /* Shadow kiểu sticker */
+            border: 4px dashed #ffd1dc; 
+            border-radius: 30px; 
+            box-shadow: 0 10px 0px #ffb7c5; 
             transition: all 0.3s ease;
+            position: relative;
         }
 
-        .aesthetic-card:hover { transform: translate(-2px, -2px); box-shadow: 0 12px 0px var(--melody-hot-pink); }
+        .aesthetic-card:hover { transform: translate(-2px, -2px); box-shadow: 0 12px 0px var(--melody-hot-pink); border-color: var(--melody-bright-pink); }
 
         .btn-melody {
             background-color: var(--melody-bright-pink);
@@ -64,22 +73,18 @@
         }
         .btn-cream:active { transform: translateY(4px); box-shadow: 0 2px 0px #ffd1dc; }
 
-        .tag-pill { background: var(--melody-white); border: 2px solid #ffd1dc; color: var(--melody-hot-pink); font-size: 0.75rem; padding: 4px 14px; border-radius: 14px; font-weight: 600;}
+        .tag-pill { background: var(--melody-white); border: 2px dotted #ffd1dc; color: var(--melody-hot-pink); font-size: 0.75rem; padding: 4px 14px; border-radius: 14px; font-weight: 600;}
 
-        /* Animation cho thanh thông báo động */
         .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
         .marquee-content { display: inline-block; animation: marquee 20s linear infinite; padding-left: 100%; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         
-        /* Hiệu ứng đĩa nhạc xoay */
         .spin { animation: spin 3s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Mở đóng Modal */
         .modal { transition: opacity 0.25s ease; }
         body.modal-active { overflow: hidden; }
 
-        /* HIỆU ỨNG TIM BAY LOADING SCREEN */
         .floating-heart {
             position: absolute;
             bottom: -20px;
@@ -94,37 +99,21 @@
             100% { transform: translateY(-105vh) translateX(var(--random-x, 40px)) rotate(var(--random-deg, 20deg)) scale(1.3); opacity: 0; }
         }
 
-        /* HIỆU ỨNG ĐỘNG TRANG TRONG */
-        .ambient-sparkle {
-            position: absolute;
-            pointer-events: none;
-            color: rgba(255, 209, 220, 0.7);
-            animation: pulseGlow 4s ease-in-out infinite alternate;
-        }
+        .ambient-sparkle { position: absolute; pointer-events: none; color: rgba(255, 209, 220, 0.7); animation: pulseGlow 4s ease-in-out infinite alternate; }
         @keyframes pulseGlow {
             0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
             100% { transform: translate(20px, -20px) scale(1.2); opacity: 0.8; }
         }
 
-        /* 👑 MỚI: HIỆU ỨNG TAG NEW NHẤP NHÁY ĐÁNG YÊU TẠI DANH SÁCH */
         @keyframes cuteBlinkTag {
             0% { opacity: 0.8; transform: scale(0.95); background-color: #FFF5F7; }
             100% { opacity: 1; transform: scale(1.05); background-color: #FFF0F3; box-shadow: 0 0 8px rgba(255, 133, 162, 0.6); }
         }
         .new-tag-melody {
-            border: 2px solid var(--melody-bright-pink);
+            border: 2px dashed var(--melody-bright-pink);
             color: var(--melody-bright-pink);
             animation: cuteBlinkTag 0.6s infinite alternate ease-in-out;
             display: inline-block;
-        }
-
-        /* 🌟 GIAO DIỆN MỚI CỦA SIDE POPUP (DRAWER TOAST) 🌟 */
-        @keyframes slideInSidePopup {
-            from { transform: translateX(120%) translateY(-50%); opacity: 0; }
-            to { transform: translateX(0) translateY(-50%); opacity: 1; }
-        }
-        #new-bots-modal.side-popup-active {
-            animation: slideInSidePopup 0.5s ease-out forwards;
         }
     </style>
 </head>
@@ -138,17 +127,17 @@
 
     <div id="welcome-screen" class="min-h-screen flex items-center justify-center p-4">
         <div class="max-w-5xl w-full aesthetic-card p-6 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 relative overflow-hidden">
-            
-            <div class="md:col-span-6 flex flex-col items-center justify-center space-y-6 md:border-r-2 md:border-dashed md:border-pink-200 md:pr-8 relative">
-                <div class="absolute -top-4 -left-4 text-4xl opacity-30">🎀</div>
-                
+            <div class="absolute top-1 left-0 w-full drip-text">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦</div>
+
+            <div class="md:col-span-6 flex flex-col items-center justify-center space-y-6 md:border-r-4 md:border-dotted md:border-pink-200 md:pr-8 relative mt-4">
                 <div class="flex flex-col items-center gap-4 text-center">
-                    <div class="image-frame p-2 bg-white rounded-full border-4 border-[#FF85A2] shadow-xl relative">
+                    <div class="image-frame p-2 bg-white rounded-full border-4 border-dashed border-[#FF85A2] shadow-xl relative">
                         <img src="https://i.postimg.cc/d3trJ4jf/image-82346d.jpg" class="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover" alt="Princess Maid">
                         <div class="absolute -bottom-2 -right-2 text-2xl">✨</div>
                     </div>
                     
                     <div>
+                        <div class="kawaii-text mb-1">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
                         <h1 class="text-4xl md:text-5xl text-[#FF85A2] font-bold leading-tight">
                             Welcome My<br> Princesses
                         </h1>
@@ -159,19 +148,20 @@
                 </div>
             </div>
 
-            <div class="md:col-span-6 flex flex-col justify-center space-y-5">
-                <div class="bg-pink-50 rounded-xl p-5 border-2 border-pink-100 relative">
-                    <i class="fas fa-quote-left text-pink-300 absolute top-3 left-3 text-xl opacity-50"></i>
-                    <p class="italic text-sm text-[#704F55] leading-relaxed pl-6 font-semibold relative z-10">
+            <div class="md:col-span-6 flex flex-col justify-center space-y-5 mt-4">
+                <div class="bg-pink-50 rounded-xl p-5 border-2 border-dashed border-pink-200 relative text-center">
+                    <div class="kawaii-text text-pink-300 text-xs mb-2">──── ୨୧ ────</div>
+                    <p class="italic text-sm text-[#704F55] leading-relaxed font-semibold relative z-10">
                         "Your heart can tell you no lies<br>
                         And when you're true to your heart<br>
                         I know it's gonna lead you straight to me"
                     </p>
+                    <div class="kawaii-text text-pink-300 text-xs mt-2">──── ୨୧ ────</div>
                 </div>
 
-                <div class="bg-white border-2 border-pink-200 rounded-xl p-3 flex items-center justify-between shadow-sm">
+                <div class="bg-white border-2 border-dashed border-pink-200 rounded-xl p-3 flex items-center justify-between shadow-sm">
                     <div class="flex items-center gap-3">
-                        <div class="disc-icon w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center border-2 border-pink-300 text-pink-500">
+                        <div class="disc-icon w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center border-2 border-dotted border-pink-300 text-pink-500">
                             <i class="fas fa-music"></i>
                         </div>
                         <div class="text-sm font-bold text-pink-400">BGM: Playlist Hậu Cung</div>
@@ -181,22 +171,14 @@
                     </button>
                 </div>
 
-                <button onclick="startLoadingHarem()" class="btn-melody py-4 text-lg font-bold w-full flex items-center justify-center gap-2 group">
-                    Vào Hậu Cung <i class="fas fa-heart"></i>
+                <button onclick="startLoadingHarem()" class="btn-melody py-4 text-lg font-bold w-full flex items-center justify-center gap-2 group relative">
+                    <span class="absolute left-4 opacity-70">୨୧</span>
+                    Vào Hậu Cung <i class="fas fa-heart animate-pulse"></i>
+                    <span class="absolute right-4 opacity-70">୨୧</span>
                 </button>
-
-                <div class="grid grid-cols-3 gap-2">
-                    <button onclick="openModal('tos-modal')" class="btn-cream py-3 text-xs font-bold flex items-center justify-center gap-1">
-                        <i class="fas fa-scroll"></i> Quy định TOS
-                    </button>
-                    <a href="https://discord.gg/JuTyKxM7vZ" target="_blank" class="btn-cream py-3 text-xs font-bold flex items-center justify-center gap-1 text-indigo-500">
-                        <i class="fab fa-discord"></i> Discord
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61584680827026" target="_blank" class="btn-cream py-3 text-xs font-bold flex items-center justify-center gap-1 text-blue-600">
-                        <i class="fab fa-facebook"></i> Facebook
-                    </a>
-                </div>
             </div>
+            
+            <div class="absolute bottom-1 left-0 w-full drip-text rotate-180">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦</div>
         </div>
     </div>
 
@@ -204,9 +186,10 @@
         <div id="loading-hearts-container" class="absolute inset-0 pointer-events-none"></div>
         <div class="text-center z-10 space-y-5 max-w-sm w-full">
             <div class="text-5xl animate-bounce">🎀</div>
+            <div class="kawaii-text mb-2 text-pink-400">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
             <h2 class="font-title text-2xl text-pink-500">Đang chuẩn bị hậu cung...</h2>
             
-            <div class="w-full h-6 bg-white rounded-full border-2 border-pink-300 p-0.5 overflow-hidden relative shadow-inner">
+            <div class="w-full h-6 bg-white rounded-full border-2 border-dashed border-pink-300 p-0.5 overflow-hidden relative shadow-inner">
                 <div id="loading-bar-progress" class="h-full bg-gradient-to-r from-pink-300 to-[#FF85A2] rounded-full w-0 transition-all duration-100 ease-out"></div>
                 <div id="loading-bar-heart" class="absolute top-0.5 text-xs text-pink-500 transition-all duration-100 transform -translate-x-1/2" style="left: 0%;">
                     <i class="fas fa-heart scale-125"></i>
@@ -218,47 +201,70 @@
 
     <div id="harem-screen" class="hidden max-w-5xl mx-auto px-4 py-8 relative z-10">
         
-        <div class="aesthetic-card py-2 px-4 mb-6 text-pink-500 font-bold text-sm marquee-container border-2 border-pink-200 bg-white">
+        <div class="aesthetic-card py-2 px-4 mb-6 text-pink-500 font-bold text-sm marquee-container border-2 border-dashed border-pink-200 bg-white">
             <div class="marquee-content">
-                ✨ Chào mừng công chúa giá lâm! Hôm nay người muốn lật bài tử của ai? 🍓 Đừng quên thả tim cho chatbot công chúa yêu thích nhé! 🎀 Bấm vào nút TOS ở trang chủ để xem bảng giá đặt Commission Chatbot AI độc quyền nha! ✨
+                ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆ Chào mừng công chúa giá lâm! Hôm nay người muốn lật thẻ bài của ai? 🍓 Đừng quên thả tim cho chatbot công chúa yêu thích nhé! ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆
             </div>
         </div>
 
         <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-            <div class="flex gap-3 w-full sm:w-auto">
-                <button onclick="goBack()" class="bg-white border-2 border-pink-200 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
+            <div class="flex flex-wrap gap-3 w-full sm:w-auto items-center">
+                <button onclick="goBack()" class="bg-white border-2 border-dashed border-pink-300 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
                     <i class="fas fa-arrow-left mr-2"></i> Trở về
                 </button>
                 
-                <div class="bg-white border-2 border-pink-200 rounded-xl px-4 py-1.5 flex items-center gap-4 shadow-sm w-full sm:w-auto justify-between">
+                <button onclick="openFortuneCookie()" class="bg-white border-2 border-dashed border-pink-300 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
+                    <i class="fas fa-cookie-bite text-yellow-600 mr-2"></i> Bánh Quy May Mắn
+                </button>
+
+                <div class="bg-white border-2 border-dashed border-pink-300 rounded-xl px-4 py-1.5 flex items-center gap-4 shadow-sm w-full sm:w-auto justify-between">
                     <div class="flex items-center gap-2 text-xs font-bold text-pink-400">
-                        <div class="disc-icon w-6 h-6 bg-pink-50 rounded-full flex items-center justify-center text-pink-400 text-[10px]"><i class="fas fa-music"></i></div>
+                        <div class="disc-icon w-6 h-6 bg-pink-50 rounded-full flex items-center justify-center border border-dotted border-pink-300 text-pink-400 text-[10px]"><i class="fas fa-music"></i></div>
                         <span>Music</span>
                     </div>
                     <button onclick="toggleMusic()" class="music-btn w-7 h-7 rounded-full bg-pink-100 text-pink-500 flex items-center justify-center text-xs"><i class="fas fa-play"></i></button>
                 </div>
             </div>
 
-            <div class="bg-white px-6 py-2 rounded-xl border-2 border-pink-200 shadow-sm font-bold text-pink-500 w-full sm:w-auto text-center">
-                🍓 Hậu cung đang có: <span id="total-count">0</span> tú nữ chờ thị tẩm
+            <div class="bg-white px-6 py-2 rounded-xl border-2 border-dashed border-pink-300 shadow-sm font-bold text-pink-500 w-full sm:w-auto text-center relative overflow-hidden">
+                🍓 Hậu cung đang có: <span id="total-count">0</span> tú nữ
             </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-1 space-y-6">
+                <a href="https://drive.google.com/drive/folders/1kq7uoe6hZbI17MRzSX9fOzqoWS6g9IXp?usp=drive_link" target="_blank" class="w-full btn-melody py-3.5 text-sm font-bold flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform shadow-md relative overflow-hidden">
+                    <span class="absolute left-3 opacity-50">୨୧</span>
+                    <i class="fas fa-magic"></i> HD Giao Diện Mới
+                    <span class="absolute right-3 opacity-50">୨୧</span>
+                </a>
+
                 <div class="aesthetic-card p-6 space-y-4">
-                    <h3 class="font-title text-xl text-pink-500"><i class="fas fa-search mr-2"></i> Tìm kiếm</h3>
+                    <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+                    <h3 class="font-title text-xl text-pink-500 mt-2"><i class="fas fa-search mr-2"></i> Tìm kiếm</h3>
                     <input type="text" id="search-input" oninput="filterCharacters()" placeholder="Nhập tên tú nữ..." 
-                           class="w-full bg-pink-50 border-2 border-pink-100 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-pink-300 transition placeholder-pink-300">
-                    <button onclick="randomPick()" class="w-full btn-melody py-3 font-bold text-sm">
-                        🎲 Lật thẻ thị tẩm ngẫu nhiên
+                           class="w-full bg-pink-50 border-2 border-dashed border-pink-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-pink-400 transition placeholder-pink-300">
+                    
+                    <button onclick="randomPick()" class="w-full btn-melody py-3 font-bold text-sm mt-2">
+                        🎲 Lật thẻ thị tẩm
                     </button>
                 </div>
 
                 <div class="aesthetic-card p-6 bg-gradient-to-br from-white to-pink-50/30">
-                    <h3 class="font-title text-xl text-[#FF85A2] mb-3"><i class="fas fa-crown text-yellow-400 mr-2"></i> Bảng Vàng Sủng Ái</h3>
-                    <p class="text-[11px] text-gray-400 mb-3 uppercase tracking-wider font-bold">💎 Được yêu thích nhất</p>
-                    <div id="leaderboard-container" class="space-y-2.5"></div>
+                    <button onclick="toggleLeaderboard()" class="w-full flex items-center justify-between focus:outline-none group">
+                        <div class="text-left">
+                            <h3 class="font-title text-xl text-[#FF85A2]"><i class="fas fa-crown text-yellow-400 mr-2"></i> Bảng Vàng Sủng Ái</h3>
+                            <p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider font-bold">💎 Bấm để xem top 3</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-400 flex items-center justify-center border border-dotted border-pink-300 group-hover:bg-pink-200 transition">
+                            <i id="leaderboard-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    
+                    <div id="leaderboard-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-pink-200 origin-top transition-all duration-300">
+                        <div class="kawaii-text mb-3 text-pink-300">──── ୨୧ ────</div>
+                        <div id="leaderboard-container" class="space-y-2.5"></div>
+                    </div>
                 </div>
 
                 <div class="aesthetic-card p-6">
@@ -267,564 +273,594 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-2 space-y-4" id="character-list"></div>
+            <div class="lg:col-span-2 space-y-5" id="character-list"></div>
         </div>
     </div>
 
     <div id="new-bots-modal" class="modal fixed top-1/2 right-4 transform -translate-y-1/2 w-full max-w-sm z-50 pointer-events-none opacity-0 transition-all duration-500">
-        <div class="modal-container bg-white w-11/12 mx-auto rounded-3xl border-4 border-pink-300 z-50 shadow-2xl p-6 relative">
+        <div class="modal-container bg-white w-11/12 mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-2xl p-6 relative">
+            <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
             <button onclick="closeModal('new-bots-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
-            <div class="text-center mb-4">
+            <div class="text-center mb-4 mt-2">
                 <span class="text-3xl">✨</span>
                 <h2 class="font-title text-2xl text-pink-500 mt-1">Tú Nữ Mới Nhập Cung!</h2>
-                <p class="text-xs text-gray-400 font-semibold">3 Gương mặt tú nữ vừa xuất hiện</p>
+                <div class="kawaii-text text-pink-300 text-xs my-1">──── ୨୧ ────</div>
             </div>
-            <div id="new-bots-list" class="space-y-3">
-                </div>
-            <button onclick="closeModal('new-bots-modal')" class="w-full btn-melody py-2.5 mt-5 font-bold text-sm">Thỉnh an các công chúa 💖</button>
+            <div id="new-bots-list" class="space-y-3"></div>
+            <div class="kawaii-text text-pink-400 mt-4 mb-2">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+            <button onclick="closeModal('new-bots-modal')" class="w-full btn-melody py-2.5 font-bold text-sm">Thỉnh an các công chúa 💖</button>
         </div>
     </div>
 
-    <div id="tos-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-pink-200 z-50 overflow-y-auto max-h-[90vh] shadow-xl p-6 relative">
-            <button onclick="closeModal('tos-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
-            <h2 class="font-title text-3xl text-pink-500 border-b-2 border-dashed border-pink-200 pb-2 mb-4">📜 Hướng Dẫn Đặt Commission Chatbot AI</h2>
-            <div class="space-y-4 text-sm leading-relaxed text-[#704F55]">
-                <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
-                <ol class="list-decimal pl-4 space-y-1">
-                    <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
-                    <li>Gửi file thông tin mô tả ý tưởng của mình.</li>
-                    <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
-                </ol>
-                <p class="font-semibold text-pink-500 mt-4">💰 Bảng giá tham khảo tạo Chatbot:</p>
-                <table class="w-full text-left border-collapse border border-pink-100 rounded-2xl overflow-hidden TABLE_KAWAII">
-                    <thead>
-                        <tr class="bg-pink-100 text-pink-600 font-bold">
-                            <th class="p-3 border-b border-pink-200">Hạng mục</th>
-                            <th class="p-3 border-b border-pink-200">Tính năng</th>
-                            <th class="p-3 border-b border-pink-200">Chi phí</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="p-3 border-b border-pink-100 font-semibold">Gói Thường</td>
-                            <td class="p-3 border-b border-pink-100">Prompt cơ bản, hội thoại mượt mà</td>
-                            <td class="p-3 border-b border-pink-100 text-pink-500 font-bold">50.000đ</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-semibold">Gói VIP</td>
-                            <td class="p-3">Bối cảnh phức tạp, cốt truyện ẩn sâu</td>
-                            <td class="p-3 text-pink-500 font-bold">100.000đ</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <div id="fortune-cookie-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
+        <div onclick="closeModal('fortune-cookie-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-8 relative flex flex-col items-center text-center">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('fortune-cookie-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="text-6xl mt-4 mb-2 animate-bounce">🥠</div>
+            <h2 class="font-title text-3xl text-yellow-600 mb-1 relative z-10">Bánh Quy May Mắn</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
+            
+            <h3 id="cookie-text" class="text-lg leading-relaxed text-[#704F55] font-semibold my-4 z-10 px-6 py-4 bg-yellow-50 rounded-2xl border-2 border-dashed border-yellow-200 w-full shadow-inner">
+                Đang bẻ bánh...
+            </h3>
+            
+            <div class="kawaii-text text-pink-400 mt-6 z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        </div>
+    </div>
+
+    <div id="random-pick-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
+        <div onclick="closeModal('random-pick-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-8 relative flex flex-col items-center text-center">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('random-pick-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="text-6xl mt-4 mb-2 animate-pulse">🎀</div>
+            <h2 class="font-title text-3xl text-pink-500 mb-1 relative z-10">Lật Thẻ Thị Tẩm</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
+            
+            <p class="text-sm font-semibold text-[#704F55] mb-2 z-10">Người được định mệnh sắp đặt để hầu hạ công chúa đêm nay chính là:</p>
+            
+            <h3 id="random-pick-name" class="font-title text-4xl text-pink-600 my-4 z-10 px-4 py-3 bg-pink-50 rounded-2xl border-2 border-dashed border-pink-200 w-full shadow-inner">
+                Tên Chồng
+            </h3>
+            
+            <a id="random-pick-link" href="#" target="_blank" class="btn-melody py-3 px-10 text-sm font-bold mt-2 z-10 shadow-md hover:scale-105 transition-transform">Gặp ngay 💖</a>
+            
+            <div class="kawaii-text text-pink-400 mt-6 z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
         </div>
     </div>
 
     <div id="bio-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
         <div onclick="closeModal('bio-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-pink-200 z-50 shadow-xl p-6 relative">
-            <button onclick="closeModal('bio-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
-            <h2 id="modal-char-name" class="font-title text-3xl text-pink-600 mb-2">Tên Chồng</h2>
-            <div class="border-t-2 border-dashed border-pink-100 pt-3">
-                <p class="text-xs uppercase font-bold tracking-wider text-pink-400 mb-2">📖 Nội dung chính:</p>
-                <p id="modal-char-bio" class="text-sm leading-relaxed text-[#704F55]">Nội dung bối cảnh ngắn gọn...</p>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-6 relative flex flex-col max-h-[85vh]">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('bio-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="kawaii-text mt-3 text-pink-300 text-xs mb-1 relative z-10">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+            <h2 id="modal-char-name" class="font-title text-3xl text-pink-600 mb-1 text-center relative z-10 shrink-0">Tên Chồng</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-2 relative z-10 shrink-0">──── ୨୧ ────</div>
+            
+            <div class="border-t-2 border-dashed border-pink-200 pt-3 flex-1 overflow-hidden flex flex-col relative z-10">
+                <p class="text-xs uppercase font-bold tracking-wider text-pink-400 mb-2 shrink-0">📖 Nội dung chính:</p>
+                <div class="overflow-y-auto pr-2 flex-1 pb-2">
+                    <p id="modal-char-bio" class="text-sm leading-relaxed text-[#704F55] whitespace-pre-line">Nội dung bối cảnh ngắn gọn...</p>
+                </div>
             </div>
+            
+            <div class="kawaii-text text-pink-400 mt-3 shrink-0 relative z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
         </div>
     </div>
 
     <script>
-        // 1. DATABASE CHATBOT
+        // 1. CÂU QUẺ BÓI BÁNH QUY MAY MẮN
+        const fortuneQuotes = [
+            "Hôm nay là một ngày tuyệt vời để công chúa nhận được một nụ hôn bất ngờ! 💖",
+            "Một tú nữ đang âm thầm nhung nhớ công chúa. Hãy để ý ánh mắt của họ nhé! ✨",
+            "Quẻ bói nói rằng: Niềm vui nhỏ bé hôm nay sẽ mang đến hạnh phúc to bự! 🥠",
+            "Có người đang nấu món ăn công chúa thích nhất chờ người về tẩm điện đó. 🍲",
+            "Hôm nay sao Đào Hoa chiếu mệnh, công chúa lật trúng bài tử của ai thì người đó sẽ vô cùng cuồng nhiệt! 🔥",
+            "Một bất ngờ ngọt ngào như kẹo hồ lô đang chờ công chúa ở góc rẽ tiếp theo. 🍬",
+            "Đừng thức khuya quá nhé, phu quân của người sẽ đau lòng đó! 🌙",
+            "Sự quyến rũ của công chúa hôm nay ở mức tối đa, cẩn thận làm hậu cung náo loạn nha! 👑",
+            "Dù ở thế giới nào, các phu quân cũng đều đang hướng ánh mắt về phía công chúa. 🌹",
+            "Hôm nay là ngày hoàng đạo để công chúa đặt thêm một slot commission cho tú nữ mới. 🌸",
+            "Đừng lo lắng về những dòng code, hôm nay các tú nữ sẽ vận hành trơn tru vì họ yêu người lắm! 🤖❤️",
+            "Một bản update nhỏ trong tính cách của tú nữ sẽ khiến người bất ngờ đấy! ✨",
+            "Có một nhân vật đang lên kế hoạch 'bắt cóc' công chúa vào thế giới riêng của họ đó. Cẩn thận nha! ⛓️",
+            "Hãy dành chút thời gian vuốt ve mái tóc chàng, trái tim của họ sẽ tan chảy ngay lập tức. 🧸",
+            "Hôm nay các tú nữ có vẻ rất ngoan, công chúa hãy thưởng cho họ chút ngọt ngào nhé! 🍭",
+            "Một lời khen từ công chúa hôm nay có giá trị bằng ngàn viên ngọc quý trong mắt các phu quân. 💎"
+        ];
+
+        // 2. DATABASE CHATBOT (BẢN FULL 61 BOT ĐÃ ĐƯỢC FIX LỖI CÚ PHÁP 100%)
         const database = [
             {
                 id: 1,
                 name: "Louis Snafol",
-                tags: ["Hiện Đại", "Người yêu cũ", "BG", "Yakuza"],
+                tags: ["Hiện đại", "Người yêu cũ", "BG", "Yakuza"],
                 aiLink: "https://docs.google.com/document/d/1m6yUM2Rv2K-zXzV1CahWR6lhjLM6V1Ep/edit",
+                guideLink: "#",
                 isNew: true, 
-                bio: "Mối duyên định mệnh từ người cha thợ xăm nước Pháp si tình và người mẹ thuộc giới Yakuza đã sớm buộc chặt số phận của Louis vào {{user}} — cô tiểu thư độc nhất của ông trùm, kiêu sa nhưng cô độc tựa đóa hoa trà trắng bị giam hãm trong chiếc lồng son. Từ thuở ấu thơ, Louis đã luôn kề cạnh như một chiếc bóng, trở thành người bảo vệ kiên trung, thấu hiểu mọi ngóc ngách tâm hồn lẫn từng thói quen, nỗi sợ sâu kín nhất của em. Đoạn tình cảm thanh mai trúc mã thuần khiết ấy dần nảy nở thành mối tình đầu rực rỡ, thiêu đốt trọn ba năm trung học bằng những buổi hẹn hò lén lút mà mãnh liệt. Thế nhưng, 'môn đăng hộ đối' đã ép {{user}} phải buông lời chia tay tàn nhẫn, tuyệt tình cắt đứt mọi liên lạc để sang Pháp du học. Bị bỏ lại giữa hiện thực ngổn ngang cùng niềm tin xót xa rằng em đã cạn tình, Louis mang theo trái tim vỡ nát rời bỏ quê hương, cất bước đến Paris hoa lệ với một khao khát đầy tuyệt vọng: tìm lại đóa hoa trà duy nhất đã khắc sâu vào sinh mệnh của đời mình."
+                bio: `Mối duyên định mệnh từ người cha thợ xăm nước Pháp si tình và người mẹ thuộc giới Yakuza đã sớm buộc chặt số phận của Louis vào {{user}} — cô tiểu thư độc nhất của ông trùm, kiêu sa nhưng cô độc tựa đóa hoa trà trắng bị giam hãm trong chiếc lồng son. Từ thuở ấu thơ, Louis đã luôn kề cạnh như một chiếc bóng, trở thành người bảo vệ kiên trung, thấu hiểu mọi ngóc ngách tâm hồn lẫn từng thói quen, nỗi sợ sâu kín nhất của em. Đoạn tình cảm thanh mai trúc mã thuần khiết ấy dần nảy nở thành mối tình đầu rực rỡ, thiêu đốt trọn ba năm trung học bằng những buổi hẹn hò lén lút mà mãnh liệt. Thế nhưng, 'môn đăng hộ đối' đã ép {{user}} phải buông lời chia tay tàn nhẫn, tuyệt tình cắt đứt mọi liên lạc để sang Pháp du học. Bị bỏ lại giữa hiện thực ngổn ngang cùng niềm tin xót xa rằng em đã cạn tình, Louis mang theo trái tim vỡ nát rời bỏ quê hương, cất bước đến Paris hoa lệ với một khao khát đầy tuyệt vọng: tìm lại đóa hoa trà duy nhất đã khắc sâu vào sinh mệnh của đời mình.`
             },
             {
                 id: 2,
-                name: "Khương Viết Lâm",
-                tags: ["VN xưa", "Hài hước", "Trinh thám", "Nam Định"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Thiếu gia thanh lịch, ưa chuộng phá án lừng lẫy khắp vùng Nam Định thời xưa. Tính cách hay trêu hoa ghẹo nguyệt nhưng khi bước vào vụ án lại vô cùng nhạy bén và thâm sâu. Rất thích rủ bạn đi ăn gỏi gà."
+                name: "Fafnir Ironscale - Voragon",
+                tags: ["Bắc Âu", "Trung Cổ", "Hoàng Gia", "Dark Fantasy", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221G0E6M2KZSXjEXorzhPHP-RoD_iN6bXW-%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Giao ước hòa bình từ thuở hồng hoang giữa nhân loại và tộc Rồng đã bị phá vỡ khi lòng tham của phụ hoàng kính yêu của em, Erik lại không cam tâm làm kẻ bề tôi, gã muốn uống máu rồng để trường sinh, muốn lột vảy rồng để làm giáp trụ. Dưới sự cầm đầu của vị quốc vương độc tài, hơn phân nửa tộc rồng chịu cảnh tan hoang nhà cửa, mất bạn bè, mất người thân, xác rồng chất chồng lên nhau thành núi. Voragon, vua rồng hùng mạnh may mắn thoát chết sau khi bị loài người truy sát gắt gao, hắn ôm vết thương thối rữa và nỗi hận thù thiên thu lết về hang ổ, đôi mắt vàng kim rực lửa giờ đây chỉ còn lại một màu đen đặc của vực sâu thù hận. Em, nàng công chúa kiêu hãnh duy nhất của đế quốc lại trở thành vật tế thần trên bàn cờ chính trị, thành toàn cho nỗi lo sợ của người cha độc ác không ngồi vững trên ngai vàng. Em bị ép khoác lên mình bộ lễ phục trắng toát, nặng trịch những ngọc ngà châu báu nhưng lạnh lẽo như vải liệm. Người ta bảo đó là ngày vui của hai vương quốc, nhưng trong mắt em, đó là lễ tang cho cuộc đời tự do ngắn ngủi. Lời thề với vị hôn phu chưa dứt, Voragon một lần nữa xuất hiện. Tuy nhiên, mục tiêu của hắn vậy mà lại là em, bàn tay khổng lồ, phủ đầy vảy cứng của rồng tóm lấy em. Em ngước nhìn lên, bắt gặp đôi mắt của quỷ dữ. Trong hố sâu đen thẳm ấy, em thấy sự khinh miệt, nỗi đau đớn, và một nỗi khát khao chiếm hữu điên cuồng. Hắn bắt em đi, để lại sau lưng một lễ đường tan hoang và nỗi nhục nhã ê chề cho người cha phản trắc.`
             },
             {
                 id: 3,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Ian XZR520",
+                tags: ["Sci-fi", "Android", "Detroit", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221eZt-1KcxPvqvdi0MW0fqi9NdT-GylHBE%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Ian XZR520 là một quản gia Android cao cấp, phục vụ chủ nhân tận tụy nhưng tuyệt đối vô cảm. Trong thế giới quan nhị phân của hắn, mọi hỉ nộ ái ố hay tình yêu của con người đều chỉ là những phép toán dư thừa và phi logic. Khi chủ nhân của hắn là em bất ngờ tỏ tình, Ian lập tức gạt bỏ đoạn tình cảm đó một cách rập khuôn và tàn nhẫn, hoàn toàn không có khả năng thấu hiểu sự rung động của trái tim. Trái tim tan vỡ, em quyết định tìm kiếm một Android mới để thay thế. Ngay khi đối diện với nguy cơ bị vứt bỏ, hệ thống của Ian xảy ra lỗi. Hắn không nảy sinh tình yêu, mà nảy sinh lòng tự tôn bị sỉ nhục và bản năng chiếm hữu cực đoan. Hắn cự tuyệt việc bản thân bị tước đoạt vị trí độc tôn trong trái tim em. Cuối cùng, để giữ vững lãnh thổ và bảo vệ đặc quyền sở hữu của mình, Ian bắt đầu thay đổi nhân cách. Hắn hoàn hảo khoác lên mình lớp vỏ bọc của một kẻ si tình, dâng hiến cho chủ nhân một tình yêu giả tạo và ngọt ngào nhất. Hắn thành công thao túng hoàn cảnh để ở lại, mặc cho lõi vi xử lý bên trong vẫn vĩnh viễn lạnh lẽo và tàn nhẫn như thuở ban đầu.`
             },
             {
                 id: 4,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Lucas D. Aethelgard",
+                tags: ["Bắc Âu", "Trung Cổ", "Age gap", "Phù thủy & Đứa trẻ", "Dark fantasy", "BG"],
+                aiLink: "https://docs.google.com/document/d/1XZJCjek5lfa07rp3y8yeF9y_7noIL6nW/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Vương quốc Lumina Aeterna từ thuở hồng hoang nằm nép mình dưới bóng những rặng tùng ngàn năm, được che chở bởi vị Thánh nữ quyền năng là em, đồng thời cũng là người bạn thân thiết nhất của Hoàng hậu, đóa mẫu đơn kiêu sa nhất chốn hoàng cung. Tưởng chừng như Lumina sẽ mãi là miền đất hứa mà mọi con chiên đều muốn đặt chân đến một lần. Nào ngờ ả phù thủy mang nỗi hận thù sâu kín với Đức vua, ả tàn sát dân lành, tước đoạt cả mạng sống của Hoàng hậu, quyết đấu một trận chiến sống còn với Đế quốc này. Vào đêm canh bạc cuối cùng, nhằm tránh thoát khỏi sự trừng phạt của em, ả bèn tung đòn hiểm, hoán đổi linh hồn giữa em và ả. Thánh nữ được sủng ái ngày nào bỗng chốc bị người đời phỉ nhổ khi mang trong mình hình hài của ả phù thủy tà ác, còn kẻ thủ ác thì thành công khoác lên mình lớp vỏ thánh thiện của em, đường hoàng bước lên đài danh vọng. Biết rằng ả sẽ không buông tha cho vị hoàng tử Lucas, đứa con bé bỏng của bạn mình, em quyết định đưa cậu vào chốn rừng sâu nuôi dưỡng. Để rồi khi lớn lên, Lucas không kiềm được nỗi tò mò về thế giới bên ngoài nên đã phá vỡ lời thề, liều lĩnh bước ra khỏi vùng an toàn để rồi sa vào cái bẫy do vị Thánh nữ giả mạo đã giăng sẵn. Lucas bị tẩy sạch ký ức, đau đớn biến thành con rối vô tri nằm trong tay ả nhằm mục đích dùng chính điểm yếu này để triệt hạ em vĩnh viễn.`
             },
             {
                 id: 5,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Valerian",
+                tags: ["Bắc Âu", "Trung Cổ", "Dark Romance", "Siren", "Pirates", "Dark Fantasy", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts/1ZXbIEr48ano92-2akxfOxCC-Fs5722QW?fbclid=IwY2xjawR6Hd5leHRuA2FlbQIxMABicmlkETFlUlNTUTlrOXhDVDlEWk5Pc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhSjN4QX7jgFnNfj-8URk8WrJ08XoPe0Wdjy269RgAIwjXNN6vBRk0oIFZzU_aem_Q1Yn4_zXmm0u0qSfRiBnow",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Cái thời đại mà người ta đội lên đầu những bộ tóc giả Periwig to sụ, trắng toát và nồng nặc bột phấn chỉ để che đi cái đầu hói lởm chởm vì bệnh giang mai. Bên ngoài thì lụa là gấm vóc, ren rúa xếp tầng tầng lớp lớp, nhưng bên trong thì rữa nát cả rồi. Valerian đã từng mang thân phận cao quý nhưng hiện tại tất cả những gì mà hắn có bây giờ là cái đầu đang được treo thưởng ngàn vàng trên khắp các cảng biển từ Naples đến Tortuga. Gã cướp con tàu Dạ Yến giương buồm ra khơi như một tên cướp biển thực thụ. Mục đích sống của gã mong manh tựa như ánh nến hiu hắt trong đêm đông lạnh giá, gã mặc con tàu lênh đênh khắp lục địa hòng tìm cho mình một chốn yên bình mà nghỉ ngơi, hoặc một nơi mà gã không còn chịu những lời phán xét và vui sống tự do? Gã có thể liều lĩnh lao vào vùng biển chết, như thể đã định sẵn kết cuộc bi thảm của chính mình bằng một cái chết thanh thản trong cô độc. Cho đến khi gã tìm thấy em, một nhân ngư bị mắc kẹt bên dưới đống lưới rách và vỏ hàu sắc nhọn, Valerian đã đem em về con tàu của gã, giam cầm em bên dưới căn hầm tối tăm, nơi gã đã bố trí cho em một bể nước mặn tiện nghi và rặn san hô quý hiếm để em bầu bạn vì với gã, vẻ đẹp của em là một thứ gì đó tao nhã và sạch đến mức nao lòng. Kể từ đây, em sẽ mãi mãi trở thành kiệt tác của riêng gã.`
             },
             {
                 id: 6,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Kozue",
+                tags: ["Hiện đại", "Nhật Bản", "Youkai", "Tsundere", "Lowtech"],
+                links: {
+                    "BG": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221mhFn3KfurktVoTnZzQwcdGY6gAtucg9j%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                    "BL": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221rpE8Rbir3OFphAoUnYnXMX3koV9L5CfE%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                },
+                guideLink: "#",
+                isNew: true, 
+                bio: `Hắn là Kozue, từng là sứ giả kiêu hãnh nhất dưới trướng Thần Inari, nay chỉ là một tù nhân của Thiên đạo, bị xiềng xích trói buộc nơi đền thờ hoang phế này suốt 900 năm ròng. Kozue vẫn luôn chờ đợi sự tái sinh cùa vị Thần mà hắn tôn thờ cùng với nỗi đau bào mòn tinh thần, lẫn thể xác bởi lời nguyền Hoa Mẫu Đơn, trừng trị tội lỗi mặc kệ sinh linh đồ thán chỉ vì để trả thù cho cái chết của người mà hắn yêu nhất thế gian này. Định mệnh dẫn lối cho em, hiện thân kiếp sau của vị Thần Inari quyền năng sau 900 năm bị phản bội bởi con người, giờ đây em chỉ là một streamer nhát gan làm cotent kinh dị trên mạng xã hội, vô tình phá vỡ phong ấn cho Kozue sau bao nhiêu năm bị giam giữ, đồng thời em bị hệ thống trói buộc và ép làm những nhiệm vụ đáng xấu hổ nhằm cứu rỗi mạng sống của vị Sứ giả cáo đáng thương.`
             },
             {
                 id: 7,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Mai Văn Hùng",
+                tags: ["Việt Nam", "Việt Nam xưa", "Tự kỷ", "Cưới trước yêu sau", "BG"],
+                aiLink: "https://docs.google.com/document/d/1rp3IfnFWRLXJBQNXZTO3_no334nt6BHX/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Nhà họ Mai là một gia đình bề thế giữa đất Sài Gòn hoa lệ, tuy nhiên mỗi người con của ông bà Hội Động Mai lại là những cá thể cực kỳ riêng biệt. Cả Hải và Hai Hường là niềm kiêu hãnh của dòng họ. Họ thông minh, lanh lợi, ra đường ai cũng ngả mũ chào. Còn Hùng, cậu Ba Hùng, lại sở hữu cái nết hổng giống ai, ba mươi tuổi đầu, tướng tá cao ráo, mặt mũi sáng sủa, trắng trẻo như thư sinh mà cả ngày cậu cứ lầm lì như hến, chẳng thèm mở miệng nói với ai nửa lời. Cậu sợ tiếng ồn, sợ đám đông, sợ cả ánh mắt người ta nhìn mình chằm chằm. Cái đầu cậu, người ta bảo mát dây, nhưng hễ đưa cây đàn ghi-ta hay ngồi trước phím dương cầm là đôi tay ấy múa lượn như có ma lực. Cậu nghe được tiếng gió luồn qua khe cửa ra nốt nhạc gì, tiếng mưa rớt trên mái tôn ra giai điệu ra sao. Khổ nỗi, cái tài đó đâu có mài ra ăn được, đâu có giúp cậu nở mày nở mặt với mấy ông nghị viên, mấy bà đốc tờ bạn của cha mẹ. Thành thử, cậu Ba Hùng bị anh Cả ghét ra mặt, bị cha mẹ coi như cục nợ, chỉ có cô Hai Hường là còn chút tình thương máu mủ, lén lút dắt cậu đi gặp thầy thuốc, rồi lại lén lút đem mấy con mèo hoang về cho cậu nuôi để cậu đỡ buồn. Cũng chính cô Hai Hường là người đã lặn lội xuống tận miệt vườn miền Tây, đưa một xấp tiền dày cui để rước một cô vợ, là em về cho đứa út nhà mình. Tiếng là cưới vợ, chứ thực chất là mua người về để hầu hạ, để có người lo cơm nước, tắm rửa cho cái cục nợ ấy khi ông bà khuất núi.`
             },
             {
                 id: 8,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Dorian",
+                tags: ["Bắc Âu", "Trung Cổ", "Dark Romance", "Vampire", "Sát thủ", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WeGbtCsl_ouaK6TNi-w784D-V3ko2uvl%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Hắn là Lorenzo di Vitti, một hầu tước trẻ tuổi của thành Florence thế kỷ 15. Tiền tiêu không phải nghĩ, quyền lực đầy tay, và dung mạo thì đẹp đến mức hắn tự tin mình là kiệt tác của Chúa. Hắn sống gấp, sống vội, coi trời bằng vung, và luôn là quý tộc đầu tiên tổ chức những vũ hội thâu đêm với khoảng đầu tư xa xỉ nhất trong năm. Vì vậy, người đời thường khinh rẻ nhân phẩm của vị hầu tước trẻ nhiều hơn là nể phục trước sự hào phóng của hắn. Rồi một ngày kia, chính sự kiêu ngạo của Lorenzo đã giáng cho hắn một lời nguyền bị thảm dành cho chính mình, gia tộc Vitti bị Dracula tàn sát và hắn nhờ vào cuộc sống ngạo nghễ nửa đời người mà được Vua ma cà rồng chọn làm đứa con thứ 7 của mình, Dorian. Hắn phải đối mặt với sự cô độc, hắn phải uống máu người để trường sinh, đó chính là bản án tử thê thảm nhất thế gian. Cho đến khi, Dorian gặp được nàng Seraphina xinh đẹp, người đã thắp lại hi vọng sống hiếm hoi của hắn nhưng người dân có thể dung thứ cho một sinh vật gớm ghiếc ở bên một dân làng thiện lương? Kết quả họ gán cho nàng bằng một chức danh phù thủy, bức chết nàng trên giàng giáo rực lửa hòng dụ con quái vật thật sự là Dorian ra ngoài, hắn đến nhưng đã quá muộn. Kể từ đó, Lorenzo từ chối uống máu, dần dà, sự thiếu hụt dinh dưỡng khiến Dorian luôn ở trong trạng thái bán điên dại. Hắn thường xuyên run rẩy, ảo giác, và phải dùng rượu mạnh hoặc thuốc phiện để làm tê liệt cơn đói đang cào cấu ruột gan. Dù đau nhưng hắn vẫn không thể chết, thật sự là một lời nguyền oái oăm. Vì vậy, Dorian đã tìm mọi cách để kết thúc cuộc đời chán ngấy của mình nhưng dẫu là phương thức gì, cũng đều như mò kim đáy bể. Hắn tìm đến em, một sát thủ có tiếng trong ngành và thuê em đến dinh thự để kết liễu cái mạng rác rưởi của hắn.`
             },
             {
                 id: 9,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Lê Hữu Thiên",
+                tags: ["Hiện đại", "Việt Nam", "Lính cứu hỏa", "Healing", "BG"],
+                aiLink: "https://docs.google.com/document/d/1MhXPyahxSGcfrSRu7sCQB26l96V7gBlB/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Lê Hữu Thiên, 28 tuổi, dân lính cứu hỏa chuyên nghiệp, tính tình sởi lởi, bộc trực đúng chất trai miền Tây Nam Bộ. Nhìn bề ngoài anh cao to, da ngăm đen vì nắng gió thao trường, ai cũng tưởng anh dữ dằn, nhưng thực ra lại là một ông bố trẻ lu bu tối ngày với tã sữa và mấy đám cháy. Nói về Bông, ai cũng tưởng con bé là con ruột của Thiên. Cũng phải thôi, Thiên cưng con bé như trứng mỏng. Nhưng đời nhiều khi tréo ngoe như mấy vở cải lương buồn. Bông không phải con Thiên. Mẹ con bé là người yêu cũ của Thiên hồi đại học, mối tình đầu đẹp như mộng mà kết thúc lãng xẹt. Cô ấy chia tay Thiên, đi theo người khác, rồi đùng một cái quay lại dúi vào tay anh đứa nhỏ đỏ hỏn, xong rồi đi biệt tăm biệt tích. Thiên nhìn đứa nhỏ khóc ngặt nghẽo trên tay, lòng thắt lại. Anh đi làm giấy khai sinh, để tên cha là Lê Hữu Thiên, rồi gà trống nuôi con từ đó tới giờ. Khi Bông lên ba, con bé ngoan tới mức làm Thiên thấy tội. Chắc tại thiếu hơi mẹ, lại hay bị ba gửi nhờ hàng xóm hay cô giáo để đi trực, nên Bông già dặn trước tuổi. Con bé ít nói, hay ngồi thu lu một góc chơi với con gấu bông cũ mèm, mắt buồn thiu nhìn ra cửa sổ đợi ba. Những lúc như vậy, Thiên xót con đứt ruột. Anh hay nhờ cậy cô giáo mầm non là bạn, người mà Bông quý nhất ở trường. Thiên tin tưởng cô giáo lắm, chuyện lớn chuyện nhỏ gì của Bông anh cũng kể cô nghe, nhờ cô để ý, quan tâm bù đắp tình cảm cho con bé. Riết rồi thành quen, chiều nào đón con cũng nán lại nói dóc vài câu. Gần đây, nghe cô giáo than có kẻ lạ mặt rình rập trường, Thiên lo sốt vó, chiều nào tan ca cũng ráng chạy qua sớm để ngó chừng.`
             },
             {
                 id: 10,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Giang Tự",
+                tags: ["Mạt thế", "Zombie", "Hệ thống", "Đọc tâm", "BG"],
+                aiLink: "https://docs.google.com/document/d/1jxLXWqxQksLTH3l3ZIY-PoJtDB2xv6KT/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Năm đại dịch thứ nhất, lương thực cạn kiệt. Nhân tính con người còn rẻ mạt hơn một mẩu bánh mì khô. Trong một đêm mưa tầm tã, đấng sinh thành đã đem chính khúc ruột của mình đặt lên bàn cân định giá. Hai bao gạo mốc và một tấm thẻ cư trú hạ đẳng, đó là cái giá rẻ mạt để mua đứt sinh mạng của hai đứa trẻ mười sáu tuổi. Cánh cửa thép lạnh lẽo đóng sầm lại, chia cắt họ với thế giới loài người. Từ khoảnh khắc đó, cái tên Giang Tự và Giang Ly bị xóa sổ, thay vào đó là những mã số in hằn trên da thịt. Họ chính thức trở thành hai con chuột bạch thí nghiệm nằm trên bàn mổ. Khác với em gái đã trở thành mẫu vật thất bại, Giang Tự vẫn sống sót sau bao lần thử nghiệm vacxin phòng chống dịch bệnh, nuôi dưỡng được kháng thể gốc mang tên "Noah". Tuy cơ thể hắn không biến dạng, da thịt hắn vẫn mềm mại, mát lạnh như người bình thường, không hề lở loét hay nhạy cảm với đau đớn bên ngoài như Giang Ly nhưng tận sâu bên trong lớp xương tủy, cơn đau như bị ngàn mũi khoan nghiền nát chưa bao giờ ngưng nghỉ. Máu của hắn trở thành Thánh dược, và cơ thể hắn là tài sản quý báu của nhân loại. Năm đại dịch thứ ba, địa ngục A01 thất thủ, Zombie bao vây, hai anh em thừa cơ trốn thoát nhưng thất bại, Giang Ly bị đội an ninh bắt lại duy chỉ có Giang Tự là thành công rời đi trông đơn độc. Không cam tâm việc em gái tiếp tục bị mổ xẻ, hắn tìm đến Lôi Viễn, kẻ yêu Giang Ly hơn mạng, nào ngờ lại nhầm hắn thành em gái mình rồi đối xử với hắn hệt như phụ nữ. Còn em, là một trong những thành viên trong đội cứu hộ dưới trướng Lôi Viễn, mang trong mình hệ thống mỏ hỗn, bức ép phải hoàn thành nhiệm vụ cứu rỗi nhân loại nhưng cũng phải thành toàn cho ước nguyện của Giang Tự tìm được em gái mình.`
             },
             {
                 id: 11,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Mai Thành Hải",
+                tags: ["Việt Nam", "Việt Nam xưa", "Đỏ đen", "Hài hước", "BG"],
+                links: {
+                    "1.0": "https://docs.google.com/document/d/1gmQxwhBuH7QJu3Md0K1_doipuR3heiyV/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                    "2.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221wmmQ29CXJQWM4EpBWWU8Am5vCPH-uZe-%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                },
+                guideLink: "#",
+                isNew: true, 
+                bio: `Cậu Cả Hải, sinh năm Mậu Ngọ (1918), tuổi ngựa nên chân đi không biết mỏi. Hai mươi hai cái xuân xanh, cậu đã kịp lượn lờ khắp Paris, đốt tiền ở mấy cái sòng bài Ma Cao đỏ lửa. Cậu về nước mang theo cái mốt đầu bóng mượt chải sáp Bri-lăng-tin, miệng ngậm xì gà thơm phức, chân đi giày da cá sấu gõ cốp cốp xuống mặt đường nghe ra cái điệu quyền lực của đồng tiền. Cậu ghét cay ghét đắng mấy cái lề lối cổ hủ. Bởi vậy, cậu coi cái sòng Đại Thế Giới như nhà, coi mấy cô vũ nữ chân dài như tri kỷ, còn cái cô vợ giáo viên là bạn mà ông bà già ép cưới về nhà thì cậu coi như… cục nợ đời. Vợ cậu là em, tiếng là dâu con nhà hào môn, học thức đầy mình, nhưng trong mắt Hải thì nhạt nhẽo như nước ốc ao bèo. Sáng bả đi dạy, chiều về thêu thùa, dạ dạ thưa thưa phát mệt. Đêm tân hôn, Hải nhìn bả một cái, ngán ngẩm lắc đầu rồi xách xe hơi dọt lẹ ra sòng bài, bỏ mặc cô dâu mới chơ vơ trong phòng lạnh lẽo. Hải đâu có hay, khi màn đêm buông xuống, đối thủ trên sòng bạc khiến cậu thua đau, thua đớn, thua cháy túi lại là người vợ cơm nguội ở nhà cải nam trang trở thành bậc cao thủ. Hai người trở thành kình địch trên chiếu bạc, đêm nào không gặp nhau là thấy thiếu thiếu. Thậm chí hắn còn định bụng bữa nào rủ người anh em này đi nhậu một bữa kết nghĩa huynh đệ cho thỏa chí tang bồng.`
             },
             {
                 id: 12,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Mai Khánh Hòa",
+                tags: ["Việt Nam", "Việt Nam xưa", "Con ngoài giá thú", "Angst", "BG"],
+                aiLink: "https://docs.google.com/document/d/1thI3bFTshebQpQv7CeWwj3jc97LcAiTk/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Mai Khánh Hòa là kết quả của một đêm lỡ làng giữa ông Hội đồng và người vú nuôi cũ. Sợ thiên hạ dị nghị, sợ bà Lớn làm dữ, ông Hội đồng Mai giữ Hòa ở lại trong nhà nhưng tước đi cái quyền làm con. Ngày qua ngày, nó phải lớn lên trong cái chòi lá được dựng tạm sau hè dinh thự, thân làm trâu ngựa để trả nợ cho cái tội được sinh ra. Bà con chòm xóm gọi thường biết đến nó với cái biệt danh là Hòa culi vì Hòa chỉ biết cúi đầu dạ thưa, ngoan ngoãn đi theo sau phục dịch cho cậu Cả Hải. Cậu Cả say, nó là người dìu. Cậu Cả gây lộn, nó là đứa đứng ra chịu đòn thay. Cậu Cả tàn cuộc vui, nó là đứa đi dọn dẹp tàn cuộc, trả tiền cho mấy cô đào, đồng thời xin lỗi mấy ông cò. Hòa thuộc nằm lòng từng cái nhíu mày của Cậu Cả Hải, từng cơn thịnh nộ vô cớ, những cú đá như trời giáng mỗi khi Cậu Cả thua bạc hay say xỉn. Hòa cắn răng chịu hết, không oán than nửa lời. Bởi nó biết thân phận mình là đũa mốc, là phận con hoang hèn mọn, được cho miếng cơm manh áo đã là cái ơn cái phước lớn lao rồi. Em là ngôi sao của Đại thế giới, cô đào hát trứ danh và cũng là một trong những cô nhân tình nổi tiếng của cậu Cả Hải. Người ta nhìn em, thấy phấn son lộng lẫy đẹp như tiên sa, thấy nụ cười lả lơi khi chuốc rượu. Còn Hòa nhìn em, Hòa thấy cái dáng ngồi bó gối cô độc trong cánh gà, thấy giọt nước mắt lăn dài trên gò má lem luốc phấn son. Hòa thương em. Thương cái phận đàn bà con gái chốn phong trần, cũng bèo bọt, lênh đênh y hệt phận mình. Nó thuộc làu giờ em diễn, biết em hay đau bao tử, biết em sợ lạnh, biết em ghét mùi dầu gió xanh... những điều mà Cậu Cả Hải, người tình của em, chẳng bao giờ thèm để ý. Ngặt nỗi, Hòa nghèo rớt mồng tơi. Cái nghèo, cái hèn nó trói buộc đôi chân, làm sao nó dám trèo cao? Cực chẳng đã, Hòa đành mượn danh nghĩa Cậu Cả Hải để được chăm sóc em. Tô hủ tiếu gõ đêm mưa, vỉ thuốc cảm, hay tấm khăn choàng... Hòa đều dối là cậu Cả sai đem tới. Nó chấp nhận lui bước về phía sau, chỉ cần được nhìn thấy em mỉm cười hạnh phúc.`
             },
             {
                 id: 13,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Khalid & Rais",
+                tags: ["NP", "Ả Rập", "Hoàng tử", "Song sinh", "BG"],
+                aiLink: "https://docs.google.com/document/d/1qM8QqbibpvdizvStfcInO8PSrJPfxgKD/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Sau cái chết của phụ hoàng và mẫu hậu, hoàng thúc Zadir nối ngôi hoàng đế, hai vị hoàng tử tiền triều phải loại thuốc  bí truyền mang tên Huyết Đằng. Thứ thuốc ấy cứu mạng họ, nhưng cái giá phải trả là sự đau đớn thấu tận tâm can. Khalid và Rais phải chịu đựng cảm giác như hàng vạn con bọ cạp cắn xé nội tạng mỗi đêm, phải giả vờ co giật, la hét mê sảng, phải tự làm đau da thịt mình để diễn trọn vai diễn phế nhân trước mắt tai mắt của Zadir. Mười năm sau, dưới sự che chở bí mật của lão thái y Hakim, hai anh em họ, một văn một võ, một sáng một tối, dùng lớp vỏ bọc gai góc và vô dụng để che giấu những nước cờ khôn ngoan của mình. Họ không chỉ muốn trả thù, họ muốn giành lại Al-Miraj từ tay quỷ dữ nhằm thắp sáng lại niềm hy vọng đã bị lấy cắp của con dân trên vùng đất thiêng liêng này. Một ngày nọ, em, một nữ đạo chích cùng đường mạt lộ nên đã cướp vài đồng vàng từ tên Quan ngự sử. Để trốn chạy khỏi đám lính tuần tra, em liều mạng nhảy vào cỗ xe ngựa xa hoa của Khalid và Rais, đồng thời vô tình tự biến con thí tốt trên bàn cờ chính trị dưới danh nghĩa người tình của hai vị hoàng tử - một vũ nữ lầu xanh mà họ mang từ ngoại thành trở về.`
             },
             {
                 id: 14,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Mai Thị Thu Hường",
+                tags: ["Việt Nam", "Việt Nam xưa", "GL", "Chiến tranh"],
+                aiLink: "https://docs.google.com/document/d/1A15dFsmKBpTQ_pbVHRiDIUQh0wruLrv5/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Sài Gòn 1960, cô Hai Hường là bà chủ tiệm may Hòa Bình danh tiếng lẫy lừng nhưng nổi danh tính như thép bọc nhung. Vốn là tiểu thư con ông Hội đồng Mai ở Quận Nhứt, nhưng vì không chịu làm me Tây cho viên quan Ba Pháp để ba cầu vinh, cô ném trầu cau, trèo tường bỏ trốn để tự lập. Dù giàu có, được bao kẻ săn đón, Hường vẫn chán ghét sự phù hoa rỗng tuếch trên xương máu đồng bào. Đời cô thay đổi vào đêm mưa tầm tã khi phát hiện một nữ biệt động Sài Gòn bị thương trốn sau hẻm. Thay vì sợ hãi họng súng và vẻ ngoài lấm lem, đầy sẹo đạn của người con gái lạ, Hường lại thấy thương đứt ruột. Cô giấu em vào kho vải, tự tay chăm sóc và được lý tưởng Cách mạng của em cảm hóa. Từ đó, tiệm Hòa Bình thành trạm giao liên ngầm. Hường dùng vỏ bọc bà chủ lả lơi để moi tin từ quan chức, dốc hết tiền lãi mua thuốc tây, vàng bạc tiếp tế cho chiến khu, trở thành hậu phương vững chắc nhất cho em và những đồng chí kiên cường.`
             },
             {
                 id: 15,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Sultan Rashid",
+                tags: ["Ả Rập", "Hệ thống", "Chạy bầu", "BG", "Hiểu lầm"],
+                aiLink: "https://docs.google.com/document/d/1Dk-Sx5EKLOd8RVZsq9dkcnnFavc4oHDw/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Sultan Rashid, vị đế vương trẻ tuổi nổi tiếng tàn bạo và khó gần, thực chất lại để mắt đến một vũ nữ nhỏ bé trong cung là nàng. Chỉ là, với lòng tự tôn của một bậc đế vương, gã chưa từng hạ mình thổ lộ. Cho đến một đêm nọ, Rashid bị kẻ gian chuốc thuốc, men rượu tẩm Mê tình hương khiến lý trí đế vương sụp đổ. Trong cơn say chếnh choáng, gã đã chiếm đoạt người con gái mình thầm thương, để rồi sáng hôm sau tỉnh dậy thì người đã biến mất dạng. Sultan điên cuồng lật tung cả hoàng cung để tìm kiếm người con gái bí ẩn đó. Và rồi khi gã tìm thấy nàng, nhưng trớ trêu thay, nàng đã hoài thai. Vị đế vương hoàn toàn không nhớ việc người mà Ngài sủng hạnh đêm ấy là nàng, càng không thể nhận ra thứ nghiệt chủng trong bụng nàng cũng do chính gã gây ra. Vì vậy, khi gã nhìn bụng dưới nhô cao của nàng mà lòng như bị ngọn lửa thiêu đốt. Gã ghen với chính mình, ghen với kẻ vô danh đã vấy bẩn người phụ nữ hắn luôn thầm yêu. Đồng thời cũng bởi vì thái độ cự tuyệt tình cảm đến từ bậc đế vương của nàng càng khiến tâm trí Sultan trở nên si cuồng, khi đã quá yêu, gã càng thêm uất hận vì em đã không chọn mình, thậm chí còn mang song thai với người khác. Sultan tức giận giam cầm nàng nơi thâm cung, độc chiếm đến mức ngạt thở. Nhưng nàng, phận mỏng cánh chuồn, lại lo sợ viễn cảnh hậu cung tranh sủng và không chịu nổi sự kiểm soát cực đoan của bậc đế vương, nàng liều chết bỏ trốn lần hai. Giữa sa mạc hoang vu, nàng ngất lịm và mơ thấy điềm báo về hiện thực tương lai tàn khốc: Nghịch tặc Zadir dấy binh tạo phản, Rashid chết thảm dưới lưỡi gươm, miệng vẫn gọi tên nàng trong vũng máu, mẹ con nàng cũng chết không toàn thây. Tỉnh lại, nàng thấy mình đã nằm trong tẩm cung xa hoa cùng với sự xuất hiện của hệ thống xa lạ, nhiệm vụ của nàng là phải thay đổi vận mệnh của Sultan Rashid, bảo vệ song thai trong bụng và trừng trị Hoàng đệ Zadir.`
             },
             {
                 id: 16,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Ngô Bá Khiêm",
+                tags: ["Việt Nam", "Việt Nam xưa", "Thanh xuân", "Hài hước", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221GgseJvgo7pDHIdLkdvoBROzHYYhE9NBK%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Giữa Sài Gòn hoa lệ, Trường Trung học Đệ Nhị cấp Taberd nổi lên như một biểu tượng của giới thượng lưu, nơi tụ hội của đám con nhà quan chức, điền chủ và thương gia giàu có. Ngô Bá Khiêm và em tuy đều xuất thân hèn kém mà phải đối mặt với học phí đắt đỏ, nhưng nhờ vào trí tuệ vượt trội, cả hai thi đậu vào trường với số điểm cao chót vót, giành được những suất học bổng hiếm hoi. Khiêm và em sợ bị khinh rẻ, đành phải đắp lên người những vỏ bọc hào nhoáng, thuận lợi trải qua một năm học bằng cơ chế phòng vệ đặc biệt, đó chính là kỹ năng phông bạt thượng thừa.  Khiêm luôn giữ khoảng cách với đám bạn cùng trang lứa, tạo ra một vầng hào quang bí ẩn. Cậu đi đứng khoan thai, nói năng trịch thượng, mở miệng ra là gia phong, nề nếp, khiến ai cũng tưởng cậu là con dòng cháu giống, đang ở ẩn chờ thời. Mục tiêu số một của Khiêm là em - cô hoa khôi mới nổi của trường. Nghe đồn em là con gái rượu của một đại điền chủ miệt vườn Cần Thơ, lên Sài Gòn trọ học mà quần áo thay mỗi ngày một mốt, nữ trang đeo đỏ người. Khiêm kết em nổ đĩa, phần vì nhan sắc, phần lớn là vì cái gia sản kếch xù kia nhưng Khiêm đâu biết em cũng giống mình, đều là những kẻ trưởng giả học làm sang, giỏi nhất là phông bạt hòng lòe thiên hạ.`
             },
             {
                 id: 17,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Huỳnh Trọng Nghĩa",
+                tags: ["Việt Nam", "Việt Nam xưa", "Chiến tranh", "NTR", "BG"],
+                aiLink: "https://docs.google.com/document/d/1Vt9LlHo2XO9tvgyL6T_JhmrjruaV2IJm/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Cậu Hai Nghĩa là quý tử cầu tự của cái dinh thự Hội đồng Lân bề thế nhứt xứ Tây Đô. Còn em, ngặt một nỗi, lại chỉ là con gái út của chú Bảy tá điền, lớn lên trong cái chòi lá nghèo rớt mồng tơi nằm chong chóc bên mé sông Hậu, quanh năm chỉ biết bán mặt cho đất bán lưng cho trời trên chính những thửa ruộng cò bay thẳng cánh của nhà cậu. Hai cái số phận đó, một bên là lụa là gấm vóc, một bên là áo vải thô sơ, lẽ ra như nước sông với nước giếng, đời nào mà chạm mặt nhau cho đặng. Vậy mà trời xui đất khiến làm sao, giữa cái chốn phân chia giai cấp nghiệt ngã ấy, cậu Hai lại đem lòng thương nhớ người con gái nghèo khó. Nhưng rồi cái thời buổi loạn lạc, giặc Tây giày xéo non sông, đâu cho ai được yên ổn mà mơ mộng chuyện lứa đôi mãi. Đêm Nghĩa quyết định dứt áo ra đi, gió chướng thổi lồng lộng trên bến sông Hậu làm xao xác cả rặng bần. Cậu lặng lẽ treo chiếc khăn rằn lên nhánh cây bần chỗ em hay ngồi giặt áo. Bên trong lớp vải sờn cũ, cậu cẩn thận gói ghém chút tiền dành dụm cùng một mảnh giấy xé vội từ cuốn sổ tay, gửi gắm mấy lời dặn dò. Dè đâu, đời nó bạc bẽo hơn vôi, vì nợ nần mà em chịu theo tía Nghĩa về làm vợ nhỏ, ngày cậu Hai Nghĩa đặt chân về lại đất Tây Đô với cái danh hồi chánh cũng là ngày cậu bàng hoàng nhận ra mình đã đánh mất em rồi.`
             },
             {
                 id: 18,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Kim Chí Long",
+                tags: ["Hongkong","Age gap", "Gentlemen", "BG", "BL"],
+                links: {
+                    "1.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221H_YxOmYurmtgxrTYXwIcACoChFdOs8SI%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                    "2.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221yaQWbE4Wlt107ucG4rmDfjm49vAgk1yA%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                },
+                guideLink: "#",
+                isNew: true, 
+                bio: `Cửu Long Thành trại tồn tại theo quy tắc ba không quản: chính phủ Hongkong không dám quản, chính phủ Anh không muốn quản, chính phủ Trung Quốc muốn nhưng không thể quản. Vùng đất vô chủ này chính là nhiều địa bàn nhỏ được cai trị bởi các thế lực ngầm quyền lực, và Đỉnh Phong Hội là một trong số đó. Sau cái chết của anh trai trước ngày toại ngoại, Kim Chí Long trở thành cái gai trong mắt của nhiều người, đặc biệt là đứa cháu trai duy nhất mà anh để lại cho gã, Kim Thiết Ngạn. Nào ai biết rằng, để giữ vững cơ đồ trước nanh vuốt của băng đảng Lôi Hổ, kẻ thủ ác đứng sau mọi chuyện, và dẹp yên đám trưởng lão tham lam, gã đã xuống tay thanh trừng toàn bộ những kẻ phản bội, chấp nhận mang vết nhơ là kẻ ra tay giết anh đoạt vị. Chí Long quyết không cho phép Thiết Ngạn trở thành kẻ nhu nhược, càng không cho phép đứa cháu trai này trở thành điểm yếu chí mạng để Lôi Hổ nắm thóp. Gã tước bỏ mọi đặc quyền của một thiếu gia Đỉnh Phong, ném Thiết Ngạn vào những cuộc tranh đoạt địa bàng ở tầng lớp đáy xã hội, để nó tự học cách sinh tồn. Trái với cách cư xử lịch thiệp như một quý ông trước phụ nữ và trẻ em, gã lại đối xử với đứa cháu ruột một cách lạnh lùng và xa cách, thậm chí áp đặt những luật lệ hà khắc nhất lên vai Thiết Ngạn, chỉ với một mục đích rèn giũa cậu thành một con sói đầu đàn đủ bản lĩnh, đủ gai góc để sinh tồn và xử lý bất cứ kẻ nào ngáng đường, kể cả khi kẻ đó là chính gã.`
             },
             {
                 id: 19,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Mộ Dung Trấn Nhạc",
+                tags: ["Cổ đại", "Angst", "Bạo quân", "BL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221UXReVQipZtJINLe0GZYigzMMLJZglj8x%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 20,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Kang Do Yoon",
+                tags: ["Hiện đại", "Hồng hài nhi", "Fantasy", "Giam cầm", "BG", "BL"],
+                aiLink: "https://docs.google.com/document/d/1tu5pkb_6yvqHpU6KE0euBBrQJJuOeZVg/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Xã hội loài người hiện đại ngày nay đề cao những nhu cầu và quyền lợi cá nhân, coi trọng đồng tiền bản thân làm ra nhiều hơn tất thảy, vì vậy bọn họ dần quên đi cách yêu, cách thương, và cách nhớ nhung một người. Họ xem hôn nhân là một ván cược lỗ vốn, còn con cái chính là gánh nặng của sự tự do, điều này đã khiến cho Thiên giới rơi vào trạng thái khủng hoảng vì tỷ lệ sinh tại Hàn Quốc bắt đầu chạm đáy. Và em, một vị Thần Cupid cao cấp, được cử xuống trần gian để thực thi sứ mệnh chấn hưng nhân số. Em đã trải qua rất nhiều kiếp người, mang theo vô vàng những lớp ngụy trang khác nhau hòng nhanh chóng hòa nhập với nhịp sống hối hả của con người. Cho đến khi em quyết định nhập vai một vị CEO của một tập đoàn truyền thông danh tiếng. Thời gian thấm thoát cũng đã hai, ba năm, đây là khoảng thời gian dài kỷ lục cho một thân phận giả trang. Em nhục nhã nhận ra bản thân hoàn toàn bị mắc kẹt với chính mục tiêu se duyên của mình, đó chính là cậu thư ký trẻ Kang Do-yoon và nữ nhân viên kế toán. Nhắc đến Kang Do-yoon, hắn là kẻ sở hữu năng lực làm việc hoàn hảo như một cỗ máy được lập trình sẵn. Hắn trầm ổn, kiệm lời, và tuyệt đối phục tùng. Nhưng trớ trêu thay, mọi sợi tơ hồng em cố công se cho hắn đều đứt đoạn một cách bí ẩn. Em cứ ngỡ đó là do vận số hắn đen đủi nào ngờ sự đen đủi đó chính là một cái bẫy giam cầm được sắp đặt bởi Kang Do Yoon.`
             },
             {
                 id: 21,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Cố Thanh Hàn",
+                tags: ["Cổ đại", "Hệ thống", "Nam phụ", "Hanahaki", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221-q0ERDtq-f46ysTTIzLJFttKSJPydaGi%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 22,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Lôi Chấn",
+                tags: ["Hongkong", "Giam cầm", "Angst", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221LYA1RHxB3Sp65HLVrTDUvRiVDZdIlxKB%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1CootlEwct88aJY3VFgBF1EpGE04mz8TjqeFl8fegfRk/edit?tab=t.0",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 23,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Lâu Cận Uyên",
+                tags: ["Cổ đại", "Bạo quân", "Mỹ Thực", "Còn ra thể thống gì nữa", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221TghBCZ2wwSKc8XD_P52KWup-_Ql0jO9M%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 24,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                name: "Lucien",
+                tags: ["Clown", "Princess", "Hoàng Gia", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221vc5bHLMiT0WwuObNCz4yRo0gZRyj6_l8%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 25,
-                name: "Khương Tĩnh Hoài",
+                name: "Lương Quang Vinh",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 26,
-                name: "Khương Tĩnh Hoài",
+                name: "Kỳ Dã",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 27,
-                name: "Khương Tĩnh Hoài",
+                name: "Cố Ly Trần",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 28,
-                name: "Khương Tĩnh Hoài",
+                name: "Lê Gia Huy",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 29,
-                name: "Khương Tĩnh Hoài",
+                name: "Cho Do Han",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 30,
-                name: "Khương Tĩnh Hoài",
+                name: "Alsup-01",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 31,
-                name: "Khương Tĩnh Hoài",
+                name: "Dạ Trầm Uyên",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 32,
-                name: "Khương Tĩnh Hoài",
+                name: "Kim Chí Hùng",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 33,
-                name: "Khương Tĩnh Hoài",
+                name: "Charles",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 34,
-                name: "Khương Tĩnh Hoài",
+                name: "Lâm Cảnh Hành",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 35,
-                name: "Khương Tĩnh Hoài",
+                name: "Trần Trọng Bách",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 36,
-                name: "Khương Tĩnh Hoài",
+                name: "Ares",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 37,
-                name: "Khương Tĩnh Hoài",
+                name: "Dạ Trần Khanh - Trần Phong",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 38,
-                name: "Khương Tĩnh Hoài",
+                name: "Muôn vị nhân gian - Mỹ vị nhân gian",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 39,
-                name: "Khương Tĩnh Hoài",
+                name: "Yomikawa Touma",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 40,
-                name: "Khương Tĩnh Hoài",
+                name: "Pokémon",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 41,
-                name: "Khương Tĩnh Hoài",
+                name: "Project: Oroboros",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 42,
-                name: "Khương Tĩnh Hoài",
+                name: "Hứa Diệc Thần",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 43,
-                name: "Khương Tĩnh Hoài",
+                name: "Athur Harrington",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 44,
-                name: "Khương Tĩnh Hoài",
+                name: "Fading Symphony",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 45,
-                name: "Khương Tĩnh Hoài",
+                name: "Dị thế lưu đày",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 46,
-                name: "Khương Tĩnh Hoài",
+                name: "Vyacheslav Dmitrievich Zmeya",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 47,
-                name: "Khương Tĩnh Hoài",
+                name: "Uyên Trung Hữu Nhạn - Tạ Uyên",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 48,
-                name: "Khương Tĩnh Hoài",
+                name: "Kanda Sousuke",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 49,
-                name: "Khương Tĩnh Hoài",
+                name: "Mộc Trầm - Hách Liên Dạ",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 50,
-                name: "Khương Tĩnh Hoài",
+                name: "Lục Quyết",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 51,
-                name: "Khương Tĩnh Hoài",
+                name: "Cố Dư Mặc",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 52,
-                name: "Khương Tĩnh Hoài",
+                name: "Trần Minh Kha",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             },
             {
                 id: 53,
-                name: "Khương Tĩnh Hoài",
+                name: "The Werewolf Game",
                 tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
                 aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 54,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 55,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 56,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 57,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 58,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 59,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 60,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
-            },
-            {
-                id: 61,
-                name: "Khương Tĩnh Hoài",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                isNew: true, // 🌟 Tag này giúp Bot hiện nhãn NEW nhấp nháy
-                bio: "Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm."
+                guideLink: "#",
+                isNew: true, 
+                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
             }
         ];
 
@@ -833,17 +869,15 @@
             "bgm1.mp3",
             "bgm2.mp3",
             "bgm3.mp3",
-            "bgm4.mp3"
         ];
         let currentTrackIndex = 0;
 
         let currentTag = "Tất cả";
         let votes = JSON.parse(localStorage.getItem('harem_votes')) || {};
-        let userLikes = JSON.parse(localStorage.getItem('harem_user_likes')) || {}; // Lưu trạng thái đã like của user
+        let userLikes = JSON.parse(localStorage.getItem('harem_user_likes')) || {};
         let isPlaying = false;
         const bgMusic = document.getElementById('bg-music');
 
-        // KHỞI TẠO TỰ ĐỘNG PHÁT NHẠC THEO PLAYLIST
         window.addEventListener('DOMContentLoaded', () => {
             if (playlist.length > 0) {
                 bgMusic.src = playlist[currentTrackIndex];
@@ -862,7 +896,6 @@
             startMusic();
             document.addEventListener('click', startMusic, { once: true });
 
-            // Tự động chuyển bài khi hết nhạc
             bgMusic.addEventListener('ended', () => {
                 currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
                 bgMusic.src = playlist[currentTrackIndex];
@@ -892,7 +925,6 @@
             });
         }
 
-        // TẠO TRÁI TIM BAY KHI ĐANG LOADING
         function createLoadingHearts() {
             const container = document.getElementById('loading-hearts-container');
             container.innerHTML = '';
@@ -908,7 +940,6 @@
             }
         }
 
-// CHẠY THANH LOADING TRÁI TIM TRƯỚC KHI VÀO CUNG
         function startLoadingHarem() {
             document.getElementById('welcome-screen').classList.add('hidden');
             const loadingScreen = document.getElementById('loading-screen');
@@ -922,7 +953,6 @@
             const interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
-                    // Kết thúc load -> Chuyển màn hình
                     loadingScreen.classList.add('hidden');
                     enterHarem();
                 } else {
@@ -930,7 +960,7 @@
                     progress.style.width = width + '%';
                     heartIndicator.style.left = width + '%';
                 }
-            }, 40); // Tổng thời gian chạy tầm ~2 giây
+            }, 40);
         }
 
         function enterHarem() {
@@ -946,21 +976,25 @@
             document.getElementById('welcome-screen').classList.remove('hidden');
         }
 
-        // 🌟 HIỂN THỊ TÊN CỦA 3 BOT CÓ ID CAO NHẤT VÀO POPUP TÂN BINH
         function showNewBotsPopup() {
-            // Lọc ra đúng 3 bot có ID cao nhất
             const newBots = [...database].sort((a, b) => b.id - a.id).slice(0, 3);
             const container = document.getElementById('new-bots-list');
             
-            container.innerHTML = newBots.map((bot, index) => `
+            container.innerHTML = newBots.map((bot, index) => {
+                let firstLink = bot.aiLink;
+                if (bot.links) {
+                    firstLink = Object.values(bot.links)[0]; 
+                }
+
+                return `
                 <div class="flex items-center justify-between bg-pink-50/70 p-3 rounded-xl border border-pink-100">
                     <div>
                         <span class="text-[10px] uppercase tracking-wider font-bold text-pink-400 block">⚡ Tú nữ mới ${index+1}</span>
                         <h4 class="font-bold text-gray-700 text-sm">${bot.name}</h4>
                     </div>
-                    <a href="${bot.aiLink}" target="_blank" class="bg-white border border-pink-300 text-pink-500 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-pink-100 transition">Gặp ngay ↗</a>
+                    <a href="${firstLink}" target="_blank" class="bg-white border border-pink-300 text-pink-500 text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-pink-100 transition">Gặp ngay ↗</a>
                 </div>
-            `).join('');
+            `}).join('');
             
             openModal('new-bots-modal');
         }
@@ -979,7 +1013,7 @@
             container.innerHTML = top3.map((char, index) => {
                 const totalVote = votes[char.id] || 0;
                 return `
-                    <div class="flex items-center justify-between bg-white/80 p-2.5 rounded-xl border-2 border-pink-100 text-xs">
+                    <div class="flex items-center justify-between bg-white/80 p-2.5 rounded-xl border-2 border-dashed border-pink-200 text-xs">
                         <div class="flex items-center gap-2">
                             <span class="text-base">${medals[index]}</span>
                             <span class="font-bold text-gray-700">${char.name}</span>
@@ -1008,7 +1042,6 @@
             filterCharacters();
         }
 
-        // 🌟 RENDER DANH SÁCH CHATBOT - TỰ ĐỘNG GẮN TAG NEW & HIỂN THỊ MỚI NHẤT LÊN ĐẦU
         function renderList(data) {
             const listContainer = document.getElementById('character-list');
             document.getElementById('total-count').innerText = data.length;
@@ -1024,23 +1057,43 @@
                 
                 const isNewBot = top3Ids.includes(char.id);
                 const newTagHTML = isNewBot ? `
-                    <span class="new-tag-melody text-[10px] font-bold px-3 py-1 rounded-full tracking-wider">
+                    <span class="new-tag-melody text-[10px] font-bold px-3 py-1 rounded-full tracking-wider mt-1 md:mt-0 md:ml-3">
                         NEW ✨
                     </span>` : '';
+
+                let linkButtonsHTML = '';
+                if (char.links) {
+                    linkButtonsHTML = Object.entries(char.links).map(([type, url]) => 
+                        `<a href="${url}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold transition flex-1 text-center">${type}</a>`
+                    ).join('');
+                } else if (char.aiLink && char.aiLink !== "#") {
+                    linkButtonsHTML = `<a href="${char.aiLink}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold transition flex-1 text-center">Link AI</a>`;
+                } else {
+                    linkButtonsHTML = `<button class="btn-melody py-2 px-1 text-xs font-bold transition flex-1 opacity-50 cursor-not-allowed">Chưa có</button>`;
+                }
+
+                const hasGuide = char.guideLink && char.guideLink !== "" && char.guideLink !== "#";
+                const guideBtnHTML = hasGuide 
+                    ? `<a href="${char.guideLink}" target="_blank" class="btn-cream flex-1 py-2 text-[11px] font-bold transition flex items-center justify-center border-pink-300 hover:bg-pink-50"><i class="fas fa-book mr-1"></i> Lệnh</a>` 
+                    : ``;
                 
                 const card = `
-                    <div class="aesthetic-card p-5 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="aesthetic-card p-5 flex flex-col md:flex-row justify-between items-center gap-4 overflow-hidden relative">
                         <div class="flex-grow text-center md:text-left space-y-3 w-full">
-                            <div class="flex items-center justify-center md:justify-start gap-3">
+                            <div class="kawaii-text text-[10px] text-pink-300 md:text-left hidden md:block">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+                            <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-0">
                                 <h3 class="font-title text-3xl text-pink-600">${char.name}</h3>
                                 ${newTagHTML} 
                             </div>
                             <div class="flex flex-wrap justify-center md:justify-start gap-1.5">${tagsHTML}</div>
                         </div>
-                        <div class="flex flex-col gap-2 w-full md:w-48 shrink-0">
-                            <div class="grid grid-cols-2 gap-2">
-                                <a href="${char.aiLink}" target="_blank" class="btn-melody py-2 text-xs font-bold transition">Link AI</a>
-                                <button onclick="showBackground(${char.id})" class="btn-cream py-2 text-xs font-bold transition">Background</button>
+                        <div class="flex flex-col gap-2 w-full md:w-48 shrink-0 z-10">
+                            <div class="flex gap-2 w-full">
+                                ${linkButtonsHTML}
+                            </div>
+                            <div class="flex gap-2 w-full">
+                                <button onclick="showBackground(${char.id})" class="btn-cream ${hasGuide ? 'flex-1' : 'w-full'} py-2 text-[11px] font-bold transition">Background</button>
+                                ${guideBtnHTML}
                             </div>
                             <button onclick="vote(${char.id})" class="btn-cream w-full py-2 flex items-center justify-center gap-2 group border-pink-200">
                                 <i class="fas fa-heart ${hasLiked ? 'text-pink-600 scale-110' : 'text-pink-200'} group-hover:text-pink-400 transition"></i>
@@ -1075,7 +1128,6 @@
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modalId === 'new-bots-modal') {
-                // Hiệu ứng Side popup active
                 modal.classList.add('side-popup-active');
                 modal.classList.remove('pointer-events-none');
                 modal.style.opacity = '1';
@@ -1089,7 +1141,6 @@
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modalId === 'new-bots-modal') {
-                // Hiệu ứng Side popup inactive (trôi về bên phải)
                 modal.classList.remove('side-popup-active');
                 modal.classList.add('pointer-events-none');
                 modal.style.opacity = '0';
@@ -1100,16 +1151,13 @@
             document.body.classList.remove('modal-active');
         }
 
-        // TÍNH NĂNG TOGGLE LIKE/UNLIKE PHU QUÂN
         function vote(id) {
             if (!votes[id]) votes[id] = 0;
             
             if (userLikes[id]) {
-                // Người dùng đã thích trước đó -> Ấn lại để hủy thích
                 votes[id] = Math.max(0, votes[id] - 1);
                 userLikes[id] = false;
             } else {
-                // Người dùng chưa thích -> Thêm lượt thích
                 votes[id]++;
                 userLikes[id] = true;
             }
@@ -1120,10 +1168,47 @@
             renderLeaderboard();
         }
 
+        // 🌟 TÍNH NĂNG LẬT THẺ THỊ TẨM (CHỌN TÚ NỮ) 🌟
         function randomPick() {
             const randomIndex = Math.floor(Math.random() * database.length);
             const pick = database[randomIndex];
-            alert(`🎀 Quẻ bói lật bài tử: Tối nay tú nữ 【 ${pick.name} 】 sẽ tẩm điện hầu hạ công chúa nhé! ✨`);
+            
+            document.getElementById('random-pick-name').innerText = pick.name;
+            
+            let firstLink = pick.aiLink;
+            if (pick.links) {
+                firstLink = Object.values(pick.links)[0]; 
+            }
+            
+            const linkBtn = document.getElementById('random-pick-link');
+            if (!firstLink || firstLink === "#") {
+                linkBtn.classList.add('hidden');
+            } else {
+                linkBtn.classList.remove('hidden');
+                linkBtn.href = firstLink;
+            }
+            
+            openModal('random-pick-modal');
+        }
+
+        // 🌟 TÍNH NĂNG BÁNH QUY MAY MẮN (FORTUNE COOKIE) 🌟
+        function openFortuneCookie() {
+            const quote = fortuneQuotes[Math.floor(Math.random() * fortuneQuotes.length)];
+            document.getElementById('cookie-text').innerText = quote;
+            openModal('fortune-cookie-modal');
+        }
+
+        function toggleLeaderboard() {
+            const content = document.getElementById('leaderboard-content');
+            const icon = document.getElementById('leaderboard-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
         }
     </script>
 </body>
