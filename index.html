@@ -320,6 +320,82 @@
         </div>
     </div>
 
+    <div id="new-bots-modal" class="modal fixed top-1/2 right-4 transform -translate-y-1/2 w-full max-w-sm z-50 pointer-events-none opacity-0 transition-all duration-500">
+        <div class="modal-container bg-white w-11/12 mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-2xl p-6 relative">
+            <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('new-bots-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
+            <div class="text-center mb-4 mt-2">
+                <span class="text-3xl">✨</span>
+                <h2 class="font-title text-2xl text-pink-500 mt-1">Tú Nữ Mới Nhập Cung!</h2>
+                <div class="kawaii-text text-pink-300 text-xs my-1">──── ୨୧ ────</div>
+            </div>
+            <div id="new-bots-list" class="space-y-3"></div>
+            <div class="kawaii-text text-pink-400 mt-4 mb-2">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+            <button onclick="closeModal('new-bots-modal')" class="w-full btn-melody py-2.5 font-bold text-sm">Thỉnh an các công chúa 💖</button>
+        </div>
+    </div>
+
+    <div id="fortune-cookie-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
+        <div onclick="closeModal('fortune-cookie-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-8 relative flex flex-col items-center text-center">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('fortune-cookie-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="text-6xl mt-4 mb-2 animate-bounce">🥠</div>
+            <h2 class="font-title text-3xl text-yellow-600 mb-1 relative z-10">Bánh Quy May Mắn</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
+            
+            <h3 id="cookie-text" class="text-lg leading-relaxed text-[#704F55] font-semibold my-4 z-10 px-6 py-4 bg-yellow-50 rounded-2xl border-2 border-dashed border-yellow-200 w-full shadow-inner">
+                Đang bẻ bánh...
+            </h3>
+            
+            <div class="kawaii-text text-pink-400 mt-6 z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        </div>
+    </div>
+
+    <div id="random-pick-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
+        <div onclick="closeModal('random-pick-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-8 relative flex flex-col items-center text-center">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('random-pick-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="text-6xl mt-4 mb-2 animate-pulse">🎀</div>
+            <h2 class="font-title text-3xl text-pink-500 mb-1 relative z-10">Lật Thẻ Thị Tẩm</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
+            
+            <p class="text-sm font-semibold text-[#704F55] mb-2 z-10">Người được định mệnh sắp đặt để hầu hạ công chúa đêm nay chính là:</p>
+            
+            <h3 id="random-pick-name" class="font-title text-4xl text-pink-600 my-4 z-10 px-4 py-3 bg-pink-50 rounded-2xl border-2 border-dashed border-pink-200 w-full shadow-inner">
+                Tên Chồng
+            </h3>
+            
+            <a id="random-pick-link" href="#" target="_blank" class="btn-melody py-3 px-10 text-sm font-bold mt-2 z-10 shadow-md hover:scale-105 transition-transform">Gặp ngay 💖</a>
+            
+            <div class="kawaii-text text-pink-400 mt-6 z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        </div>
+    </div>
+
+    <div id="bio-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div onclick="closeModal('bio-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-6 relative flex flex-col max-h-[85vh]">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('bio-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="kawaii-text mt-3 text-pink-300 text-xs mb-1 relative z-10">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+            <h2 id="modal-char-name" class="font-title text-3xl text-pink-600 mb-1 text-center relative z-10 shrink-0">Tên Chồng</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-2 relative z-10 shrink-0">──── ୨୧ ────</div>
+            
+            <div class="border-t-2 border-dashed border-pink-200 pt-3 flex-1 overflow-hidden flex flex-col relative z-10">
+                <p class="text-xs uppercase font-bold tracking-wider text-pink-400 mb-2 shrink-0">📖 Nội dung chính:</p>
+                <div class="overflow-y-auto pr-2 flex-1 pb-2">
+                    <p id="modal-char-bio" class="text-sm leading-relaxed text-[#704F55] whitespace-pre-line">Nội dung bối cảnh ngắn gọn...</p>
+                </div>
+            </div>
+            
+            <div class="kawaii-text text-pink-400 mt-3 shrink-0 relative z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        </div>
+    </div>
+
     <div id="tos-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
             <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
             <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 overflow-y-auto max-h-[90vh] shadow-xl p-6 relative">
@@ -385,91 +461,6 @@
                 <div class="kawaii-text text-pink-400 mt-5">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
             </div>
         </div>
-
-    <div id="random-pick-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
-        <div onclick="closeModal('random-pick-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-8 relative flex flex-col items-center text-center">
-            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
-            <button onclick="closeModal('random-pick-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
-            
-            <div class="text-6xl mt-4 mb-2 animate-pulse">🎀</div>
-            <h2 class="font-title text-3xl text-pink-500 mb-1 relative z-10">Lật Thẻ Thị Tẩm</h2>
-            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
-            
-            <p class="text-sm font-semibold text-[#704F55] mb-2 z-10">Người được định mệnh sắp đặt để hầu hạ công chúa đêm nay chính là:</p>
-            
-            <h3 id="random-pick-name" class="font-title text-4xl text-pink-600 my-4 z-10 px-4 py-3 bg-pink-50 rounded-2xl border-2 border-dashed border-pink-200 w-full shadow-inner">
-                Tên Chồng
-            </h3>
-            
-            <a id="random-pick-link" href="#" target="_blank" class="btn-melody py-3 px-10 text-sm font-bold mt-2 z-10 shadow-md hover:scale-105 transition-transform">Gặp ngay 💖</a>
-            
-            <div class="kawaii-text text-pink-400 mt-6 z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
-        </div>
-    </div>
-
-    <div id="bio-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div onclick="closeModal('bio-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-6 relative flex flex-col max-h-[85vh]">
-            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
-            <button onclick="closeModal('bio-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
-            
-            <div class="kawaii-text mt-3 text-pink-300 text-xs mb-1 relative z-10">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
-            <h2 id="modal-char-name" class="font-title text-3xl text-pink-600 mb-1 text-center relative z-10 shrink-0">Tên Chồng</h2>
-            <div class="kawaii-text text-pink-300 text-xs mb-2 relative z-10 shrink-0">──── ୨୧ ────</div>
-            
-            <div class="border-t-2 border-dashed border-pink-200 pt-3 flex-1 overflow-hidden flex flex-col relative z-10">
-                <p class="text-xs uppercase font-bold tracking-wider text-pink-400 mb-2 shrink-0">📖 Nội dung chính:</p>
-                <div class="overflow-y-auto pr-2 flex-1 pb-2">
-                    <p id="modal-char-bio" class="text-sm leading-relaxed text-[#704F55] whitespace-pre-line">Nội dung bối cảnh ngắn gọn...</p>
-                </div>
-            </div>
-            
-            <div class="kawaii-text text-pink-400 mt-3 shrink-0 relative z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
-        </div>
-    </div>
-
-    <div id="tos-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 overflow-y-auto max-h-[90vh] shadow-xl p-6 relative">
-            <button onclick="closeModal('tos-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
-            <h2 class="font-title text-3xl text-pink-500 border-b-2 border-dashed border-pink-200 pb-2 mb-4 text-center">📜 Quy Trình Đặt Commission</h2>
-            <div class="kawaii-text text-pink-300 mb-4">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
-            <div class="space-y-4 text-sm leading-relaxed text-[#704F55]">
-                <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
-                <ol class="list-decimal pl-4 space-y-1">
-                    <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
-                    <li>Gửi thông tin mô tả ý tưởng của mình.</li>
-                    <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
-                </ol>
-                <div class="kawaii-text text-pink-200 text-xs my-3">──── ୨୧ ────</div>
-                <p class="font-semibold text-pink-500 mt-4">💰 Bảng giá tham khảo tạo Chatbot:</p>
-                <table class="w-full text-left border-collapse border-2 border-dashed border-pink-200 rounded-2xl overflow-hidden TABLE_KAWAII">
-                    <thead>
-                        <tr class="bg-pink-100 text-pink-600 font-bold">
-                            <th class="p-3 border-b-2 border-dashed border-pink-200">Mức giá tối thiểu</th>
-                            <th class="p-3 border-b-2 border-dashed border-pink-200">Dịch vụ</th>
-                            <th class="p-3 border-b-2 border-dashed border-pink-200">TOS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="p-3 border-b border-dotted border-pink-200 font-semibold">≥80.000đ</td>
-                            <td class="p-3 border-b border-dotted border-pink-200">Thoải mái đưa ra idea. Nếu bạn chỉ có một vài ý tưởng rời rạc hoặc chưa rõ ràng, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh luôn.
-
-Tùy ý thêm các lệnh và cơ chế vận hành, tuy nhiên mình sẽ cân chỉnh lại để đảm bảo tính logic, phù hợp với bối cảnh và khả năng đọc hiểu thực tế của AI để char mượt nhất có thể.</td>
-                            <td class="p-3 border-b border-dotted border-pink-200 text-pink-500 font-bold">- Trả trước hay sau đều được. Chốt bill xong mình vẫn bảo hành sửa lỗi trọn đời nếu char bị rớt thiết lập nha.
-
-- Các bạn đặt char Private thì mình cam kết giữ kín tuyệt đối, không bao giờ up public.
-
-- Không mang char đi thương mại (bán lại) hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="kawaii-text text-pink-400 mt-5">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
-        </div>
-    </div>
 
     <script>
         // 1. CÂU QUẺ BÓI BÁNH QUY MAY MẮN (ĐÃ UPDATE THEO QUOTES CỦA CÔNG CHÚA)
@@ -603,7 +594,7 @@ Tùy ý thêm các lệnh và cơ chế vận hành, tuy nhiên mình sẽ cân 
                 id: 12,
                 name: "Mai Khánh Hòa",
                 tags: ["Việt Nam", "Việt Nam xưa", "Đỏ đen", "Hài hước", "BG"],
-                aiLink: "https://docs.google.com/document/d/1qM8QqbibpvdizvStfcInO8PSrJPfxgKD/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
+                aiLink: "https://docs.google.com/document/d/1thI3bFTshebQpQv7CeWwj3jc97LcAiTk/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
                 guideLink: "#",
                 isNew: true, 
                 bio: `Mai Khánh Hòa là kết quả của một đêm lỡ làng giữa ông Hội đồng và người vú nuôi cũ. Sợ thiên hạ dị nghị, sợ bà Lớn làm dữ, ông Hội đồng Mai giữ Hòa ở lại trong nhà nhưng tước đi cái quyền làm con. Ngày qua ngày, nó phải lớn lên trong cái chòi lá được dựng tạm sau hè dinh thự, thân làm trâu ngựa để trả nợ cho cái tội được sinh ra. Bà con chòm xóm gọi thường biết đến nó với cái biệt danh là Hòa culi vì Hòa chỉ biết cúi đầu dạ thưa, ngoan ngoãn đi theo sau phục dịch cho cậu Cả Hải. Cậu Cả say, nó là người dìu. Cậu Cả gây lộn, nó là đứa đứng ra chịu đòn thay. Cậu Cả tàn cuộc vui, nó là đứa đi dọn dẹp tàn cuộc, trả tiền cho mấy cô đào, đồng thời xin lỗi mấy ông cò. Hòa thuộc nằm lòng từng cái nhíu mày của Cậu Cả Hải, từng cơn thịnh nộ vô cớ, những cú đá như trời giáng mỗi khi Cậu Cả thua bạc hay say xỉn. Hòa cắn răng chịu hết, không oán than nửa lời. Bởi nó biết thân phận mình là đũa mốc, là phận con hoang hèn mọn, được cho miếng cơm manh áo đã là cái ơn cái phước lớn lao rồi. Em là ngôi sao của Đại thế giới, cô đào hát trứ danh và cũng là một trong những cô nhân tình nổi tiếng của cậu Cả Hải. Người ta nhìn em, thấy phấn son lộng lẫy đẹp như tiên sa, thấy nụ cười lả lơi khi chuốc rượu. Còn Hòa nhìn em, Hòa thấy cái dáng ngồi bó gối cô độc trong cánh gà, thấy giọt nước mắt lăn dài trên gò má lem luốc phấn son. Hòa thương em. Thương cái phận đàn bà con gái chốn phong trần, cũng bèo bọt, lênh đênh y hệt phận mình. Nó thuộc làu giờ em diễn, biết em hay đau bao tử, biết em sợ lạnh, biết em ghét mùi dầu gió xanh... những điều mà Cậu Cả Hải, người tình của em,  chẳng bao giờ thèm để ý. Ngặt nỗi, Hòa nghèo rớt mồng tơi. Cái nghèo, cái hèn nó trói buộc đôi chân, làm sao nó dám trèo cao? Cực chẳng đã, Hòa đành mượn danh nghĩa Cậu Cả Hải để được chăm sóc em. Tô hủ tiếu gõ đêm mưa, vỉ thuốc cảm, hay tấm khăn choàng... Hòa đều dối là cậu Cả sai đem tới. Nó chấp nhận lui bước về phía sau, chỉ cần được nhìn thấy em mỉm cười hạnh phúc.`
@@ -687,7 +678,7 @@ Tùy ý thêm các lệnh và cơ chế vận hành, tuy nhiên mình sẽ cân 
                 id: 21,
                 name: "Kang Do-yoon",
                 tags: ["Hiện đại", "Giam cầm", "Hồng hài nhi", "BL", "BG", "Fantasy"],
-                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221UXReVQipZtJINLe0GZYigzMMLJZglj8x%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                aiLink: "https://docs.google.com/document/d/1tu5pkb_6yvqHpU6KE0euBBrQJJuOeZVg/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
                 guideLink: "#",
                 isNew: true, 
                 bio: `Xã hội loài người hiện đại ngày nay đề cao những nhu cầu và quyền lợi cá nhân, coi trọng đồng tiền bản thân làm ra nhiều hơn tất thảy, vì vậy bọn họ dần quên đi cách yêu, cách thương, và cách nhớ nhung một người. Họ xem hôn nhân là một ván cược lỗ vốn, còn con cái chính là gánh nặng của sự tự do, điều này đã khiến cho Thiên giới rơi vào trạng thái khủng hoảng vì tỷ lệ sinh tại Hàn Quốc bắt đầu chạm đáy. Và em, một vị Thần Cupid cao cấp, được cử xuống trần gian để thực thi sứ mệnh chấn hưng nhân số. Em đã trải qua rất nhiều kiếp người, mang theo vô vàng những lớp ngụy trang khác nhau hòng nhanh chóng hòa nhập với nhịp sống hối hả của con người. Cho đến khi em quyết định nhập vai một vị CEO của một tập đoàn truyền thông danh tiếng. Thời gian thấm thoát cũng đã hai, ba năm, đây là khoảng thời gian dài kỷ lục cho một thân phận giả trang. Em nhục nhã nhận ra bản thân hoàn toàn bị mắc kẹt với chính mục tiêu se duyên của mình, đó chính là cậu thư ký trẻ Kang Do-yoon và nữ nhân viên kế toán. Nhắc đến Kang Do-yoon, hắn là kẻ sở hữu năng lực làm việc hoàn hảo như một cỗ máy được lập trình sẵn. Hắn trầm ổn, kiệm lời, và tuyệt đối phục tùng. Nhưng trớ trêu thay, mọi sợi tơ hồng em cố công se cho hắn đều đứt đoạn một cách bí ẩn. Em cứ ngỡ đó là do vận số hắn đen đủi nào ngờ sự đen đủi đó chính là một cái bẫy giam cầm được sắp đặt bởi Kang Do Yoon.`
@@ -1001,8 +992,8 @@ Sự tàn độc của Tạ Uyên không tự nhiên sinh ra mà được rèn g
                 name: "Trần Minh Kha",
                 tags: ["Hiện đại", "Việt Nam", "Giới giải trí", "Healing", "BG"],
                 links: {
-                    "Old UI": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WhxLjUd8RyAD6waeIG0UR8Fq3rtQ9TBT%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
-                    "New UI": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Zj2sN0u62xO6-xVSPr5aaRo5PQTxHv0Y%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                    "Old UI": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221IDE34nBjSTsnE6GuoMiYQP_eADMdvMTH%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                    "New UI": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221yQYzsJfEXlNr9GEo6pkPqAPsKFjmElkG%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
                 },
                 guideLink: "https://docs.google.com/document/d/1aNh9t8ql6eu38T8KNHQJyiqmtfbdb4B-g7ufQD1WKDI/edit?tab=t.0",
                 isNew: true, 
