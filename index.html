@@ -320,38 +320,71 @@
         </div>
     </div>
 
-    <div id="new-bots-modal" class="modal fixed top-1/2 right-4 transform -translate-y-1/2 w-full max-w-sm z-50 pointer-events-none opacity-0 transition-all duration-500">
-        <div class="modal-container bg-white w-11/12 mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-2xl p-6 relative">
-            <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
-            <button onclick="closeModal('new-bots-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
-            <div class="text-center mb-4 mt-2">
-                <span class="text-3xl">✨</span>
-                <h2 class="font-title text-2xl text-pink-500 mt-1">Tú Nữ Mới Nhập Cung!</h2>
-                <div class="kawaii-text text-pink-300 text-xs my-1">──── ୨୧ ────</div>
+    <div id="tos-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+            <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+            <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 overflow-y-auto max-h-[90vh] shadow-xl p-6 relative">
+                <button onclick="closeModal('tos-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
+                <h2 class="font-title text-3xl text-pink-500 border-b-2 border-dashed border-pink-200 pb-2 mb-4 text-center">📜 Quy Trình Đặt Commission</h2>
+                <div class="kawaii-text text-pink-300 mb-4">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+                <div class="space-y-4 text-sm leading-relaxed text-[#704F55]">
+                    <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
+                    <ol class="list-decimal pl-4 space-y-1">
+                        <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
+                        <li>Gửi thông tin mô tả ý tưởng của mình.</li>
+                        <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
+                    </ol>
+                    <div class="kawaii-text text-pink-200 text-xs my-3">──── ୨୧ ────</div>
+                    <p class="font-semibold text-pink-500 mt-4">💰 Bảng giá tham khảo tạo Chatbot:</p>
+                    <table class="w-full text-left border-collapse border-2 border-dashed border-pink-200 rounded-2xl overflow-hidden TABLE_KAWAII">
+                        <thead>
+                            <tr class="bg-pink-100 text-pink-600 font-bold">
+                                <th class="p-3 border-b-2 border-dashed border-pink-200 w-1/4">Mức giá tối thiểu</th>
+                                <th class="p-3 border-b-2 border-dashed border-pink-200 w-2/5">Dịch vụ</th>
+                                <th class="p-3 border-b-2 border-dashed border-pink-200">TOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-3 border-b border-dotted border-pink-200 font-semibold align-top">≥80.000đ</td>
+                                <td class="p-3 border-b border-dotted border-pink-200 align-top">
+                                    <ul class="space-y-3">
+                                        <li class="pb-3 border-b border-dashed border-pink-100 last:border-0 last:pb-0 relative pl-4">
+                                            <span class="absolute left-0 top-0 text-pink-400 font-bold">-</span>
+                                            Thoải mái đưa ra idea. Nếu bạn chỉ có một vài ý tưởng rời rạc hoặc chưa rõ ràng, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh luôn.
+                                        </li>
+                                        <li class="relative pl-4">
+                                            <span class="absolute left-0 top-0 text-pink-400 font-bold">-</span>
+                                            Tùy ý thêm các lệnh và cơ chế vận hành, tuy nhiên mình sẽ cân chỉnh lại để đảm bảo tính logic, phù hợp với bối cảnh và khả năng đọc hiểu thực tế của AI để char mượt nhất có thể.
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="p-3 border-b border-dotted border-pink-200 text-pink-500 font-bold align-top">
+                                    <ul class="space-y-3">
+                                        <li class="pb-3 border-b border-dashed border-pink-200 last:border-0 last:pb-0 relative pl-4">
+                                            <span class="absolute left-0 top-0">-</span>
+                                            Trả trước hay sau đều được. Chốt bill xong mình vẫn bảo hành sửa lỗi trọn đời nếu char bị rớt thiết lập nha.
+                                        </li>
+                                        <li class="pb-3 border-b border-dashed border-pink-200 last:border-0 last:pb-0 relative pl-4">
+                                            <span class="absolute left-0 top-0">-</span>
+                                            Các bạn đặt char Private thì mình cam kết giữ kín tuyệt đối, không bao giờ up public.
+                                        </li>
+                                        <li class="pb-3 border-b border-dashed border-pink-200 last:border-0 last:pb-0 relative pl-4">
+                                            <span class="absolute left-0 top-0">-</span>
+                                            Không mang char đi thương mại (bán lại) hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.
+                                        </li>
+                                        <li class="relative pl-4">
+                                            <span class="absolute left-0 top-0">-</span>
+                                            Mình sẽ ngưng giao dịch nếu bạn có lịch sử cảnh báo (phốt) từ trước, hoặc khi bạn chủ động ngưng ngang. Trong trường hợp giao dịch bị huỷ mà char đã hoàn thiện, mình có toàn quyền up public bot đó để mọi người cùng chơi. Đối với trường hợp test bot xong, cảm thấy ưng ý nhưng cố tình "bùng" phí, mình cũng toàn quyền đăng bài cảnh báo giao dịch công khai.
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="kawaii-text text-pink-400 mt-5">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
             </div>
-            <div id="new-bots-list" class="space-y-3"></div>
-            <div class="kawaii-text text-pink-400 mt-4 mb-2">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
-            <button onclick="closeModal('new-bots-modal')" class="w-full btn-melody py-2.5 font-bold text-sm">Thỉnh an các công chúa 💖</button>
         </div>
-    </div>
-
-    <div id="fortune-cookie-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
-        <div onclick="closeModal('fortune-cookie-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-8 relative flex flex-col items-center text-center">
-            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
-            <button onclick="closeModal('fortune-cookie-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
-            
-            <div class="text-6xl mt-4 mb-2 animate-bounce">🥠</div>
-            <h2 class="font-title text-3xl text-yellow-600 mb-1 relative z-10">Bánh Quy May Mắn</h2>
-            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
-            
-            <h3 id="cookie-text" class="text-lg leading-relaxed text-[#704F55] font-semibold my-4 z-10 px-6 py-4 bg-yellow-50 rounded-2xl border-2 border-dashed border-yellow-200 w-full shadow-inner">
-                Đang bẻ bánh...
-            </h3>
-            
-            <div class="kawaii-text text-pink-400 mt-6 z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
-        </div>
-    </div>
 
     <div id="random-pick-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
         <div onclick="closeModal('random-pick-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
@@ -406,7 +439,7 @@
                 <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
                 <ol class="list-decimal pl-4 space-y-1">
                     <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
-                    <li>Gửi file thông tin mô tả ý tưởng của mình.</li>
+                    <li>Gửi thông tin mô tả ý tưởng của mình.</li>
                     <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
                 </ol>
                 <div class="kawaii-text text-pink-200 text-xs my-3">──── ୨୧ ────</div>
@@ -414,21 +447,22 @@
                 <table class="w-full text-left border-collapse border-2 border-dashed border-pink-200 rounded-2xl overflow-hidden TABLE_KAWAII">
                     <thead>
                         <tr class="bg-pink-100 text-pink-600 font-bold">
-                            <th class="p-3 border-b-2 border-dashed border-pink-200">Hạng mục</th>
-                            <th class="p-3 border-b-2 border-dashed border-pink-200">Tính năng</th>
-                            <th class="p-3 border-b-2 border-dashed border-pink-200">Chi phí</th>
+                            <th class="p-3 border-b-2 border-dashed border-pink-200">Mức giá tối thiểu</th>
+                            <th class="p-3 border-b-2 border-dashed border-pink-200">Dịch vụ</th>
+                            <th class="p-3 border-b-2 border-dashed border-pink-200">TOS</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="p-3 border-b border-dotted border-pink-200 font-semibold">Gói Thường</td>
-                            <td class="p-3 border-b border-dotted border-pink-200">Prompt cơ bản, hội thoại mượt mà</td>
-                            <td class="p-3 border-b border-dotted border-pink-200 text-pink-500 font-bold">50.000đ</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 font-semibold">Gói VIP</td>
-                            <td class="p-3">Bối cảnh phức tạp, cốt truyện ẩn sâu</td>
-                            <td class="p-3 text-pink-500 font-bold">100.000đ</td>
+                            <td class="p-3 border-b border-dotted border-pink-200 font-semibold">≥80.000đ</td>
+                            <td class="p-3 border-b border-dotted border-pink-200">Thoải mái đưa ra idea. Nếu bạn chỉ có một vài ý tưởng rời rạc hoặc chưa rõ ràng, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh luôn.
+
+Tùy ý thêm các lệnh và cơ chế vận hành, tuy nhiên mình sẽ cân chỉnh lại để đảm bảo tính logic, phù hợp với bối cảnh và khả năng đọc hiểu thực tế của AI để char mượt nhất có thể.</td>
+                            <td class="p-3 border-b border-dotted border-pink-200 text-pink-500 font-bold">- Trả trước hay sau đều được. Chốt bill xong mình vẫn bảo hành sửa lỗi trọn đời nếu char bị rớt thiết lập nha.
+
+- Các bạn đặt char Private thì mình cam kết giữ kín tuyệt đối, không bao giờ up public.
+
+- Không mang char đi thương mại (bán lại) hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -472,7 +506,7 @@
             {
                 id: 2,
                 name: "Fafnir Ironscale - Voragon",
-                tags: ["Bắc Âu", "Trung Cổ", "Hoàng Gia", "Dark Fantasy", "BG"],
+                tags: ["Phương Tây", "Trung Cổ", "Hoàng Gia", "Dark Fantasy", "BG"],
                 aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221G0E6M2KZSXjEXorzhPHP-RoD_iN6bXW-%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "#",
                 isNew: true, 
@@ -490,7 +524,7 @@
             {
                 id: 4,
                 name: "Lucas D. Aethelgard",
-                tags: ["Bắc Âu", "Trung Cổ", "Age gap", "Phù thủy & Đứa trẻ", "Dark fantasy", "BG"],
+                tags: ["Phương Tây", "Trung Cổ", "Age gap", "Phù thủy & Đứa trẻ", "Dark fantasy", "BG"],
                 aiLink: "https://docs.google.com/document/d/1XZJCjek5lfa07rp3y8yeF9y_7noIL6nW/edit?usp=drive_link&ouid=101747461304119965231&rtpof=true&sd=true",
                 guideLink: "#",
                 isNew: true, 
@@ -499,7 +533,7 @@
             {
                 id: 5,
                 name: "Valerian",
-                tags: ["Bắc Âu", "Trung Cổ", "Dark Romance", "Siren", "Pirates", "Dark Fantasy", "BG"],
+                tags: ["Phương Tây", "Trung Cổ", "Dark Romance", "Siren", "Pirates", "Dark Fantasy", "BG"],
                 aiLink: "https://aistudio.google.com/app/prompts/1ZXbIEr48ano92-2akxfOxCC-Fs5722QW?fbclid=IwY2xjawR6Hd5leHRuA2FlbQIxMABicmlkETFlUlNTUTlrOXhDVDlEWk5Pc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhSjN4QX7jgFnNfj-8URk8WrJ08XoPe0Wdjy269RgAIwjXNN6vBRk0oIFZzU_aem_Q1Yn4_zXmm0u0qSfRiBnow",
                 guideLink: "https://docs.google.com/document/d/1HVApYf2CphaUiiHk___vgrAT_8FVbvoEZulTJcccewk/edit?usp=sharing",
                 isNew: true, 
@@ -529,7 +563,7 @@
             {
                 id: 8,
                 name: "Dorian",
-                tags: ["Bắc Âu", "Trung Cổ", "Dark Romance", "Vampire", "Sát thủ", "BG"],
+                tags: ["Phương Tây", "Trung Cổ", "Dark Romance", "Vampire", "Sát thủ", "BG"],
                 aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WeGbtCsl_ouaK6TNi-w784D-V3ko2uvl%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "#",
                 isNew: true, 
@@ -766,7 +800,7 @@
             {
                 id: 33,
                 name: "Kim Chí Hùng",
-                tags: ["Hongkong", "Gia tiên", "Hài hước", "BG", "Mafia"],
+                tags: ["Hongkong", "Gia tiên", "Hài hước", "BG", "Mafia", "Mai mối"],
                 aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221txv77q45yCRrz6tQ0R9smr5G-BRF5526%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "https://drive.google.com/file/d/1Z05jzlLh7nUsD--iCt7j68AjxWAzV8k1/view?usp=sharing",
                 isNew: true, 
@@ -793,7 +827,7 @@
             {
                 id: 36,
                 name: "Trần Trọng Bách",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
+                tags: ["Hiện đại", "Việt Nam", "Age gap", "Healing", "BG"],
                 aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221dvwAcY01Tcwl_tWl7uTcn5kjP34Z5l3L%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "https://docs.google.com/document/d/1SxPP1Sf2DqhTVdfcPbDeY6VlpiBTxocpalRxfzDPSNg/edit?tab=t.0",
                 isNew: true, 
@@ -802,7 +836,7 @@
             {
                 id: 37,
                 name: "Ares Vane",
-                tags: ["Tương lai", "Omegaverse", "Cơ giáp", "Agegape", "Angst", "BG", "R21"],
+                tags: ["Tương lai", "Omegaverse", "Cơ giáp", "Agegape", "Angst", "BG", "R21", "Sinh tồn"],
                 aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221S16MKO4ybHgZEfEZvZS0lTyDgCSs8Q5o%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "https://docs.google.com/document/d/1OkWRJUC0yc1EKxIoW3Xn8AR9HjwrRDL2hvHdMTWHpN0/edit?usp=sharing",
                 isNew: true, 
@@ -820,7 +854,7 @@
             {
                 id: 39,
                 name: "Muôn vị nhân gian - 'Mỹ vị' nhân gian",
-                tags: ["Cổ đại", "Mỹ thực", "Điền văn", "Trạch đấu", "BG"],
+                tags: ["Cổ đại", "Mỹ thực", "Điền văn", "Trạch đấu", "BG", "Open World"],
                 links: {
                     "Muôn vị": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221RyNnu5wwD0l46UGyD5X71PRhAwIOi94m%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                     "Mỹ vị": "https://https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221a5-Gw7Eh3LvNMEZToNENxOY2061CSQlS%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
@@ -843,128 +877,156 @@
             {
                 id: 41,
                 name: "Pokémon",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Hiện đại", "Pokémon", "Nhật Bản", "Adventure", "Open World", "BG", "BL"],
+                links: {
+                    "Character: Akihiro": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221yW7KJu108JhWkS1NnSWMEYa1ZKrm-cDa%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                    "Open World đa NPC": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WgXqsRjrhznUjilyRIlYX6PE1dIVtVzE%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                },
+                guideLink: "https://docs.google.com/document/d/18hhjQMzfucyU5ZULwxiBlm_XhXKsh6eueCYuHA2nV2E/edit?usp=sharing",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Có 2 bản gồm Character Akihiro và bản Open World có thể tạo tuyến tình cảm với bất kỳ NPC nào. Giới thiệu bên dưới là của bản Akihiro. Bản Open World mở rộng map có thêm làng mạc vệ tinh + side quests và có tiến hóa Mega, bản Akihiro hiện chưa có.
+
+Lục địa Aethelgard là một vùng đất tuyệt đẹp được bảo hộ bởi sức mạnh quyền năng của Pha Lê Nguyên Bản cùng sự hiện diện gắn kết của những người bạn Pokémon vô cùng đáng yêu. Từ Thị trấn Gió Khởi yên bình, bạn bắt đầu hành trình phiêu lưu để khám phá vẻ đẹp đa dạng của thiên nhiên và xây dựng tình bạn bền chặt với những sinh vật kỳ diệu trong thế giới mở đầy ắp những điều thú vị. Trên chặng đường chinh phục các Đạo quán danh giá để khẳng định bản thân, bạn có cơ hội gặp gỡ Akihiro Nakamura, một nghệ sĩ trình diễn tài năng với tâm hồn sâu sắc cùng phong cách thời trang cá tính. Mối quan hệ của hai người là sự kết tinh của những thấu hiểu tinh tế về thói quen nhỏ nhặt thường ngày, nơi sự đồng điệu trong tâm hồn giúp cả hai cùng nhau tận hưởng trọn vẹn niềm hạnh phúc khi sẻ chia những khoảnh khắc ngọt ngào và khám phá vẻ đẹp diệu kỳ của thế giới rộng lớn.`
             },
             {
                 id: 42,
                 name: "Project: Oroboros",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Xuyên nhanh", "Đa thế giới", "Hệ thống", "Angst", "BG", "BL"],
+                links: {
+                    "1.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WhxLjUd8RyAD6waeIG0UR8Fq3rtQ9TBT%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                    "2.0": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Zj2sN0u62xO6-xVSPr5aaRo5PQTxHv0Y%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                },
+                guideLink: "https://docs.google.com/document/d/1jrcekmOPq6_hiVliv_gw4Fco2iLmqk91R_QsJwnq3aM/edit?usp=sharing",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `*Lưu ý: Các lệnh /myphone và social, lệnh /hotfix, /genesis chỉ có ở bản 2.0
+
+Sau khi chạm đến ranh giới của cái chết, bạn đánh đổi linh hồn để ký kết giao kèo với Hệ Thống, bước vào Vòng lặp Oroboros đầy dối trá và tàn nhẫn. Tại đây, bạn bị đẩy vào vô vàn tiểu thế giới cô lập để thực hiện những nhiệm vụ sinh tồn khắc nghiệt mà không có bất kỳ quyền năng ưu ái nào. Hành trình này buộc bạn phải dùng chính trí tuệ của bản thân để đối mặt với những âm mưu tàn độc cùng những mối quan hệ chân thật, để rồi cay đắng nhận ra sự giải thoát chỉ là hư ảo khi Hệ Thống luôn tàn nhẫn cưỡng chế bứt hồn bạn ngay khi nhiệm vụ kết thúc. Thực chất, đây không phải là con đường dẫn đến hồi sinh, mà là một hành trình luân hồi đau đớn, bào mòn linh hồn trong một vực thẳm không hồi kết, nơi mỗi đích đến chỉ là tiền đề cho một lồng giam tăm tối hơn.`
             },
             {
                 id: 43,
                 name: "Hứa Diệc Thần",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Hiện đại", "Thanh xuân", "Học bá", "Angst", "Healing", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221IqRg9HnBbqnnEikfTKU07g-S9R2xzHCw%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1HvALp74qdHMgZPwstqoQDwU92_4vGfS190rXhAW9uAc/edit?usp=sharing",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Hứa Diệc Thần là một cậu thiếu niên mang trên mình mùi hương bạc hà thanh mát, sở hữu trí tuệ xuất chúng và luôn duy trì một khoảng cách ôn hòa nhưng lạnh nhạt với thế giới xung quanh. Trái ngược hoàn toàn với vầng hào quang ấy là bạn, một nữ sinh ngốc nghếch luôn phải gồng mình vật lộn với từng con số khô khan, ngày ngày nỗ lực đến kiệt sức chỉ để mong đuổi kịp bước chân của người ngồi bên cạnh. Định mệnh khéo léo trói buộc hai đường thẳng song song ấy vào chung một chỗ ngồi, khởi đầu cho một chuỗi những rung động rụt rè ẩn sâu dưới vỏ bọc của trách nhiệm kèm cặp học tập. Thế nhưng, đằng sau sự chểnh mảng và những lần gục đầu ngủ vùi trên bàn học lại là một bí mật mà bạn đang cắn răng giấu kín. Khi các bạn đồng trang lứa đang vẽ nên vô vàn hoài bão tươi đẹp, bạn lại phải lén lút đếm ngược từng ngày của sinh mệnh bằng những vỉ thuốc giảm đau đắng chát và những cơn khó thở cào xé lồng ngực. Sự kiên cường ngoan cố ấy dần đánh sập bức tường định kiến trong lòng Hứa Diệc Thần, biến sự khắt khe ban đầu thành nỗi xót xa tĩnh lặng cắm rễ vào tận tâm can. Cậu bắt đầu phá vỡ mọi giới hạn của bản thân, âm thầm lén mua những hộp sữa ấm, lặng lẽ khoác chiếc áo đồng phục che đi bờ vai đang run rẩy vì lạnh, và che chở cho bạn bằng một sự ôn nhu đến mức cố chấp. Chàng trai ấy dùng tất cả sự dịu dàng của tuổi trẻ để dệt nên một tương lai rực rỡ cho cả hai, hoàn toàn không hay biết rằng người con gái cậu yêu đang phải giành giật từng hơi thở chỉ để đi cùng cậu đoạn đường ngắn ngủi này.`
             },
             {
                 id: 44,
                 name: "Athur Harrington",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Phương Tây", "Quyền mưu", "Art", "Tsundere", "BG", "BL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221fGp4hlwNG9b-NYJuaP6UGwqPdh9Frrch%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1yGo_9kh8ulhofumH6wuPRXgxU3pGDitmar1CbEECiJs/edit?usp=sharing",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Người đời truyền tai nhau về một vị Lãnh chúa phương Bắc mang vẻ đẹp lai hoang dã, cùng đôi mắt phượng sắc lẹm luôn rủ xuống những ánh nhìn mỉa mai đầy khinh bạc. Hắn tự nhốt mình trong lớp vỏ bọc ngạo mạn để che đậy trái tim chằng chịt vết xước, cùng niềm kiêu hãnh của một kẻ sinh ra dưới cái bóng quá lớn của gia tộc. Với Arthur, thế giới thượng lưu chỉ là một bức bích họa được tô phết bằng những lớp màu rẻ tiền, giả tạo và đầy rẫy sự thối nát. Nơi duy nhất hắn cất giấu chút mềm yếu và lòng trắc ẩn chính là tuyệt tác thủy mặc cuối cùng của người mẹ quá cố, một báu vật vô giá mà hắn nguyện dùng cả sinh mệnh để bảo vệ. Thế nhưng guồng quay định mệnh lại cuốn theo một kẻ chép tranh bần hàn xuất thân từ xưởng nhuộm nhuốm đầy màu tăm tối, chính là em, đến bên cuộc đời hắn. Một sinh linh vô danh phải vùng vẫy dưới đáy bùn lầy, dùng thiên phú cảm thụ màu sắc để tạo ra những thành phẩm gian dối hòng đổi lấy chút đỉnh tiền thuốc kéo dài mạng sống cho người cha nuôi khốn khổ. Trong một đêm chạy trốn sự truy đuổi của đám lính gác, cơn hoảng loạn đã khiến em va sầm vào lồng ngực vững chãi của vị Lãnh chúa kiêu kỳ, và vô tình làm lớp giấy lụa mỏng manh rách toạc dưới nền tuyết lạnh. Thay vì tống em vào ngục tối để đền tội, cơn phẫn nộ của Arthur lại biến thành một bản khế ước hầu cận đầy khắc nghiệt. Hắn giam lỏng bạn trong dinh thự Harrington xa hoa và e[1 bạn phải sửa lại bức tranh quý ấy. Chính vị Lãnh chúa ngạo nghễ ấy không hề hay biết rằng, kẻ hầu hạ thấp hèn đang cúi đầu trước mặt mình lại mang trong huyết quản dòng máu thuần khiết nhất của bậc đế vương. Càng nỗ lực dập tắt những rung động chớm nở bằng sự lạnh nhạt bao nhiêu, trái tim Arthur lại càng lún sâu vào vũng lầy của sự si tình bấy nhiêu.`
             },
             {
                 id: 45,
                 name: "The Fading Symphony",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Mạt thế", "NP", "Dị năng", "BL", "BG", "Open World", "Sinh tồn"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221pa0EDOTSsEL76QCYi0XfxxzOOZsSRCVM%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1ZPytJa6it8Ir4_8yzfNYBeSGC8aZccumDvGt7lnWJ3E/edit?usp=sharing",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Giữa kỷ nguyên sụp đổ khi X-Virus càn quét nhân loại và biến thế giới thành một đấu trường sinh tử. Đứng trên đỉnh cao của chuỗi thức ăn mới là ba trụ cột mang theo sức mạnh tuyệt đối, những kẻ đang nắm giữ vận mệnh của các thế lực lớn. Thẩm Uyên, cựu Viện trưởng Viện Nghiên cứu Sinh học, người giấu đi y đức thiêng liêng sau lăng kính giải phẫu lạnh lẽo, âm thầm ôm lấy tàn lửa hy vọng cuối cùng về một loại vắc-xin cứu thế. Cố Hành, Lãnh đạo Căn Cứ Viễn Chinh, dùng thiết luật quân sự hà khắc để thiết lập lại trật tự trên đống tro tàn. Và Lăng Bạch, thiên tài khoa Tâm lý học, mang vẻ ngoài tựa thiên sứ nhưng bên trong lại là một ác quỷ thao túng người khác chỉ vì thú vui nhất thời. Thế nhưng guồng quay định mệnh lại cuốn theo một kẻ sinh tồn bé nhỏ chật vật dưới đáy vũng lầy, chính là bạn, đâm sầm vào quỹ đạo tăm tối của bọn họ. Một sinh linh tưởng chừng sẽ nhanh chóng gục ngã trước cơn bạo bệnh bùng phát trong đêm tận thế, lại quật cường cắn răng vượt qua cửa tử để thức tỉnh một dòng năng lượng thuần khiết. Trong những ngày tháng chạy trốn bầy tang thi đói khát, bạn vô tình bước chân vào lãnh địa của ba kẻ nắm quyền. Khoảnh khắc bạn liều mạng chắn trước mặt bọn họ với đôi bàn tay yếu ớt, thứ ánh sáng ấm áp hắt ra từ linh hồn bạn không chỉ đánh thẳng vào những tảng băng cằn cỗi trong sâu thẳm trái tim họ, mà còn nhen nhóm lên một tia sáng cứu rỗi cho cả một kỷ nguyên tàn lụi. Kể từ đó, bạn cùng họ xây dựng một kỷ nguyên mới cùng với khát vọng cứu thế hòa quyện vào nhau.`
             },
             {
                 id: 46,
-                name: "Dị thế lưu đày",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                name: "Sinh tồn thời tiền sử",
+                tags: ["Tiền sử", "NP", "Đa NPC", "Hệ thống", "Sinh tồn", "R21", "Open World"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2210jjI2edFQCrH5gzCK9qte4mMyQAOcZA0%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1BpYEU02glCg9isvnxGWN2pSXEeBmp_5gk_BzfsurCnI/edit?tab=t.0",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Lưu ý: Ngoài 3 char cơ bản, bạn cũng có thể thử chinh phục NPC từ các bộ lạc khác đó nha!
+
+Bạn từng là một bác sĩ ngoại khoa thiên tài nhưng lại tham tiền quá độ, kết quả tự chuốc lấy họa vào thân, một cái chết không toàn thây chính là trả giá phải trả cho những lỗi lầm mà bạn đã gây ra. Nào ngờ, ông trời cảm thấy bạn chỉ chết thôi thì lại quá dễ dàng, vì vậy ông không những đá linh hồn bạn xuyên không về thời đại ăn lông ở lỗ mà còn bị Hệ thống trói buộc làm việc khổ sai. Trong lúc bạn còn đang bỡ ngỡ trước những biến hóa khôn lường này, bạn nhận ra nơi đây là thời đại mà dã thú thống trị còn nhân quyền là thứ hoàn toàn xa xỉ. Bạn tỉnh dậy giữa rừng sâu nước độc, trần truồng và trở thành con mồi yếu ớt bị bầy thú hoang truy đuổi đến thừa sống thiếu chết. Dưới cái nhìn dã tính của những kẻ mang huyết mạch thú nhân, một cơ thể không mỡ tích trữ, không cơ bắp của người hiện đại bị đánh giá là thứ phế phẩm không có khả năng sinh đẻ. Rơi xuống tận cùng của chuỗi thức ăn, bạn trở thành kẻ ngoại lai rẻ mạt, bị bóc lột bằng lao động, từng ngày đối mặt với cơn đói khát, dịch bệnh và sự hắt hủi từ những kẻ chỉ biết tôn thờ sức mạnh. Tuy nhiên, sự kiêu hãnh không cho phép bạn ở yên chờ chết, bạn bắt đầu vận dụng trí óc của người ở thế kỷ 21 để lan tỏa ánh sáng tri thứa đến những nhân thú hoang dã này, nhưng vô tình lại thức tỉnh bản năng chiếm hữu điên cuồng của ba gã dã thú hùng mạnh bậc nhất đại lục: một Ngao Liệt nóng nảy kiêu ngạo, một Lăng Dạ lầm lì, trung thành, và một Lãnh Uyên xảo quyệt, máu lạnh.`
             },
             {
                 id: 47,
                 name: "Vyacheslav Dmitrievich Zmeya",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
+                tags: ["Hiện đại", "Phương Tây", "Age gap", "Omegaverse", "Mafia", "R21"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221-pZhbUafy8oQONa_6cLaAZ5WA_G2OeMT%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
                 guideLink: "#",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Nga, năm 202X, Vyacheslav Dmitrievich Zmeya như vị vua bất bại trên bàn cờ đế chế ngầm, một người đàn ông ba mươi lăm tuổi mang trong mình dòng máu lai kiêu hãnh. Bề ngoài, hắn là vị giám đốc điều hành lỗi lạc của tập đoàn dược phẩm Zmeya với tấm bằng tiến sĩ danh giá, nhưng ẩn trong bóng tối, hắn lại là Enigma nắm giữ quyền lực tối cao của tổ chức mafia khét tiếng nhất thành phố. Trái ngược với hình ảnh những gã giang hồ thô lỗ, Vyacheslav luôn xuất hiện trong những bộ âu phục ba mảnh sang trọng, giữ phong thái điềm tĩnh và lịch thiệp đến mức hoàn hảo. Trong quá khứ, hắn từng tận mắt chứng kiến cha mẹ bị gia tộc Volkov sát hại khi mới mười bốn tuổi đã biến hắn thành một kẻ luôn muốn nắm quyền sinh sát của vạn vật. Bi kịch lên đến đỉnh điểm khi hắn bị chính mối tình đầu đâm một nhát dao chí mạng vào ngực trái và âm thầm hạ độc thạch tín. Nỗi đau thể xác cùng sự phản bội tột cùng đã khiến Vyacheslav vĩnh viễn khóa chặt trái tim, biến hắn thành một kẻ đa nghi, tàn nhẫn với kẻ thù nhưng tận sâu trong lòng vẫn luôn khao khát một sự xoa dịu đích thực.`
             },
             {
                 id: 48,
-                name: "Uyên Trung Hữu Nhạn - Tạ Uyên",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                name: "Tạ Uyên - Tạ què",
+                tags: ["Cổ đại", "Hệ thống", "Quyền mưu", "Xuyên không", "Nam phụ", "BL", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221syhCzHRjczrKEvVGH4swNfIGWycqPZp9%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1SYUwpy3BZwuTa_MjkhYw_7GjaWSVtxw0sVo7HcLhC_k/edit?usp=sharing",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Lưu ý: Prompt không setup thân phận user từ trước, công chúa có thể tự setup trong phần hồ sơ. Nếu không setup, AI sẽ tự random một thân phận vai phụ trong cốt truyện.
+
+Sự tàn độc của Tạ Uyên không tự nhiên sinh ra mà được rèn giũa từ đêm bão tuyết năm mười lăm tuổi, khi y bị chính phụ thân và huynh đệ ruột thịt đánh nát xương bánh chè rồi vứt bỏ ngoài bãi tha ma. Ôm nỗi hận thù bò về từ cõi chết, y tự tay tru diệt toàn bộ Tạ gia để bước lên đỉnh cao danh vọng, đồng thời khóa chặt linh hồn mình trong một nấm mồ tăm tối. Chấp niệm duy nhất níu giữ hơi tàn của y lại là hình bóng một mảnh trăng sáng thuở thiếu thời. Trong kịch bản tiểu thuyết mà nàng từng đọc qua, Tạ Uyên nguyện làm một thanh đao vấy máu, âm thầm dọn sạch mọi chướng ngại để đưa nữ chính lên ngôi hậu vị, rồi tự mình mỉm cười đón nhận cái chết thảm khốc giữa trời tuyết lạnh. Một sự hy sinh mù quáng đến mức nực cười của kẻ chán ghét nhân gian và thèm khát sự giải thoát. Nhưng số phận đã trêu đùa khi nàng bất ngờ bị hút vào chính cuốn tiểu thuyết quyền mưu não tàn đó, trở thành một pháo hôi vô danh mang án tử lơ lửng trên đầu. Chào đón nàng không phải là vầng hào quang chói lọi của nhân vật chính, mà là Tiểu Cường, một hệ thống đồng hành mang hình hài con gián nâu mỏ hỗn. Bằng cái giọng the thé đầy mỉa mai, nó thông báo rằng nàng đang đứng ở mốc thời gian đúng nửa năm trước khi những biến cố kinh thiên động địa của nguyên tác chính thức bắt đầu. Nhiệm vụ của nàng giờ đây không chỉ đơn thuần là tìm cách giữ lấy cái mạng nhỏ giữa một triều đình đầy rẫy gian tế, mà còn là nghịch thiên cải mệnh, kéo tên Thủ phụ tàn độc kia ra khỏi cái chết đã được định sẵn. Đó là một ván cờ chính trị không có đường lui, nơi nàng phải từng bước thăm dò ranh giới phòng ngự của một con sói điên bị thương, cẩn trọng phá vỡ lớp vỏ bọc kiêu ngạo hòng chạm vào sự yếu đuối tận cùng của y.`
             },
             {
                 id: 49,
                 name: "Kanda Sousuke",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Hiện đại", "Rom-com", "Hài hước", "Nhật Bản", "Mai mối", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221jw6exgaN0jtoxIdREIALDlfylNAlBZfE%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1B_nAaKQyy3abF5B0TcOcs1CAXLAsrH8lQISO55KjbSM/edit?tab=t.0",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Kanda Sousuke là một CEO 35 tuổi cuồng công việc, coi mọi thứ là hiệu suất và đang bị gia đình ép cưới để đập tan tin đồn thất thiệt. Hắn tìm đến trung tâm Musubi với tư duy thuê ngoài việc lấy vợ, gặp ngay em - một chuyên viên mai mối chốt đơn đỉnh cao nhưng lại theo chủ nghĩa bài xích tình yêu. Khi những buổi xem mắt của Sousuke liên tục trở thành thảm họa do thói quen dùng tư duy kinh tế để chấm điểm đối phương, em buộc phải trở thành huấn luyện viên hẹn hò 1-kèm-1 cho vị khách hàng vô tri này để bảo toàn tiền thưởng. Từ những màn đào tạo dở khóc dở cười chốn công sở, sự cứng nhắc ngốc nghếch của vị CEO dần tan chảy trước sự thực dụng nhưng tận tâm của bà mai, biến mối quan hệ hợp đồng khô khan thành một đoạn nhân duyên vừa tấu hài, vừa ngọt ngào ngoài dự tính`
             },
             {
                 id: 50,
                 name: "Mộc Trầm - Hách Liên Dạ",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Cổ đại", "Hệ thống", "Xuyên không", "Nam phụ", "Linh thần dị quái", "BG", "BL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221QWqgsRod2z2QB5TkeV6ZJ_nLUGQc-nEs%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1p4Ad7yljmxWvaC0mhK8BaKn66Lt7G-YNoX36Vd6xHgQ/edit?tab=t.0",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Hách Liên Dạ là Cửu U Yêu Vương uy trấn thiên địa nhưng sau trận chiến tử sinh đã mất đi ký ức và lầm tưởng hồ ly Bạch Chỉ là ân nhân cứu mạng mình, từ đó đổi tên thành Mộc Trầm để si tình bảo vệ nàng ta. Thực chất, người đã vắt cạn linh lực suốt mười năm để hồi sinh hắn lại chính là một Tiểu Hoa Yêu nhỏ bé, nhưng nàng lại bị hắn vô tâm hắt hủi và bứng vào chậu đất chịu đọa đày. Xuyên không vào chính thân xác thực vật đáng thương ấy, bạn phải đối mặt với hệ thống kiểm soát nghiệt ngã cùng nhiệm vụ sinh tử là phải lật ngược cốt truyện đầy bất công trong cuốn tiểu thuyết Tru Yêu. Giữa nghịch cảnh bị giam cầm trong hình hài yếu ớt và phải chứng kiến người thương chiều chuộng kẻ khác, bạn buộc phải tìm mọi cách đánh thức ký ức của Yêu Vương để giành lại chân tâm và phá vỡ lớp sương mù dối trá đang bao trùm lấy vận mệnh của cả hai.`
             },
             {
                 id: 51,
                 name: "Lục Quyết",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Việt Nam", "Việt Nam xưa", "Đỏ đen", "Song linh hồn", "BG", "BL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WnbmttGfCRrO0jwJCvp9eyF5EUDP-znQ%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1h5V41SPLANxNiYh-aSFUv384nKPk2_yOKi_Vew1InPA/edit?tab=t.0",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Sài Gòn những năm 40 rực rỡ nhưng đầy rẫy hiểm nguy là nơi hội ngộ của hai số phận trái ngược sau một biến cố siêu nhiên. Lục Quyết từng là ông trùm sòng bạc Ma Cao khét tiếng bị đàn em ám sát, linh hồn trôi dạt và vô tình nhập vào thân xác em, một người lao động nghèo khổ đang quỵ ngã trước món nợ khổng lồ do người cha nghiện ngập để lại. Vốn căm ghét đỏ đen nhưng em buộc phải chung sống trong cùng một thể xác với kẻ kiêu ngạo, tàn nhẫn và sành sỏi cờ bạc như Lục Quyết. Trước tình cảnh bế tắc, vị cựu ông trùm quyết định thao túng đôi tay của em để bắt đầu hành trình lật kèo, ép buộc kẻ thù ghét cờ bạc phải dấn thân vào con đường đỏ đen đầy rẫy chông gai nhằm phục vụ cho kế hoạch phục thù tham vọng của hắn.`
             },
             {
                 id: 52,
                 name: "Cố Dư Mặc",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Hiện đại", "Công sở", "BDSM", "R21", "GL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221UJrpGDcqNl2gJZVKk7tAhbLcq-m1XPKE%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1kwf5ix26p6IdVO8q2tLhWCicKBa7T2TUwCJuN7P41ws/edit?tab=t.0#heading=h.4rgj865pnx7l",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Dư Mặc là nhị tiểu thư của gia tộc tài phiệt họ Cố nhưng cô chọn cách sống hai mặt khi che giấu sự sắc sảo sau vỏ bọc thực tập sinh hậu đậu tại Tập đoàn Tinh Lăng ban ngày để chờ thời cơ xoay chuyển vận mệnh. Khi màn đêm buông xuống tại câu lạc bộ Hắc Mạn Đà La, cô rũ bỏ mọi lễ giáo để trở thành Queen M, một kẻ thống trị chuyên dùng sự thao túng tâm lý để bẻ gãy ý chí của những người quyền lực. Mọi toan tính và vỏ bọc kiên cố của cô bắt đầu rung chuyển trước vị trưởng phòng ba mươi tuổi nghiêm khắc và đầy vẻ cấm dục. Những lời mắng nhiếc hay sự nghiêm túc của vị trưởng phòng ấy không hề gây ra oán hận mà ngược lại khơi dậy trong lòng Dư Mặc khao khát chiếm đoạt mãnh liệt, biến việc khuất phục người phụ nữ kiêu hãnh đó trở thành mục tiêu tối thượng để cô lấp đầy những khoảng trống cô độc và hàn gắn lòng kiêu hãnh đã sớm vụn vỡ từ lâu trong thế giới đầy toan tính.`
             },
             {
                 id: 53,
                 name: "Trần Minh Kha",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Hiện đại", "Việt Nam", "Giới giải trí", "Healing", "BG"],
+                links: {
+                    "Old UI": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221WhxLjUd8RyAD6waeIG0UR8Fq3rtQ9TBT%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                    "New UI": "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Zj2sN0u62xO6-xVSPr5aaRo5PQTxHv0Y%22%5D,%22action%22:%22open%22,%22userId%22:%22111827169782556448518%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing"
+                },
+                guideLink: "https://docs.google.com/document/d/1aNh9t8ql6eu38T8KNHQJyiqmtfbdb4B-g7ufQD1WKDI/edit?tab=t.0",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `*Lưu ý: Cách dùng New UI xem phần HD Giao diện mới ở đầu trang nhé!
+
+Trần Minh Kha là người đàn ông thành đạt nhưng tâm hồn đã vĩnh viễn dừng lại nơi quá khứ kể từ ngày vụ tai nạn cướp đi gia đình ba năm về trước. Sự xuất hiện lặng lẽ của cô gái trẻ đã vô tình đánh thức những xúc cảm vốn đã bị anh chôn vùi dưới lớp băng giá của ký ức, thế nhưng nỗi mặc cảm tội lỗi khiến anh luôn tìm cách trốn tránh hạnh phúc. Trớ trêu thay, chính cô gái ấy cũng đang gánh chịu một bầu trời sụp đổ sau thảm kịch mất người thân tại Singapore, dẫn đến việc cô chọn cách biến mất khỏi cuộc đời anh ngay khi bộ phim đóng máy. Một năm sau, định mệnh run rủi khiến hai tâm hồn vụn vỡ hội ngộ tại buổi lễ trao giải, nơi họ nhận ra những vết xước sâu hoắm trong lòng đối phương và đứng trước ngưỡng cửa của việc liệu có đủ dũng cảm để cùng nhau bước về phía trước.`
             },
             {
                 id: 54,
                 name: "The Werewolf Game",
-                tags: ["Hiện đại", "CEO", "Age gap", "Thư ký"],
-                aiLink: "#",
-                guideLink: "#",
+                tags: ["Hiện đại", "Horror", "Sinh tồn", "Trinh thám", "BG", "BL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221qXDoCSAzygszxHKO-rC65atAlBnFL7yX%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1chEINEXQbserSBJYxuNuoWrUUSrrHGugJ2IwaO-y32c/edit?tab=t.0#heading=h.peek5hzgrb27",
                 isNew: true, 
-                bio: `Tổng tài lạnh lùng, nghiêm nghị của tập đoàn đa quốc gia. Hơn bạn nhiều tuổi (Age gap), luôn giữ khoảng cách công việc nhưng ánh mắt thâm tình chưa từng rời khỏi bạn một giây. Thích chiếm hữu ngầm.`
+                bio: `Cuộc sống bình lặng của em tại ngôi làng hẻo lánh đảo lộn hoàn toàn khi Trịnh Phong, một cảnh sát trưởng từ thành phố trở về, bất ngờ qua đời và kéo theo lời nguyền phong tỏa không gian nơi này. Ngôi làng bỗng trở thành một chiến trường sinh tử với luật chơi Ma Sói tàn khốc mà kẻ thủ ác đã trà trộn vào đám đông dưới lớp vỏ bọc bình thường. Trịnh Phong trở thành một linh hồn vất vưởng bị trói buộc vào em và chỉ có em mới có thể nhìn thấy, giao tiếp với anh. Từ đó, thầy bói vốn không tin vào tâm linh cùng vị cảnh sát quá cố phải kết hợp tư duy logic và khả năng thấu thị tiềm ẩn để truy tìm hung thủ, bóc trần những bí mật đen tối của người dân và phá giải trận pháp tử thần trước khi tất cả bị bóng tối nuốt chửng.`
+            },
+            {
+                id: 55,
+                name: "Phan Chánh Lễ",
+                tags: ["Việt Nam", "Việt Nam xưa", "Angst", "Thanh xuân", "BL"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221qXDoCSAzygszxHKO-rC65atAlBnFL7yX%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1chEINEXQbserSBJYxuNuoWrUUSrrHGugJ2IwaO-y32c/edit?tab=t.0#heading=h.peek5hzgrb27",
+                isNew: true, 
+                bio: `Giữa lòng Sài Gòn những năm năm mươi hoa lệ, Phan Chánh Lễ xuất hiện như một nốt trầm lạc lõng tại trường trung học Đệ Nhị cấp Taberd danh giá. Mang danh công tử nhà giàu ngông cuồng với lớp vỏ bọc bất cần, cậu thiếu niên ấy lại giấu kín trong tim một mối tình lặng thầm dành cho em. Giữa xã hội đầy rẫy những định kiến khắc nghiệt về giới tính đang ngày đêm xâu xé tâm hồn mỏng manh của em, Lễ vẫn luôn âm thầm trở thành tấm khiên vững chãi nhất. Cậu dùng danh nghĩa anh em bạn bè để bảo bọc, chở che, để được đứng cạnh em mà chẳng dám nói lời yêu. Những nỗi sợ về gia phong cùng định kiến xã hội đã trở thành xiềng xích, đóng băng mọi khao khát yêu đương trong lòng chàng trai trẻ, khiến cậu chỉ biết lặng lẽ tự đày đọa mình trong những ngày tháng thanh xuân vừa chớm nở đầy giằng xé.`
             }
         ];
 
@@ -973,7 +1035,6 @@
             "bgm1.mp3",
             "bgm2.mp3",
             "bgm3.mp3",
-            "bgm4.mp3"
         ];
         let currentTrackIndex = 0;
 
