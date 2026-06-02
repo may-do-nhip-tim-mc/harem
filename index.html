@@ -462,8 +462,12 @@
             </div>
         </div>
 
+<!-- Thư viện Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <script>
-        // 1. CÂU QUẺ BÓI BÁNH QUY MAY MẮN (ĐÃ UPDATE THEO QUOTES CỦA CÔNG CHÚA)
+        // 1. CÂU QUẺ BÓI BÁNH QUY MAY MẮN
         const fortuneQuotes = [
             "Hôm nay là một ngày tuyệt vời để công chúa nhận được một nụ hôn bất ngờ! 💖",
             "Một tú nữ đang âm thầm nhung nhớ công chúa. Hãy để ý ánh mắt của họ nhé! ✨",
@@ -1032,6 +1036,15 @@ Trần Minh Kha là người đàn ông thành đạt nhưng tâm hồn đã vĩ
                 guideLink: "https://docs.google.com/document/d/1eKBsPyebespIj_PgJG1MQ86kseX-cnc43eEHEj3ewQE/edit?usp=sharing",
                 isNew: true, 
                 bio: `Giữa chung cư Tượng Sơn ngột ngạt và lấm tấm rêu phong, ý thức của {{user}} lơ lửng, mụ mị giữa những phương trình lượng tử khó nhằn. Chỉ một cái chạm dịu dàng mang theo hơi lạnh của Kỷ Ngôn đã đủ sức níu giữ ý thức chực đứt đoạn ấy trở về. Nơi đây chính là Timeline Zero — một hiện tại vẫn còn nguyên vẹn, chưa có tiếng còi hú xé toạc màn đêm hay vệt hoen ố nào loang lổ. Bên ngoài cánh cửa, nhịp sống vẫn chậm rãi trôi qua đầy chân thực, giữ cho nhựa sống bên trong trái tim họ vẫn tràn trề nhiệt huyết, vẹn nguyên như thuở ban đầu.`
+            },
+            {
+                id: 57,
+                name: "Tống Tiếu/Tống Hoài An",
+                tags: ["Cổ trang", "Angst", "Kiếm hiệp", "BL", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2212SXrT2kzFxdl6Pa7eRyv-PMtQq3GFIBT%22%5D,%22action%22:%22open%22,%22userId%22:%22101747461304119965231%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "",
+                isNew: true, 
+                bio: `Ba năm trước, Tống Tiếu từng là vị đại sư huynh ôn nhu, người mang theo những lời hứa hẹn dịu dàng về thanh mộc kiếm và kẹo hồ lô trước khi mất tích đầy bí ẩn tại Đại hội Võ lâm Trường An. Trong khi toàn bộ môn phái đinh ninh y đã rời bỏ nhân thế, {{user}} vẫn giữ trọn chấp niệm, miệt mài tu luyện suốt ba năm để bôn ba khắp chốn tìm kiếm bóng hình xưa. Cuộc hội ngộ định mệnh giữa kinh thành không mang theo sự đoàn tụ, mà thay vào đó là sự xuất hiện của Tống Hoài An, một Đồng Tri Bắc Trấn Phủ Ty với trái tim nguội lạnh, kẻ đã đoạn tuyệt quá khứ để khoác lên mình chiếc áo quyền lực đầy rẫy mưu mô. Sự thay đổi từ người thương thành kẻ xa lạ cùng những lời cự tuyệt sắc lạnh mà y dành cho {{user}} chính là khởi đầu cho hành trình giải mã bí ẩn phía sau sự biến chất đầy đau thương của người từng là nắng ấm trong đời.`
             }
         ];
 
@@ -1044,10 +1057,39 @@ Trần Minh Kha là người đàn ông thành đạt nhưng tâm hồn đã vĩ
         let currentTrackIndex = 0;
 
         let currentTag = "Tất cả";
-        let votes = JSON.parse(localStorage.getItem('harem_votes')) || {};
         let userLikes = JSON.parse(localStorage.getItem('harem_user_likes')) || {};
+        let votes = {}; // Số like giờ sẽ do Firebase quản lý, không dùng localStorage nữa
         let isPlaying = false;
         const bgMusic = document.getElementById('bg-music');
+
+        // CẤU HÌNH FIREBASE QUỐC TẾ
+        const firebaseConfig = {
+            apiKey: "AIzaSyD7jzinCrdYqvEVv7mUW8JB4xHfoyRWQ3U",
+            authDomain: "hau-cung-mc.firebaseapp.com",
+            databaseURL: "https://hau-cung-mc-default-rtdb.asia-southeast1.firebasedatabase.app", 
+            projectId: "hau-cung-mc",
+            storageBucket: "hau-cung-mc.firebasestorage.app",
+            messagingSenderId: "790226067927",
+            appId: "1:790226067927:web:1ca8214d9aa03f191e6b92"
+        };
+        
+        // Khởi động Database
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const db = firebase.database();
+
+        // 🌟 LẮNG NGHE LƯỢT LIKE REAL-TIME TỪ TẤT CẢ MỌI NGƯỜI
+        db.ref('harem_votes').on('value', (snapshot) => {
+            if (snapshot.exists()) {
+                votes = snapshot.val();
+            } else {
+                votes = {};
+            }
+            // Tự động load lại giao diện khi có người khác bấm like
+            filterCharacters();
+            renderLeaderboard();
+        });
 
         window.addEventListener('DOMContentLoaded', () => {
             if (playlist.length > 0) {
@@ -1335,21 +1377,29 @@ Trần Minh Kha là người đàn ông thành đạt nhưng tâm hồn đã vĩ
             document.body.classList.remove('modal-active');
         }
 
-        function vote(id) {
-            if (!votes[id]) votes[id] = 0;
+function vote(id) {
+            const voteRef = db.ref('harem_votes/' + id);
             
             if (userLikes[id]) {
-                votes[id] = Math.max(0, votes[id] - 1);
+                // Người dùng Hủy Like (Rút lại tình cảm)
                 userLikes[id] = false;
+                localStorage.setItem('harem_user_likes', JSON.stringify(userLikes)); // Vẫn lưu cờ "chưa like" ở máy khách
+                
+                // Gửi lệnh trừ 1 lên máy chủ
+                voteRef.transaction((currentVotes) => {
+                    return (currentVotes || 0) > 0 ? currentVotes - 1 : 0;
+                });
             } else {
-                votes[id]++;
+                // Người dùng Thả Tim
                 userLikes[id] = true;
+                localStorage.setItem('harem_user_likes', JSON.stringify(userLikes)); // Lưu cờ "đã like" ở máy khách
+                
+                // Gửi lệnh cộng 1 lên máy chủ
+                voteRef.transaction((currentVotes) => {
+                    return (currentVotes || 0) + 1;
+                });
             }
-            
-            localStorage.setItem('harem_votes', JSON.stringify(votes));
-            localStorage.setItem('harem_user_likes', JSON.stringify(userLikes));
-            filterCharacters();
-            renderLeaderboard();
+            // Không cần gõ hàm load lại giao diện ở đây nữa, Database sẽ lo việc đó.
         }
 
         // 🌟 TÍNH NĂNG LẬT THẺ THỊ TẨM (CHỌN TÚ NỮ) 🌟
