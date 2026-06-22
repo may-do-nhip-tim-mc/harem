@@ -248,6 +248,11 @@
                     <i class="fas fa-cookie-bite text-yellow-600 mr-2"></i> Bánh Quy May Mắn
                 </button>
 
+                <!-- 🌟 NÚT ART GALLERY 🌟 -->
+                <button onclick="openModal('gallery-modal')" class="bg-white border-2 border-dashed border-pink-300 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
+                    <i class="fas fa-image text-pink-400 mr-2"></i> Art Gallery
+                </button>
+
                 <div class="bg-white border-2 border-dashed border-pink-300 rounded-xl px-4 py-1.5 flex items-center gap-4 shadow-sm w-full sm:w-auto justify-between">
                     <div class="flex items-center gap-2 text-xs font-bold text-pink-400">
                         <div class="disc-icon w-6 h-6 bg-pink-50 rounded-full flex items-center justify-center border border-dotted border-pink-300 text-pink-400 text-[10px]"><i class="fas fa-music"></i></div>
@@ -310,7 +315,7 @@
                     </button>
                     
                     <div id="tags-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-pink-200 origin-top transition-all duration-300">
-                        <div class="flex flex-wrap gap-2" id="tag-container"></div>
+                        <div class="flex flex-wrap gap-2 max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar" id="tag-container"></div>
                     </div>
                 </div>
 
@@ -1327,21 +1332,39 @@ Bước qua ranh giới của chốn hồng trần mỏng manh tựa sương s�
         }
 
         function renderTags() {
-            const allTags = ["Tất cả"];
-            database.forEach(c => c.tags.forEach(t => { if(!allTags.includes(t)) allTags.push(t) }));
+            // 1. Gom tất cả các tag (trừ "Tất cả")
+            let uniqueTags = [];
+            database.forEach(c => c.tags.forEach(t => { 
+                if(!uniqueTags.includes(t)) uniqueTags.push(t); 
+            }));
+            
+            // 2. Tự động sắp xếp Alphabet (A-Z)
+            uniqueTags.sort((a, b) => a.localeCompare(b, 'vi'));
+            
+            // 3. Nối chữ "Tất cả" lên vị trí ĐẦU TIÊN
+            const allTags = ["Tất cả", ...uniqueTags];
+            
+            // 4. In ra giao diện
             const container = document.getElementById('tag-container');
             container.innerHTML = allTags.map(tag => `
                 <button onclick="filterByTag('${tag}')" 
-                        class="tag-pill cursor-pointer transition ${tag === currentTag ? 'bg-pink-400 text-white border-pink-400 shadow-sm' : 'hover:bg-pink-100'}">
+                        class="tag-pill hover:bg-pink-100 hover:scale-105 transition cursor-pointer active:scale-95 shadow-sm ${tag === currentTag ? '!bg-pink-400 !text-white !border-pink-400' : ''}">
                     #${tag}
                 </button>
             `).join('');
         }
 
         function filterByTag(tag) {
-            currentTag = tag;
+            // Nếu bấm lại vào tag đang chọn thì tự động quay về "Tất cả"
+            if (currentTag === tag) {
+                currentTag = "Tất cả";
+            } else {
+                currentTag = tag;
+            }
             renderTags();
             filterCharacters();
+            // Cuộn mượt mà lên khu vực danh sách
+            document.getElementById('harem-screen').scrollIntoView({ behavior: 'smooth' });
         }
 
         function renderList(data) {
@@ -1354,7 +1377,7 @@ Bước qua ranh giới của chốn hồng trần mỏng manh tựa sương s�
 
             displayData.forEach(char => {
                 const voteCount = votes[char.id] || 0;
-                const tagsHTML = char.tags.map(t => `<span class="tag-pill">#${t}</span>`).join('');
+                const tagsHTML = char.tags.map(t => `<button onclick="filterByTag('${t}')" class="tag-pill hover:bg-pink-100 hover:scale-105 transition cursor-pointer active:scale-95 shadow-sm">#${t}</button>`).join('');
                 const hasLiked = userLikes[char.id] ? true : false;
                 
                 const isNewBot = top3Ids.includes(char.id);
@@ -1520,6 +1543,51 @@ function vote(id) {
                 icon.classList.remove('rotate-180');
             }
         }
+        
     </script>
+    <!-- 🌟 MODAL ART GALLERY 🌟 -->
+    <div id="gallery-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[60]">
+        <div onclick="closeModal('gallery-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-4xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-xl p-6 md:p-8 relative flex flex-col max-h-[90vh]">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('gallery-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl z-10"><i class="fas fa-times"></i></button>
+            
+            <h2 class="font-title text-3xl text-pink-500 mb-1 text-center relative z-10">🎨 Art Gallery</h2>
+            <div class="kawaii-text text-pink-300 text-xs mb-4 relative z-10">──── ୨୧ ────</div>
+            
+            <!-- Khu vực cuộn chứa ảnh (Bạn có thể tự thêm bớt thẻ <div> chứa <img> ở đây) -->
+            <div class="overflow-y-auto pr-2 flex-1 pb-2">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="art-gallery-container">
+                    
+                    <!-- Khung Ảnh 1 -->
+                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform cursor-pointer flex flex-col">
+                        <img src="https://i.postimg.cc/d3trJ4jf/image-82346d.jpg" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-square" alt="Art">
+                        <p class="mt-2 text-center text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide">Louis Snafol</p>
+                    </div>
+                    
+                    <!-- Khung Ảnh 2 -->
+                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform cursor-pointer flex flex-col">
+                        <img src="https://placehold.co/400x400/FFE4E1/FF6181?text=Art+2" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-square" alt="Art">
+                        <p class="mt-2 text-center text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide">Fafnir Ironscale</p>
+                    </div>
+
+                    <!-- Khung Ảnh 3 -->
+                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform cursor-pointer flex flex-col">
+                        <img src="https://placehold.co/400x500/FFF0F3/FF85A2?text=Art+3" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-[4/5]" alt="Art">
+                        <p class="mt-2 text-center text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide">Tên Tú Nữ 3</p>
+                    </div>
+
+                    <!-- Khung Ảnh 4 -->
+                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform cursor-pointer flex flex-col">
+                        <img src="https://placehold.co/500x400/FFF5F7/D37381?text=Art+4" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-video" alt="Art">
+                        <p class="mt-2 text-center text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide">Tên Tú Nữ 4</p>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="kawaii-text text-pink-400 mt-4 shrink-0 relative z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        </div>
+    </div>
 </body>
 </html>
