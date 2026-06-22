@@ -1619,14 +1619,12 @@ function vote(id) {
             
             <!-- Khu vực cuộn chứa ảnh (Bạn có thể tự thêm bớt thẻ <div> chứa <img> ở đây) -->
             <div class="overflow-y-auto pr-2 flex-1 pb-2">
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="art-gallery-container">
+                <div class="columns-2 md:columns-3 gap-4" id="art-gallery-container">
                     
-                    <!-- Khung Ảnh 1 -->
-                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
-                        <img src="codumac.png" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-square cursor-pointer" alt="Art">
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="codumac.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
                         <div class="mt-2 flex justify-between items-center px-1">
                             <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Cố Dư Mặc (A) QuynhQ</p>
-                            <!-- Nút Like Tranh -->
                             <button onclick="voteGallery('art_1')" class="flex items-center gap-1 hover:scale-110 transition group">
                                 <i id="gallery-icon-art_1" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
                                 <span id="gallery-count-art_1" class="text-[10px] font-bold text-pink-500">0</span>
@@ -1634,9 +1632,8 @@ function vote(id) {
                         </div>
                     </div>
                     
-                    <!-- Khung Ảnh 2 -->
-                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
-                        <img src="dumacuser.jpg" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-square cursor-pointer" alt="Art">
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="dumacuser.jpg" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
                         <div class="mt-2 flex justify-between items-center px-1">
                             <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Cố Dư Mặc (A) Cơm Xào Tỏi</p>
                             <button onclick="voteGallery('art_2')" class="flex items-center gap-1 hover:scale-110 transition group">
@@ -1646,11 +1643,10 @@ function vote(id) {
                         </div>
                     </div>
 
-                    <!-- Khung Ảnh 3 -->
-                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
-                        <img src="CMS.png" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-[4/5] cursor-pointer" alt="Art">
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="CMS.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
                         <div class="mt-2 flex justify-between items-center px-1">
-                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Thỏ Péo hóa hình (A) Con ghẻ AOV</p>
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Thỏ Péo hóa hình (A) Con Ghẻ AOV</p>
                             <button onclick="voteGallery('art_3')" class="flex items-center gap-1 hover:scale-110 transition group">
                                 <i id="gallery-icon-art_3" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
                                 <span id="gallery-count-art_3" class="text-[10px] font-bold text-pink-500">0</span>
@@ -1658,11 +1654,11 @@ function vote(id) {
                         </div>
                     </div>
 
-                    <!-- Khung Ảnh 4 -->
-                    <div class="border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
-                        <img src="vyasketch.jpg" class="w-full h-auto rounded-xl object-cover shadow-sm aspect-video cursor-pointer" alt="Art">
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="vyasketch.jpg" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
                         <div class="mt-2 flex justify-between items-center px-1">
-                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Vyacheslav Zmeya</p>
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Vyacheslav Zmeya (A) Thosan Bongdem</p>
                             <button onclick="voteGallery('art_4')" class="flex items-center gap-1 hover:scale-110 transition group">
                                 <i id="gallery-icon-art_4" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
                                 <span id="gallery-count-art_4" class="text-[10px] font-bold text-pink-500">0</span>
@@ -1670,6 +1666,125 @@ function vote(id) {
                         </div>
                     </div>
 
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="vyacolor.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Vyacheslav Zmeya (C) Linh Nguyễn</p>
+                            <button onclick="voteGallery('art_5')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_5" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_5" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="kyphancry.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Kỳ Phàn (A) Neko Hitomi</p>
+                            <button onclick="voteGallery('art_6')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_6" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_6" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="kyphannote.jpg" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Kỳ Phàn (A) Trần Ái Tư Ly</p>
+                            <button onclick="voteGallery('art_7')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_7" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_7" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="kandanote.jpg" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Kanda Sousuke (A) Cơm Xào Tỏi</p>
+                            <button onclick="voteGallery('art_8')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_8" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_8" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="ngukiem.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Phái Ngự Kiếm - Phù Sinh Kính Ảnh (A) Nguyễn Trangg</p>
+                            <button onclick="voteGallery('art_9')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_9" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_9" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="linhto.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Phái Linh Tố - Phù Sinh Kính Ảnh (A) Nguyễn Trangg</p>
+                            <button onclick="voteGallery('art_10')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_10" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_10" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="tauyentomau.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Tạ Uyên (A) Kình Âm Lam Ca</p>
+                            <button onclick="voteGallery('art_11')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_11" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_11" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="diecthantomau.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Hứa Diệc Thần (A) Kình Âm Lam Ca</p>
+                            <button onclick="voteGallery('art_12')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_12" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_12" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="orocroissant.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Oroboros (A) Sở Tĩnh Lam</p>
+                            <button onclick="voteGallery('art_13')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_13" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_13" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="break-inside-avoid mb-4 border-2 border-dashed border-pink-200 p-2 rounded-2xl bg-pink-50/50 hover:scale-105 transition-transform flex flex-col">
+                        <img src="oroflower.png" class="w-full h-auto rounded-xl shadow-sm cursor-pointer" alt="Art">
+                        <div class="mt-2 flex justify-between items-center px-1">
+                            <p class="text-[11px] sm:text-xs font-bold text-pink-500 uppercase tracking-wide truncate">Oroboros (A) Trần Thanh Trúc</p>
+                            <button onclick="voteGallery('art_14')" class="flex items-center gap-1 hover:scale-110 transition group">
+                                <i id="gallery-icon-art_14" class="fas fa-heart text-pink-200 group-hover:text-pink-400 transition"></i>
+                                <span id="gallery-count-art_14" class="text-[10px] font-bold text-pink-500">0</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             
             <div class="kawaii-text text-pink-400 mt-4 shrink-0 relative z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
