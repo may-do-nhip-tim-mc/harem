@@ -1748,6 +1748,10 @@ Khi màn hình LED chạy dòng credit cuối cùng của bộ phim điện ản
                 const tagsHTML = char.tags.map(t => `<button onclick="filterByTag('${t}')" class="tag-pill hover:bg-pink-100 hover:scale-105 transition cursor-pointer active:scale-95 shadow-sm">#${t}</button>`).join('');
                 const hasLiked = userLikes[char.id] ? true : false;
                 
+                // Đếm số lượng bình luận
+                const cCount = globalComments[char.id] ? Object.keys(globalComments[char.id]).length : 0;
+                const cText = cCount > 0 ? `${cCount} bình luận` : `Bình luận`;
+
                 const isNewBot = top3Ids.includes(char.id);
                 const newTagHTML = isNewBot ? `
                     <span class="new-tag-melody text-[10px] font-bold px-3 py-1 rounded-full tracking-wider mt-1 md:mt-0 md:ml-3">
@@ -1797,7 +1801,7 @@ Khi màn hình LED chạy dòng credit cuối cùng của bộ phim điện ản
                                     </button>
                                     <button onclick="toggleComments(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group border-pink-200 hover:bg-pink-50 transition">
                                         <i class="fas fa-comment-dots text-pink-400"></i>
-                                        <span class="text-[11px] font-bold text-pink-500">Bình luận</span>
+                                        <span id="comment-count-badge-${char.id}" class="text-[11px] font-bold text-pink-500">${cText}</span>
                                     </button>
                                 </div>
                             </div>
@@ -2001,7 +2005,19 @@ function vote(id) {
                 globalComments = {};
             }
             updateAllOpenComments(); 
+            updateCommentCountUI(); // Cập nhật số đếm ra ngoài nút bấm
         });
+
+        // Hàm tự động nhảy số lượng bình luận
+        function updateCommentCountUI() {
+            database.forEach(char => {
+                const badge = document.getElementById(`comment-count-badge-${char.id}`);
+                if (badge) {
+                    const cCount = globalComments[char.id] ? Object.keys(globalComments[char.id]).length : 0;
+                    badge.innerText = cCount > 0 ? `${cCount} bình luận` : `Bình luận`;
+                }
+            });
+        }
 
         // Đóng/Mở khung bình luận
         function toggleComments(id) {
