@@ -442,60 +442,41 @@
                 <h2 class="font-title text-3xl text-pink-500 border-b-2 border-dashed border-pink-200 pb-2 mb-4 text-center">📜 Quy Trình Đặt Commission</h2>
                 <div class="kawaii-text text-pink-300 mb-4">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
                 <div class="space-y-4 text-sm leading-relaxed text-[#704F55]">
-                    <p class="font-semibold text-pink-500">✨ Quy trình 3 bước siêu đơn giản:</p>
-                    <ol class="list-decimal pl-4 space-y-1">
-                        <li>Liên hệ trực tiếp qua hộp thư Facebook hoặc Discord để xếp slot.</li>
-                        <li>Gửi thông tin mô tả ý tưởng của mình.</li>
-                        <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt theo ý muốn đến khi hoàn hảo.</li>
-                    </ol>
-                    <div class="kawaii-text text-pink-200 text-xs my-3">──── ୨୧ ────</div>
-                    <p class="font-semibold text-pink-500 mt-4">💰 Bảng giá tham khảo tạo Chatbot:</p>
-                    <table class="w-full text-left border-collapse border-2 border-dashed border-pink-200 rounded-2xl overflow-hidden TABLE_KAWAII">
-                        <thead>
-                            <tr class="bg-pink-100 text-pink-600 font-bold">
-                                <th class="p-3 border-b-2 border-dashed border-pink-200 w-1/4">Mức giá tối thiểu</th>
-                                <th class="p-3 border-b-2 border-dashed border-pink-200 w-2/5">Dịch vụ</th>
-                                <th class="p-3 border-b-2 border-dashed border-pink-200">TOS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="p-3 border-b border-dotted border-pink-200 font-semibold align-top">≥80.000đ</td>
-                                <td class="p-3 border-b border-dotted border-pink-200 align-top">
-                                    <ul class="space-y-3">
-                                        <li class="pb-3 border-b border-dashed border-pink-100 last:border-0 last:pb-0 relative pl-4">
-                                            <span class="absolute left-0 top-0 text-pink-400 font-bold">-</span>
-                                            Thoải mái đưa ra idea. Nếu bạn chỉ có một vài ý tưởng rời rạc hoặc chưa rõ ràng, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh luôn.
-                                        </li>
-                                        <li class="relative pl-4">
-                                            <span class="absolute left-0 top-0 text-pink-400 font-bold">-</span>
-                                            Tùy ý thêm các lệnh và cơ chế vận hành, tuy nhiên mình sẽ cân chỉnh lại để đảm bảo tính logic, phù hợp với bối cảnh và khả năng đọc hiểu thực tế của AI để char mượt nhất có thể.
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="p-3 border-b border-dotted border-pink-200 text-pink-500 font-bold align-top">
-                                    <ul class="space-y-3">
-                                        <li class="pb-3 border-b border-dashed border-pink-200 last:border-0 last:pb-0 relative pl-4">
-                                            <span class="absolute left-0 top-0">-</span>
-                                            Trả trước hay sau đều được. Chốt bill xong mình vẫn bảo hành sửa lỗi trọn đời nếu char bị rớt thiết lập nha.
-                                        </li>
-                                        <li class="pb-3 border-b border-dashed border-pink-200 last:border-0 last:pb-0 relative pl-4">
-                                            <span class="absolute left-0 top-0">-</span>
-                                            Các bạn đặt char Private thì mình cam kết giữ kín tuyệt đối, không bao giờ up public.
-                                        </li>
-                                        <li class="pb-3 border-b border-dashed border-pink-200 last:border-0 last:pb-0 relative pl-4">
-                                            <span class="absolute left-0 top-0">-</span>
-                                            Không mang char đi thương mại (bán lại) hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.
-                                        </li>
-                                        <li class="relative pl-4">
-                                            <span class="absolute left-0 top-0">-</span>
-                                            Mình sẽ ngưng giao dịch nếu bạn có lịch sử cảnh báo (phốt) từ trước, hoặc khi bạn chủ động ngưng ngang. Trong trường hợp giao dịch bị huỷ mà char đã hoàn thiện, mình có toàn quyền up public bot đó để mọi người cùng chơi. Đối với trường hợp test bot xong, cảm thấy ưng ý nhưng cố tình "bùng" phí, mình cũng toàn quyền đăng bài cảnh báo giao dịch công khai.
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    
+                    <!-- Khối Quy Trình -->
+                    <div class="bg-pink-50 border-2 border-dashed border-pink-200 rounded-2xl p-4">
+                        <h3 class="font-bold text-pink-600 mb-2 text-base"><i class="fas fa-magic mr-1"></i> Quy trình 3 bước:</h3>
+                        <ol class="list-decimal pl-5 space-y-1.5 font-medium">
+                            <li>Liên hệ qua hộp thư Facebook / Discord để xếp slot.</li>
+                            <li>Gửi thông tin mô tả ý tưởng của mình.</li>
+                            <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt đến khi hoàn hảo.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Khối Mức Giá & Dịch Vụ -->
+                    <div class="bg-white border-2 border-dashed border-pink-200 rounded-2xl p-4 shadow-sm">
+                        <h3 class="font-bold text-pink-600 mb-3 text-base flex justify-between items-center">
+                            <span><i class="fas fa-concierge-bell mr-1"></i> Dịch vụ</span>
+                            <span class="bg-pink-100 px-3 py-1 rounded-full text-sm">Giá: ≥ 80.000đ</span>
+                        </h3>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1 shrink-0"></i> <span>Thoải mái đưa ra idea. Nếu bạn chỉ có ý tưởng rời rạc, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh.</span></li>
+                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1 shrink-0"></i> <span>Tùy ý thêm lệnh và cơ chế (mình sẽ cân chỉnh lại để đảm bảo logic và AI hiểu mượt nhất có thể).</span></li>
+                            <li class="flex items-start gap-2"><i class="fas fa-times text-red-400 mt-1 shrink-0"></i> <span class="font-bold text-pink-500">Không nhận world build từ truyện/anime/phim vì không đảm bảo làm đúng được theo nguyên tác.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Khối TOS -->
+                    <div class="bg-white border-2 border-dashed border-pink-200 rounded-2xl p-4 shadow-sm">
+                        <h3 class="font-bold text-pink-600 mb-3 text-base"><i class="fas fa-exclamation-circle mr-1"></i> Điều khoản (TOS)</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-2"><i class="fas fa-shield-heart text-pink-400 mt-0.5 shrink-0"></i> <span>Trả trước hay sau đều được. Chốt bill xong mình vẫn <strong>bảo hành sửa lỗi trọn đời</strong> nếu char bị rớt thiết lập.</span></li>
+                            <li class="flex items-start gap-2"><i class="fas fa-lock text-pink-400 mt-0.5 shrink-0"></i> <span>Các bạn đặt char Private thì mình <strong>cam kết giữ kín tuyệt đối</strong>, không bao giờ up public.</span></li>
+                            <li class="flex items-start gap-2"><i class="fas fa-ban text-pink-400 mt-0.5 shrink-0"></i> <span><strong>Không mang char đi thương mại (bán lại)</strong> hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.</span></li>
+                            <li class="flex items-start gap-2"><i class="fas fa-gavel text-pink-400 mt-0.5 shrink-0"></i> <span>Mình sẽ ngưng giao dịch nếu bạn có phốt từ trước hoặc cố tình "bùng" ngang. Lúc đó mình toàn quyền <strong>up public bot để mọi người chơi</strong>, hoặc đăng bài cảnh báo công khai.</span></li>
+                        </ul>
+                    </div>
+
                 </div>
                 <div class="kawaii-text text-pink-400 mt-5">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
             </div>
