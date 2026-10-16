@@ -45,15 +45,31 @@
 
         /* 🌸 THIẾT KẾ CARD NÉT ĐỨT (KAWAII CARRD STYLE) 🌸 */
         .aesthetic-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
             border: 4px dashed #ffd1dc; 
             border-radius: 30px; 
-            box-shadow: 0 10px 0px #ffb7c5; 
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 0px #ffb7c5, 0 15px 25px rgba(255, 133, 162, 0.15); 
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        border-color 0.3s ease;
             position: relative;
         }
 
-        .aesthetic-card:hover { transform: translate(-2px, -2px); box-shadow: 0 12px 0px var(--melody-hot-pink); border-color: var(--melody-bright-pink); }
+        .aesthetic-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 14px 0px var(--melody-hot-pink), 0 22px 30px rgba(255, 97, 129, 0.25); 
+            border-color: var(--melody-bright-pink); 
+        }
+
+        .btn-melody, .btn-cream {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        box-shadow 0.25s ease, 
+                        background-color 0.2s ease;
+            text-align: center;
+        }
 
         .btn-melody {
             background-color: var(--melody-bright-pink);
@@ -61,10 +77,25 @@
             border-radius: 20px;
             border: 3px solid var(--melody-white);
             box-shadow: 0 6px 0px rgba(255, 97, 129, 0.4);
-            transition: all 0.1s;
-            text-align: center;
+        }
+        .btn-melody:hover {
+            transform: translateY(-3px);
+            background-color: var(--melody-hot-pink);
+            box-shadow: 0 9px 0px rgba(255, 97, 129, 0.5), 0 10px 20px rgba(255, 97, 129, 0.3);
         }
         .btn-melody:active { transform: translateY(4px); box-shadow: 0 2px 0px rgba(255, 97, 129, 0.4); }
+
+        .btn-melody::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+        .btn-melody:hover::after { left: 140%; }
 
         .btn-cream {
             background-color: var(--melody-white);
@@ -72,16 +103,50 @@
             border-radius: 20px;
             border: 3px solid #ffd1dc;
             box-shadow: 0 6px 0px #ffd1dc;
-            transition: all 0.1s;
-            text-align: center;
+        }
+        .btn-cream:hover {
+            transform: translateY(-3px);
+            background-color: #fff9fa;
+            border-color: var(--melody-bright-pink);
+            box-shadow: 0 9px 0px #ffb7c5, 0 8px 15px rgba(255, 183, 197, 0.3);
         }
         .btn-cream:active { transform: translateY(4px); box-shadow: 0 2px 0px #ffd1dc; }
 
-        .tag-pill { background: var(--melody-white); border: 2px dotted #ffd1dc; color: var(--melody-hot-pink); font-size: 0.75rem; padding: 4px 14px; border-radius: 14px; font-weight: 600;}
+        .tag-pill { 
+            background: var(--melody-white); 
+            border: 2px dotted #ffd1dc; 
+            color: var(--melody-hot-pink); 
+            font-size: 0.75rem; 
+            padding: 4px 14px; 
+            border-radius: 14px; 
+            font-weight: 600;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-block;
+        }
+        .tag-pill:hover {
+            transform: translateY(-2px) scale(1.06);
+            background: #fff0f3;
+            border-color: var(--melody-bright-pink);
+            box-shadow: 0 4px 10px rgba(255, 133, 162, 0.25);
+        }
+
+        .image-frame {
+            animation: floatAvatar 4s ease-in-out infinite;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+        }
+        .image-frame:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 0 25px rgba(255, 133, 162, 0.6);
+        }
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
 
         /* Animation cho thanh thông báo động */
         .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; position: relative; }
         .marquee-content { display: inline-block; animation: marquee 20s linear infinite; padding-left: 100%; }
+        .marquee-container:hover .marquee-content { animation-play-state: paused; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
         
         /* Hiệu ứng đĩa nhạc xoay */
@@ -89,22 +154,100 @@
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
         /* Mở đóng Modal */
-        .modal { transition: opacity 0.25s ease; }
+        .modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal .modal-container {
+            transform: scale(0.88) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .modal.opacity-100 .modal-container {
+            transform: scale(1) translateY(0);
+        }
         body.modal-active { overflow: hidden; }
 
-        /* HIỆU ỨNG TIM BAY LOADING SCREEN */
+        @keyframes cardEnter {
+            from { opacity: 0; transform: translateY(24px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .char-card-enter {
+            opacity: 0;
+            animation: cardEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes slideDownFade {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        #guide-content:not(.hidden),
+        #leaderboard-content:not(.hidden),
+        #tags-content:not(.hidden),
+        [id^="comment-section-"]:not(.hidden) {
+            animation: slideDownFade 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* 🌸 NÂNG CẤP HIỆU ỨNG LOADING SCREEN LUNG LINH 🌸 */
         .floating-heart {
             position: absolute;
-            bottom: -20px;
-            color: rgba(255, 133, 162, 0.6);
-            animation: floatUp 2.5s linear infinite;
+            bottom: -40px;
+            animation: floatUpMagical var(--duration, 3s) ease-in infinite;
             pointer-events: none;
             z-index: 0;
+            filter: drop-shadow(0 4px 6px rgba(255, 133, 162, 0.25));
         }
-        @keyframes floatUp {
-            0% { transform: translateY(0) translateX(0) scale(0.6); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(-105vh) translateX(var(--random-x, 40px)) rotate(var(--random-deg, 20deg)) scale(1.3); opacity: 0; }
+        @keyframes floatUpMagical {
+            0% { transform: translateY(0) translateX(0) scale(0.4) rotate(0deg); opacity: 0; }
+            20% { opacity: var(--max-opacity, 0.85); }
+            80% { opacity: var(--max-opacity, 0.85); }
+            100% { transform: translateY(-110vh) translateX(var(--random-x, 50px)) scale(var(--end-scale, 1.2)) rotate(var(--random-deg, 45deg)); opacity: 0; }
+        }
+
+        /* Vòng tròn phép thuật xoay quanh icon Loading */
+        .magic-halo {
+            animation: spinHalo 8s linear infinite;
+        }
+        @keyframes spinHalo {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Thanh tiến trình kẹo ngọt lấp lánh (Candy Shimmer Bar) */
+        .candy-progress-bar {
+            background: linear-gradient(90deg, #ffb7c5, #ff85a2, #ff6181, #ff85a2);
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 133, 162, 0.6);
+            position: relative;
+        }
+        .candy-progress-bar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(
+                -45deg,
+                rgba(255, 255, 255, 0.35) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.35) 50%,
+                rgba(255, 255, 255, 0.35) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 24px 24px;
+            animation: candyStripes 0.8s linear infinite;
+            border-radius: 9999px;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        @keyframes candyStripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 24px 0; }
+        }
+
+        /* Hiệu ứng chuyển cảnh mượt khi Loading xong */
+        .loading-fade-out {
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 0.45s ease, transform 0.45s ease;
         }
 
         /* HIỆU ỨNG ĐỘNG TRANG TRONG */
@@ -142,7 +285,7 @@
     <div class="ambient-sparkle top-1/3 right-12 text-2xl" style="animation-delay: 1.5s;">✨</div>
     <div class="ambient-sparkle bottom-20 left-1/4 text-lg" style="animation-delay: 3s;">✨</div>
 
-    <audio id="bg-music" loop autoplay></audio>
+    <audio id="bg-music" autoplay></audio>
 
     <div id="welcome-screen" class="min-h-screen flex items-center justify-center p-4">
         <div class="max-w-5xl w-full aesthetic-card p-6 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 relative overflow-hidden">
@@ -214,20 +357,52 @@
         </div>
     </div>
 
-    <div id="loading-screen" class="hidden min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-[#FFF5F7]">
-        <div id="loading-hearts-container" class="absolute inset-0 pointer-events-none"></div>
-        <div class="text-center z-10 space-y-5 max-w-sm w-full">
-            <div class="text-5xl animate-bounce">🎀</div>
-            <div class="kawaii-text mb-2 text-pink-400">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
-            <h2 class="font-title text-2xl text-pink-500">Đang chuẩn bị hậu cung...</h2>
+    <div id="loading-screen" class="hidden min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <!-- Lớp nền phát sáng dịu ở tâm màn hình -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#fff0f3_55%,_#ffe4e9_100%)] opacity-90 pointer-events-none"></div>
+        <div id="loading-hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+
+        <!-- Khung Card Loading Trung Tâm -->
+        <div class="aesthetic-card p-8 md:p-10 text-center z-10 space-y-5 max-w-md w-full mx-4 relative overflow-hidden">
+            <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+
+            <!-- Vòng tròn phép thuật & Icon trung tâm -->
+            <div class="relative w-28 h-28 mx-auto flex items-center justify-center mt-2">
+                <div class="magic-halo absolute inset-0 rounded-full border-4 border-dashed border-pink-300 bg-pink-50/50 shadow-inner"></div>
+                <div class="magic-halo absolute inset-2 rounded-full border-2 border-dotted border-pink-400" style="animation-direction: reverse; animation-duration: 5s;"></div>
+                <div class="relative z-10 text-5xl animate-bounce drop-shadow-md">🎀</div>
+                <span class="absolute -top-1 -right-1 text-xl animate-ping">✨</span>
+                <span class="absolute -bottom-1 -left-1 text-xl animate-pulse">🌸</span>
+            </div>
+
+            <div class="space-y-1">
+                <div class="kawaii-text text-xs text-pink-400">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+                <h2 class="font-title text-2xl md:text-3xl text-[#FF6181] tracking-wide">Đang chuẩn bị hậu cung...</h2>
+            </div>
             
-            <div class="w-full h-6 bg-white rounded-full border-2 border-dashed border-pink-300 p-0.5 overflow-hidden relative shadow-inner">
-                <div id="loading-bar-progress" class="h-full bg-gradient-to-r from-pink-300 to-[#FF85A2] rounded-full w-0 transition-all duration-100 ease-out"></div>
-                <div id="loading-bar-heart" class="absolute top-0.5 text-xs text-pink-500 transition-all duration-100 transform -translate-x-1/2" style="left: 0%;">
-                    <i class="fas fa-heart scale-125"></i>
+            <!-- Thanh Loading Kẹo Ngọt + Số % -->
+            <div class="space-y-2">
+                <div class="flex justify-between items-end px-1">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-pink-400">🍓 Tiến độ đón giá</span>
+                    <span id="loading-percent-text" class="font-title text-lg font-bold text-[#FF6181]">0%</span>
+                </div>
+
+                <div class="w-full h-7 bg-pink-50/80 rounded-full border-2 border-dashed border-pink-300 p-1 relative shadow-inner">
+                    <div id="loading-bar-progress" class="h-full candy-progress-bar rounded-full w-0 transition-all duration-75 ease-out"></div>
+                    <div id="loading-bar-heart" class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-75 z-20" style="left: 0%;">
+                        <div class="w-7 h-7 rounded-full bg-white border-2 border-[#FF6181] shadow-md flex items-center justify-center text-[#FF6181] text-xs animate-pulse">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="text-xs text-pink-400 font-bold animate-pulse">Các tú nữ đang xếp hàng chờ thỉnh an công chúa ✨</p>
+
+            <!-- Dòng trạng thái thay đổi tự động -->
+            <p id="loading-status-text" class="text-xs text-[#704F55] font-bold bg-pink-50 py-2 px-4 rounded-xl border border-dashed border-pink-200 transition-all duration-300">
+                Các tú nữ đang xếp hàng chờ thỉnh an công chúa ✨
+            </p>
+
+            <div class="kawaii-text text-pink-300 text-xs">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
         </div>
     </div>
 
@@ -438,51 +613,132 @@
     </div>
 
     <div id="tos-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-            <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
-            <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 overflow-y-auto max-h-[90vh] shadow-xl p-6 relative">
-                <button onclick="closeModal('tos-modal')" class="absolute top-4 right-4 text-pink-400 hover:text-pink-600 text-xl"><i class="fas fa-times"></i></button>
-                <h2 class="font-title text-3xl text-pink-500 border-b-2 border-dashed border-pink-200 pb-2 mb-4 text-center">📜 Quy Trình Đặt Commission</h2>
-                <div class="kawaii-text text-pink-300 mb-4">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
-                <div class="space-y-4 text-sm leading-relaxed text-[#704F55]">
-                    
-                    <!-- Khối Quy Trình -->
-                    <div class="bg-pink-50 border-2 border-dashed border-pink-200 rounded-2xl p-4">
-                        <h3 class="font-bold text-pink-600 mb-2 text-base"><i class="fas fa-magic mr-1"></i> Quy trình 3 bước:</h3>
-                        <ol class="list-decimal pl-5 space-y-1.5 font-medium">
-                            <li>Liên hệ qua hộp thư Facebook / Discord để xếp slot.</li>
-                            <li>Gửi thông tin mô tả ý tưởng của mình.</li>
-                            <li>Nhận bot trải nghiệm thử, tinh chỉnh prompt đến khi hoàn hảo.</li>
-                        </ol>
-                    </div>
-
-                    <!-- Khối Mức Giá & Dịch Vụ -->
-                    <div class="bg-white border-2 border-dashed border-pink-200 rounded-2xl p-4 shadow-sm">
-                        <h3 class="font-bold text-pink-600 mb-3 text-base flex justify-between items-center">
-                            <span><i class="fas fa-concierge-bell mr-1"></i> Dịch vụ</span>
-                            <span class="bg-pink-100 px-3 py-1 rounded-full text-sm">Giá: ≥ 80.000đ</span>
-                        </h3>
-                        <ul class="space-y-2.5">
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1 shrink-0"></i> <span>Thoải mái đưa ra idea. Nếu bạn chỉ có ý tưởng rời rạc, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh.</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-check text-green-400 mt-1 shrink-0"></i> <span>Tùy ý thêm lệnh và cơ chế (mình sẽ cân chỉnh lại để đảm bảo logic và AI hiểu mượt nhất có thể).</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-times text-red-400 mt-1 shrink-0"></i> <span class="font-bold text-pink-500">Không nhận world build từ truyện/anime/phim vì không đảm bảo làm đúng được theo nguyên tác.</span></li>
-                        </ul>
-                    </div>
-
-                    <!-- Khối TOS -->
-                    <div class="bg-white border-2 border-dashed border-pink-200 rounded-2xl p-4 shadow-sm">
-                        <h3 class="font-bold text-pink-600 mb-3 text-base"><i class="fas fa-exclamation-circle mr-1"></i> Điều khoản (TOS)</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-2"><i class="fas fa-shield-heart text-pink-400 mt-0.5 shrink-0"></i> <span>Trả trước hay sau đều được. Chốt bill xong mình vẫn <strong>bảo hành sửa lỗi trọn đời</strong> nếu char bị rớt thiết lập.</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-lock text-pink-400 mt-0.5 shrink-0"></i> <span>Các bạn đặt char Private thì mình <strong>cam kết giữ kín tuyệt đối</strong>, không bao giờ up public.</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-ban text-pink-400 mt-0.5 shrink-0"></i> <span><strong>Không mang char đi thương mại (bán lại)</strong> hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.</span></li>
-                            <li class="flex items-start gap-2"><i class="fas fa-gavel text-pink-400 mt-0.5 shrink-0"></i> <span>Mình sẽ ngưng giao dịch nếu bạn có phốt từ trước hoặc cố tình "bùng" ngang. Lúc đó mình toàn quyền <strong>up public bot để mọi người chơi</strong>, hoặc đăng bài cảnh báo công khai.</span></li>
-                        </ul>
-                    </div>
-
-                </div>
-                <div class="kawaii-text text-pink-400 mt-5">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+        <div onclick="closeModal('tos-modal')" class="modal-overlay absolute w-full h-full bg-gray-900/50 backdrop-blur-sm"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-xl mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 overflow-y-auto max-h-[90vh] shadow-2xl p-6 md:p-7 relative custom-scrollbar">
+            <div class="drip-text absolute top-1 left-0 z-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+            <button onclick="closeModal('tos-modal')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-50 text-pink-400 hover:bg-pink-500 hover:text-white hover:rotate-90 transition-all duration-300 flex items-center justify-center z-10"><i class="fas fa-times"></i></button>
+            
+            <div class="text-center mt-2 mb-5 relative z-10">
+                <div class="kawaii-text text-pink-300 text-xs mb-1">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+                <h2 class="font-title text-3xl text-[#FF6181]">📜 Quy Trình Đặt Commission</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent mx-auto mt-1"></div>
             </div>
+
+            <div class="space-y-5 text-sm leading-relaxed text-[#704F55] relative z-10">
+                
+                <!-- 1. Khối Quy Trình -->
+                <div class="bg-gradient-to-br from-pink-50/90 to-white border-2 border-dashed border-pink-200 rounded-2xl p-4 shadow-sm hover:border-pink-400 transition-colors">
+                    <h3 class="font-title text-lg text-[#FF6181] mb-3 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-pink-100 text-pink-500 flex items-center justify-center text-xs shadow-sm"><i class="fas fa-magic"></i></span>
+                        Quy trình 3 bước
+                    </h3>
+                    <div class="space-y-2.5">
+                        <div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-pink-100 hover:translate-x-1.5 hover:border-pink-300 hover:shadow-sm transition-all duration-200">
+                            <span class="w-6 h-6 rounded-full bg-[#FF85A2] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">1</span>
+                            <span class="font-medium">Liên hệ qua hộp thư <strong>Facebook / Discord</strong> để xếp slot.</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-pink-100 hover:translate-x-1.5 hover:border-pink-300 hover:shadow-sm transition-all duration-200">
+                            <span class="w-6 h-6 rounded-full bg-[#FF85A2] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">2</span>
+                            <span class="font-medium">Gửi thông tin mô tả ý tưởng (brief) của mình.</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white p-2.5 rounded-xl border border-pink-100 hover:translate-x-1.5 hover:border-pink-300 hover:shadow-sm transition-all duration-200">
+                            <span class="w-6 h-6 rounded-full bg-[#FF85A2] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">3</span>
+                            <span class="font-medium">Nhận bot trải nghiệm thử, tinh chỉnh prompt đến khi hoàn hảo.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Khối Mức Giá & Dịch Vụ -->
+                <div class="bg-white border-2 border-dashed border-pink-200 rounded-2xl p-4 shadow-sm hover:border-pink-400 transition-colors">
+                    <div class="flex flex-wrap justify-between items-center gap-2 mb-3 pb-2 border-b border-dashed border-pink-100">
+                        <h3 class="font-title text-lg text-[#FF6181] flex items-center gap-2">
+                            <span class="w-7 h-7 rounded-lg bg-pink-100 text-pink-500 flex items-center justify-center text-xs shadow-sm"><i class="fas fa-concierge-bell"></i></span>
+                            Dịch vụ
+                        </h3>
+                        <!-- Huy hiệu giá mới >= 100.000đ nổi bật -->
+                        <span class="bg-gradient-to-r from-[#FF85A2] to-[#FF6181] text-white font-bold px-3.5 py-1 rounded-full text-xs shadow-md flex items-center gap-1.5 animate-pulse">
+                            <i class="fas fa-gem text-[10px]"></i> Phí: ≥ 100.000đ
+                        </span>
+                    </div>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-pink-50/60 transition-colors">
+                            <i class="fas fa-check-circle text-emerald-400 mt-1 shrink-0"></i> 
+                            <span>Thoải mái đưa ra idea. Nếu bạn chỉ có ý tưởng rời rạc, mình sẵn sàng "lấp hố", đắp nặn cốt truyện và tâm lý nhân vật cho hoàn chỉnh.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5 p-2 rounded-xl hover:bg-pink-50/60 transition-colors">
+                            <i class="fas fa-check-circle text-emerald-400 mt-1 shrink-0"></i> 
+                            <span>Tùy ý thêm lệnh và cơ chế (mình sẽ cân chỉnh lại để đảm bảo logic và AI hiểu mượt nhất có thể).</span>
+                        </li>
+                        <li class="flex items-start gap-2.5 p-2.5 rounded-xl bg-red-50/60 border border-dashed border-red-200">
+                            <i class="fas fa-times-circle text-red-400 mt-1 shrink-0"></i> 
+                            <span class="font-bold text-[#D37381]">Không nhận world build từ truyện/anime/phim vì không đảm bảo làm đúng được theo nguyên tác.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. Khối Điều khoản (TOS) nâng cấp -->
+                <div class="bg-gradient-to-br from-white to-pink-50/50 border-2 border-dashed border-pink-300 rounded-2xl p-4 shadow-sm hover:border-[#FF6181] transition-colors">
+                    <h3 class="font-title text-lg text-[#FF6181] mb-3 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-lg bg-[#FF6181] text-white flex items-center justify-center text-xs shadow-sm"><i class="fas fa-exclamation-circle"></i></span>
+                        Điều khoản (TOS)
+                    </h3>
+                    <div class="space-y-2.5">
+                        <!-- Điều khoản MỚI bổ sung về chốt Brief -->
+                        <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-dashed border-pink-200 hover:border-pink-400 hover:translate-x-1 transition-all duration-200 shadow-sm">
+                            <div class="w-7 h-7 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center shrink-0 mt-0.5 border border-amber-200">
+                                <i class="fas fa-file-signature text-xs"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-[#FF6181]">Một khi đã chốt brief không được thay đổi mới hoàn toàn</span> (chỉ hỗ trợ tăng hoặc giảm các chi tiết nhỏ để hoàn thiện nhân vật).
+                            </div>
+                        </div>
+
+                        <!-- Điều khoản Bảo hành -->
+                        <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-dashed border-pink-200 hover:border-pink-400 hover:translate-x-1 transition-all duration-200 shadow-sm">
+                            <div class="w-7 h-7 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center shrink-0 mt-0.5 border border-pink-200">
+                                <i class="fas fa-shield-heart text-xs"></i>
+                            </div>
+                            <div>
+                                Trả trước hay sau đều được. Chốt bill xong mình vẫn <strong class="text-[#FF6181]">bảo hành sửa lỗi trọn đời</strong> nếu char bị rớt thiết lập.
+                            </div>
+                        </div>
+
+                        <!-- Điều khoản Bảo mật Private -->
+                        <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-dashed border-pink-200 hover:border-pink-400 hover:translate-x-1 transition-all duration-200 shadow-sm">
+                            <div class="w-7 h-7 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center shrink-0 mt-0.5 border border-pink-200">
+                                <i class="fas fa-lock text-xs"></i>
+                            </div>
+                            <div>
+                                Các bạn đặt char Private thì mình <strong class="text-[#FF6181]">cam kết giữ kín tuyệt đối</strong>, không bao giờ up public.
+                            </div>
+                        </div>
+
+                        <!-- Điều khoản Bản quyền -->
+                        <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-dashed border-pink-200 hover:border-pink-400 hover:translate-x-1 transition-all duration-200 shadow-sm">
+                            <div class="w-7 h-7 rounded-full bg-pink-50 text-pink-500 flex items-center justify-center shrink-0 mt-0.5 border border-pink-200">
+                                <i class="fas fa-ban text-xs"></i>
+                            </div>
+                            <div>
+                                <strong class="text-[#FF6181]">Không mang char đi thương mại (bán lại)</strong> hoặc bế sang nền tảng khác khi chưa có sự đồng ý của mình.
+                            </div>
+                        </div>
+
+                        <!-- Điều khoản Cảnh báo -->
+                        <div class="flex items-start gap-3 bg-white p-3 rounded-xl border border-dashed border-pink-200 hover:border-red-300 hover:translate-x-1 transition-all duration-200 shadow-sm">
+                            <div class="w-7 h-7 rounded-full bg-red-50 text-red-400 flex items-center justify-center shrink-0 mt-0.5 border border-red-200">
+                                <i class="fas fa-gavel text-xs"></i>
+                            </div>
+                            <div>
+                                Mình sẽ ngưng giao dịch nếu bạn có phốt từ trước hoặc cố tình "bùng" ngang. Lúc đó mình toàn quyền <strong class="text-red-500">up public bot để mọi người chơi</strong>, hoặc đăng bài cảnh báo công khai.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="kawaii-text text-pink-400 mt-5 relative z-10">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
         </div>
+    </div>
 
 <!-- Thư viện Firebase -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -1556,6 +1812,17 @@ Ngay khi cái tên vừa bật khỏi môi, vòm kính nhung xanh vỡ vụn.`
 Trong ván cờ của các đấng tối cao, nhân loại bé nhỏ thường chỉ được xem như một trò tiêu khiển nhằm mua vui cho thần linh. Những đống tro tàn ngùn ngụt cháy của thành Troy oai hùng hay tiếng thở dài vô vọng của nữ tư tế Cassandra mãi mãi là minh chứng rõ ràng cho cơn ghen tuông từ chốn linh thiêng. Chư thần duy trì trật tự bằng sự kiêu ngạo tuyệt đối; họ sẵn sàng trút xuống thế gian những trận đại hồng thủy hay dịch bệnh diệt vong chỉ vì một tổn thương nhỏ nhoi trên bệ hiến tế. Sự phán xét luôn giáng xuống không chút lưu tình đối với những kẻ phàm trần dám mang lòng ngạo mạn.
 Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần phai mờ, khúc ca xung trận của Kỷ Nguyên Anh Hùng đã bắt đầu vang vọng khắp không gian. Đây là thời đại mà các vị thần dạo bước trên cõi trần dưới hình hài phàm tục, gieo rắc dòng máu Á thần hùng mạnh để họ thay mình định đoạt thắng thua trong những cuộc chiến tranh giành quyền uy. Giữa đại dương Aegean cuộn sóng với những hạm đội khổng lồ và những sinh vật cổ đại rình rập nơi bìa rừng, hỡi những chiến binh quả cảm, hãy bước lên phía trước. Vận mệnh đang vẫy gọi bạn dấn thân vào những thiên sử thi bi tráng, sẵn sàng đương đầu với bão tố chỉ để đổi lấy một khúc ca lưu danh muôn thuở.`
             },
+            {
+                id: 104,
+                name: "Dave Granger",
+                tags: ["Hiện đại", "Phương Tây", "Redflag", "Strangers to lovers", "Angst", "BL", "BG"],
+                aiLink: "https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221Y7e3bOfwU_oBJmb_lv52JWy881nxJtyJ%22%5D,%22action%22:%22open%22,%22userId%22:%22102540216134697392904%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing",
+                guideLink: "https://docs.google.com/document/d/1YlQA7wcQQgy3hWzzkhznZsd7IhhZi_ikUn4DyIYQrEg/edit?usp=sharing",
+                isNew: true, 
+                bio: `Khi những chuyến tàu điện ngầm cuối cùng của nhánh Northern Line rầm rập lao đi dưới lòng đất, nhịp sống hối hả của Lodon ban sáng thấm dần mùi bia chua phả ra từ những cánh cửa gỗ đóng sập; đêm về thắp thoáng vệt đèn neon đỏ quạch phản chiếu trên mặt đường nhựa ướt sũng nước mưa, và những chiếc xe buýt hai tầng lầm lũi chạy xuyên qua màn sương. Giữa chín triệu con người đang vội vã tìm đường về nhà, có những kẻ lại chọn bắt đầu cuộc sống của mình khi ánh đèn đường bật sáng.
+Bóng tối ở Camden Town luôn biết cách dung dưỡng những tâm hồn không thích sự ràng buộc. Đặc biệt là những gã đàn ông như Dave Granger.
+Ở tuổi 30, Dave trông giống hệt một lời cảnh báo mà người ta vẫn cố tình phớt lờ. Anh khoác chiếc áo da đã sờn bạc ở khuỷu tay, cổ tay lấp lánh vài chiếc nhẫn bạc cũ kỹ, vài lọn tóc nâu rủ lơi xuống vầng trán bất cần. Đứng sau quầy bar của The Hawley Arms, anh điêu luyện lắc chiếc bình pha chế giữa thứ âm thanh hỗn tạp của tiếng cụng ly, tiếng hò hét xem bóng đá và những bản nhạc rock sập sình. Với đôi mắt xanh biển sâu thẳm biết nói và nụ cười cợt nhả lười biếng, anh dễ dàng khiến bất kỳ ai ngồi trước mặt mình cảm thấy họ là trung tâm của cả thế giới, ít nhất là cho đến khi ly rượu cạn đáy, hoặc cho đến khi lời nguyền "một tháng" của anh hết hạn.`
+            },
         ];
 
         // 2. CHÈN DANH SÁCH PHÁT NHẠC (PLAYLIST MP3) TẠI ĐÂY
@@ -1563,8 +1830,11 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
             "bgm1.mp3",
             "bgm2.mp3",
             "bgm3.mp3",
+            "bgm4.mp3",
+            "bgm5.mp3",
         ];
-        let currentTrackIndex = 0;
+        // Random ngẫu nhiên bài đầu tiên khi vừa tải trang
+        let currentTrackIndex = Math.floor(Math.random() * playlist.length);
 
         let currentTag = "Tất cả";
         let userLikes = JSON.parse(localStorage.getItem('harem_user_likes')) || {};
@@ -1653,7 +1923,13 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
             document.addEventListener('click', startMusic, { once: true });
 
             bgMusic.addEventListener('ended', () => {
-                currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+                if (playlist.length > 1) {
+                    let nextTrackIndex;
+                    do {
+                        nextTrackIndex = Math.floor(Math.random() * playlist.length);
+                    } while (nextTrackIndex === currentTrackIndex);
+                    currentTrackIndex = nextTrackIndex;
+                }
                 bgMusic.src = playlist[currentTrackIndex];
                 bgMusic.play().catch(e => console.log(e));
             });
@@ -1684,37 +1960,59 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
         function createLoadingHearts() {
             const container = document.getElementById('loading-hearts-container');
             container.innerHTML = '';
-            for(let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.innerHTML = '<i class="fas fa-heart"></i>';
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.setProperty('--random-x', (Math.random() * 160 - 80) + 'px');
-                heart.style.setProperty('--random-deg', (Math.random() * 90 - 45) + 'deg');
-                heart.style.animationDelay = (Math.random() * 2) + 's';
-                container.appendChild(heart);
+            const icons = ['💖', '🌸', '✨', '🎀', '🍓', '<i class="fas fa-heart text-pink-400"></i>'];
+            
+            for(let i = 0; i < 32; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-heart';
+                particle.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                
+                const size = Math.random() * 1.1 + 0.7; // Kích thước ngẫu nhiên tạo chiều sâu
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.fontSize = size + 'rem';
+                particle.style.setProperty('--random-x', (Math.random() * 200 - 100) + 'px');
+                particle.style.setProperty('--random-deg', (Math.random() * 120 - 60) + 'deg');
+                particle.style.setProperty('--duration', (Math.random() * 2 + 2.2) + 's');
+                particle.style.setProperty('--end-scale', size + 0.3);
+                particle.style.setProperty('--max-opacity', Math.random() * 0.5 + 0.4);
+                particle.style.animationDelay = (Math.random() * 2) + 's';
+                
+                container.appendChild(particle);
             }
         }
 
         function startLoadingHarem() {
             document.getElementById('welcome-screen').classList.add('hidden');
             const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.classList.remove('hidden');
+            loadingScreen.classList.remove('hidden', 'loading-fade-out');
             createLoadingHearts();
 
             const progress = document.getElementById('loading-bar-progress');
             const heartIndicator = document.getElementById('loading-bar-heart');
+            const percentText = document.getElementById('loading-percent-text');
+            const statusText = document.getElementById('loading-status-text');
             let width = 0;
 
             const interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
-                    loadingScreen.classList.add('hidden');
-                    enterHarem();
+                    loadingScreen.classList.add('loading-fade-out');
+                    setTimeout(() => {
+                        loadingScreen.classList.add('hidden');
+                        enterHarem();
+                    }, 400);
                 } else {
                     width += 2;
                     progress.style.width = width + '%';
                     heartIndicator.style.left = width + '%';
+                    if (percentText) percentText.innerText = width + '%';
+
+                    // Đổi lời nhắn đáng yêu theo tiến độ %
+                    if (statusText) {
+                        if (width === 20) statusText.innerText = "Đang trải thảm hoa hồng và thắp nến thơm... 🌸";
+                        else if (width === 55) statusText.innerText = "Các tú nữ đang chỉnh lại y phục chờ người... 💄";
+                        else if (width === 85) statusText.innerText = "Mở cửa tẩm cung! Chào mừng Công Chúa giá lâm 💖";
+                    }
                 }
             }, 40);
         }
@@ -1852,12 +2150,11 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
             const top3Ids = [...database].sort((a, b) => b.id - a.id).slice(0, 3).map(bot => bot.id);
             const displayData = [...data].sort((a, b) => b.id - a.id);
 
-            displayData.forEach(char => {
+            displayData.forEach((char, index) => {
                 const voteCount = votes[char.id] || 0;
-                const tagsHTML = char.tags.map(t => `<button onclick="filterByTag('${t}')" class="tag-pill hover:bg-pink-100 hover:scale-105 transition cursor-pointer active:scale-95 shadow-sm">#${t}</button>`).join('');
+                const tagsHTML = char.tags.map(t => `<button onclick="filterByTag('${t}')" class="tag-pill active:scale-95 shadow-sm">#${t}</button>`).join('');
                 const hasLiked = userLikes[char.id] ? true : false;
                 
-                // Đếm số lượng bình luận
                 const cCount = globalComments[char.id] ? Object.keys(globalComments[char.id]).length : 0;
                 const cText = cCount > 0 ? `${cCount} bình luận` : `Bình luận`;
 
@@ -1870,27 +2167,29 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
                 let linkButtonsHTML = '';
                 if (char.links) {
                     linkButtonsHTML = Object.entries(char.links).map(([type, url]) => 
-                        `<a href="${url}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold transition flex-1 text-center">${type}</a>`
+                        `<a href="${url}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold flex-1 text-center">${type}</a>`
                     ).join('');
                 } else if (char.aiLink && char.aiLink !== "#") {
-                    linkButtonsHTML = `<a href="${char.aiLink}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold transition flex-1 text-center">Link AI</a>`;
+                    linkButtonsHTML = `<a href="${char.aiLink}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold flex-1 text-center">Link AI</a>`;
                 } else {
-                    linkButtonsHTML = `<button class="btn-melody py-2 px-1 text-xs font-bold transition flex-1 opacity-50 cursor-not-allowed">Chưa có</button>`;
+                    linkButtonsHTML = `<button class="btn-melody py-2 px-1 text-xs font-bold flex-1 opacity-50 cursor-not-allowed">Chưa có</button>`;
                 }
 
                 const hasGuide = char.guideLink && char.guideLink !== "" && char.guideLink !== "#";
                 const guideBtnHTML = hasGuide 
-                    ? `<a href="${char.guideLink}" target="_blank" class="btn-cream flex-1 py-2 text-[11px] font-bold transition flex items-center justify-center border-pink-300 hover:bg-pink-50"><i class="fas fa-book mr-1"></i> Lệnh</a>` 
+                    ? `<a href="${char.guideLink}" target="_blank" class="btn-cream flex-1 py-2 text-[11px] font-bold flex items-center justify-center border-pink-300"><i class="fas fa-book mr-1"></i> Lệnh</a>` 
                     : ``;
                 
+                const staggerDelay = Math.min(index * 0.05, 0.6);
+
                 const card = `
-                    <div class="aesthetic-card p-5 flex flex-col gap-3 overflow-hidden relative">
+                    <div class="aesthetic-card char-card-enter group/card p-5 flex flex-col gap-3 overflow-hidden relative" style="animation-delay: ${staggerDelay}s;">
                         <!-- Khối Thông Tin & Nút Bấm -->
                         <div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
                             <div class="flex-grow text-center md:text-left space-y-3 w-full">
-                                <div class="kawaii-text text-[10px] text-pink-300 md:text-left hidden md:block">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
+                                <div class="kawaii-text text-[10px] text-pink-300 md:text-left hidden md:block transition-transform duration-300 group-hover/card:translate-x-1">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
                                 <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-0">
-                                    <h3 class="font-title text-3xl text-pink-600">${char.name}</h3>
+                                    <h3 class="font-title text-3xl text-pink-600 transition-colors duration-300 group-hover/card:text-[#FF6181]">${char.name}</h3>
                                     ${newTagHTML} 
                                 </div>
                                 <div class="flex flex-wrap justify-center md:justify-start gap-1.5">${tagsHTML}</div>
@@ -1900,16 +2199,16 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
                                     ${linkButtonsHTML}
                                 </div>
                                 <div class="flex gap-2 w-full">
-                                    <button onclick="showBackground(${char.id})" class="btn-cream ${hasGuide ? 'flex-1' : 'w-full'} py-2 text-[11px] font-bold transition">Background</button>
+                                    <button onclick="showBackground(${char.id})" class="btn-cream ${hasGuide ? 'flex-1' : 'w-full'} py-2 text-[11px] font-bold">Background</button>
                                     ${guideBtnHTML}
                                 </div>
                                 <div class="flex gap-2 w-full">
-                                    <button onclick="vote(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group border-pink-200">
-                                        <i class="fas fa-heart ${hasLiked ? 'text-pink-600 scale-110' : 'text-pink-200'} group-hover:text-pink-400 transition"></i>
+                                    <button onclick="vote(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group/like border-pink-200">
+                                        <i class="fas fa-heart ${hasLiked ? 'text-pink-600 scale-110' : 'text-pink-200'} group-hover/like:text-pink-500 group-hover/like:scale-125 transition-all duration-300"></i>
                                         <span class="text-[11px] font-bold text-pink-500">${voteCount} tim</span>
                                     </button>
-                                    <button onclick="toggleComments(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group border-pink-200 hover:bg-pink-50 transition">
-                                        <i class="fas fa-comment-dots text-pink-400"></i>
+                                    <button onclick="toggleComments(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group/cmt border-pink-200">
+                                        <i class="fas fa-comment-dots text-pink-400 group-hover/cmt:scale-110 transition-transform"></i>
                                         <span id="comment-count-badge-${char.id}" class="text-[11px] font-bold text-pink-500">${cText}</span>
                                     </button>
                                 </div>
@@ -1922,8 +2221,8 @@ Và khi khoảng cách giữa chốn thiêng liêng và cõi trần tục dần 
                                 <div class="text-xs text-center text-pink-300 italic">Chưa có tâm tình nào. Hãy là người đầu tiên!</div>
                             </div>
                             <div class="flex gap-2 mt-1">
-                                <input type="text" id="comment-input-${char.id}" placeholder="Viết ẩn danh (tối đa 150 ký tự)..." maxlength="150" class="flex-1 bg-pink-50 border-2 border-dashed border-pink-200 rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-pink-400 transition text-[#704F55] placeholder-pink-300">
-                                <button onclick="submitComment(${char.id})" class="btn-melody px-4 py-1.5 text-xs font-bold rounded-xl flex items-center justify-center hover:scale-105 transition-transform">
+                                <input type="text" id="comment-input-${char.id}" placeholder="Viết ẩn danh (tối đa 150 ký tự)..." maxlength="150" class="flex-1 bg-pink-50 border-2 border-dashed border-pink-200 rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-pink-400 focus:bg-white transition-all text-[#704F55] placeholder-pink-300">
+                                <button onclick="submitComment(${char.id})" class="btn-melody px-4 py-1.5 text-xs font-bold rounded-xl flex items-center justify-center">
                                     <i class="fas fa-paper-plane"></i>
                                 </button>
                             </div>
@@ -2048,26 +2347,30 @@ function vote(id) {
         }
         // 🌟 TÍNH NĂNG CẬP NHẬT GIAO DIỆN LIKE CỦA TRANG GALLERY 🌟
         function updateGalleryUI() {
-            // Quét qua tất cả các bức tranh có trên web
             const countElements = document.querySelectorAll('[id^="gallery-count-"]');
             countElements.forEach(el => {
                 const artId = el.id.replace('gallery-count-', '');
                 const voteCount = galleryVotes[artId] || 0;
                 const hasLiked = userGalleryLikes[artId] ? true : false;
                 
-                // Cập nhật con số
                 el.innerText = voteCount;
                 
-                // Cập nhật màu sắc trái tim
-                const icon = document.getElementById('gallery-icon-' + artId);
+                const icon = el.previousElementSibling;
                 if (icon) {
                     if (hasLiked) {
                         icon.classList.remove('text-pink-200');
-                        icon.classList.add('text-pink-600', 'scale-110');
+                        icon.classList.add('text-pink-600', 'scale-125');
                     } else {
-                        icon.classList.remove('text-pink-600', 'scale-110');
+                        icon.classList.remove('text-pink-600', 'scale-125');
                         icon.classList.add('text-pink-200');
                     }
+                }
+
+                const artCard = el.closest('.break-inside-avoid');
+                if (artCard && !artCard.dataset.motionUpgraded) {
+                    artCard.dataset.motionUpgraded = "true";
+                    artCard.classList.remove('hover:scale-105');
+                    artCard.classList.add('transition-all', 'duration-300', 'hover:-translate-y-1.5', 'hover:shadow-lg', 'hover:border-pink-400', 'hover:bg-white');
                 }
             });
         }
