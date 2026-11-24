@@ -519,9 +519,33 @@
 
             </div>
 
-            <div class="lg:col-span-2 space-y-5" id="character-list"></div>
-        </div>
-    </div>
+            <div class="lg:col-span-2 space-y-5">
+                <!-- 🌸 QUICK FILTER: TẤT CẢ / CHAR LẺ / OPEN WORLD 🌸 -->
+                <div class="aesthetic-card p-2.5 flex flex-wrap sm:flex-nowrap gap-2 bg-white/95">
+                    <button onclick="setQuickFilter('all')" id="qf-all" class="flex-1 py-2.5 px-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 border-2 border-dashed">
+                        <i class="fas fa-star"></i> Tất cả
+                        <span id="qf-count-all" class="text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button onclick="setQuickFilter('single')" id="qf-single" class="flex-1 py-2.5 px-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 border-2 border-dashed">
+                        <i class="fas fa-heart"></i> Char lẻ
+                        <span id="qf-count-single" class="text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                    <button onclick="setQuickFilter('openworld')" id="qf-openworld" class="flex-1 py-2.5 px-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 border-2 border-dashed">
+                        <i class="fas fa-globe"></i> Open World
+                        <span id="qf-count-openworld" class="text-[10px] px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                </div>
+
+                <!-- 🏷️ Thanh báo Tag / Từ khóa đang lọc (tự ẩn khi không lọc) -->
+                <div id="active-filter-bar" class="hidden items-center justify-between gap-2 bg-white/90 border-2 border-dashed border-pink-300 rounded-2xl px-4 py-2 text-xs font-bold text-pink-500 shadow-sm">
+                    <div id="active-filter-text" class="flex flex-wrap items-center gap-1.5"></div>
+                    <button onclick="clearTagAndSearch()" class="bg-pink-100 hover:bg-pink-200 text-pink-600 px-3 py-1 rounded-xl transition shrink-0">
+                        <i class="fas fa-times mr-1"></i> Bỏ lọc
+                    </button>
+                </div>
+
+                <div class="space-y-5" id="character-list"></div>
+            </div>
 
     <div id="new-bots-modal" class="modal fixed top-1/2 right-4 transform -translate-y-1/2 w-full max-w-sm z-50 pointer-events-none opacity-0 transition-all duration-500">
         <div class="modal-container bg-white w-11/12 mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-2xl p-6 relative">
@@ -2065,6 +2089,7 @@ Flip to Side B. Press play.`
         let currentTrackIndex = Math.floor(Math.random() * playlist.length);
 
         let currentTag = "Tất cả";
+        let currentMode = "all"; // "all" | "single" | "openworld"
         let userLikes = JSON.parse(localStorage.getItem('harem_user_likes')) || {};
         let votes = {}; 
         
@@ -2247,6 +2272,7 @@ Flip to Side B. Press play.`
 
         function enterHarem() {
             document.getElementById('harem-screen').classList.remove('hidden');
+            updateQuickFilterUI();
             renderTags();
             filterCharacters();
             renderLeaderboard();
@@ -2357,16 +2383,90 @@ Flip to Side B. Press play.`
             `).join('');
         }
 
+        function isOpenWorldBot(char) {
+            return char.tags.some(t => t.trim().toLowerCase() === "open world");
+        }
+
+        function setQuickFilter(mode) {
+            currentMode = mode;
+            // Tránh xung đột nếu đang chọn sẵn tag #Open World mà bấm sang Char lẻ
+            if (mode === "single" && currentTag.trim().toLowerCase() === "open world") {
+                currentTag = "Tất cả";
+                renderTags();
+            }
+            filterCharacters();
+        }
+
+        function clearTagAndSearch() {
+            currentTag = "Tất cả";
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.value = "";
+            renderTags();
+            filterCharacters();
+        }
+
+        function updateQuickFilterUI(baseList = database) {
+            const totalAll = baseList.length;
+            const totalOW = baseList.filter(isOpenWorldBot).length;
+            const totalSingle = totalAll - totalOW;
+
+            const countAll = document.getElementById('qf-count-all');
+            const countSingle = document.getElementById('qf-count-single');
+            const countOW = document.getElementById('qf-count-openworld');
+            if (countAll) countAll.innerText = totalAll;
+            if (countSingle) countSingle.innerText = totalSingle;
+            if (countOW) countOW.innerText = totalOW;
+
+            const modes = ['all', 'single', 'openworld'];
+            modes.forEach(m => {
+                const btn = document.getElementById(`qf-${m}`);
+                const badge = document.getElementById(`qf-count-${m}`);
+                if (!btn || !badge) return;
+
+                if (m === currentMode) {
+                    btn.className = "flex-1 py-2.5 px-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 border-2 border-dashed bg-[#FF85A2] text-white border-[#FF85A2] shadow-md scale-[1.01]";
+                    badge.className = "text-[10px] px-2 py-0.5 rounded-full bg-white/25 text-white";
+                } else {
+                    btn.className = "flex-1 py-2.5 px-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-1.5 border-2 border-dashed bg-pink-50/70 text-pink-500 border-pink-200 hover:bg-pink-100/80 hover:border-pink-400";
+                    badge.className = "text-[10px] px-2 py-0.5 rounded-full bg-white text-pink-400";
+                }
+            });
+        }
+
+        function updateActiveFilterBar(query) {
+            const bar = document.getElementById('active-filter-bar');
+            const textEl = document.getElementById('active-filter-text');
+            if (!bar || !textEl) return;
+
+            const badges = [];
+            if (currentTag !== "Tất cả") {
+                badges.push(`<span class="bg-pink-400 text-white px-2.5 py-0.5 rounded-full">#${currentTag}</span>`);
+            }
+            if (query.trim() !== "") {
+                badges.push(`<span class="bg-pink-50 border border-pink-200 text-pink-500 px-2.5 py-0.5 rounded-full">Tìm: "${escapeHTML(query.trim())}"</span>`);
+            }
+
+            if (badges.length > 0) {
+                textEl.innerHTML = `<span>Đang lọc kèm:</span> ${badges.join('')}`;
+                bar.classList.remove('hidden');
+                bar.classList.add('flex');
+            } else {
+                bar.classList.add('hidden');
+                bar.classList.remove('flex');
+            }
+        }
+
         function filterByTag(tag) {
-            // Nếu bấm lại vào tag đang chọn thì tự động quay về "Tất cả"
             if (currentTag === tag) {
                 currentTag = "Tất cả";
             } else {
                 currentTag = tag;
+                if (tag.trim().toLowerCase() === "open world" && currentMode === "single") {
+                    currentMode = "all";
+                }
             }
             renderTags();
             filterCharacters();
-            // Cuộn mượt mà lên khu vực danh sách
             document.getElementById('harem-screen').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -2463,11 +2563,25 @@ Flip to Side B. Press play.`
 
         function filterCharacters() {
             const query = document.getElementById('search-input').value.toLowerCase();
-            const filtered = database.filter(c => {
+
+            // Bước 1: Lọc theo Search + Tag trước để cập nhật đúng số đếm trên 3 nút Quick Filter
+            const baseFiltered = database.filter(c => {
                 const matchSearch = c.name.toLowerCase().includes(query);
                 const matchTag = currentTag === "Tất cả" || c.tags.includes(currentTag);
                 return matchSearch && matchTag;
             });
+
+            updateQuickFilterUI(baseFiltered);
+            updateActiveFilterBar(query);
+
+            // Bước 2: Lọc tiếp theo chế độ Tất cả / Char lẻ / Open World
+            const filtered = baseFiltered.filter(c => {
+                const isOW = isOpenWorldBot(c);
+                return currentMode === "all"
+                    || (currentMode === "openworld" && isOW)
+                    || (currentMode === "single" && !isOW);
+            });
+
             renderList(filtered);
         }
 
