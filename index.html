@@ -840,15 +840,24 @@
             49%, 100% { transform: translateY(0) scale(1); box-shadow: 0 4px 0px #ffe0e8; }
         }
 
-        .welcome-bird-track   { animation: welcomeBirdStory 12s linear infinite; }
-        .welcome-ufo-track    { animation: welcomeUfoStory 12s linear infinite; }
-        .welcome-bonk-fx      { transform-origin: 0px 0px; animation: welcomeBonkPop 12s ease-out infinite; }
-        .welcome-dizzy-stars  { transform-origin: 0px 0px; animation: welcomeDizzyShow 12s ease-out infinite; }
-        .welcome-tos-bubble   { transform-origin: 0px 0px; animation: welcomeTosBubble 12s ease-out infinite; }
-        .welcome-bird-wing    { transform-origin: 0px 0px; animation: birdWingFlap 0.28s ease-in-out infinite; }
-        .bird-eyes-ok         { animation: birdEyesNormal 12s linear infinite; }
-        .bird-eyes-dizzy      { animation: birdEyesDizzy 12s linear infinite; }
-        .tos-btn-nudge        { animation: tosBtnNudge 12s ease-in-out infinite; }
+        .welcome-bird-track,
+        .welcome-ufo-track,
+        .welcome-bonk-fx,
+        .welcome-dizzy-stars,
+        .welcome-tos-bubble,
+        .bird-eyes-dizzy {
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+        #welcome-screen.welcome-anim-ready .welcome-bird-track  { animation: welcomeBirdStory 12s linear infinite; }
+        #welcome-screen.welcome-anim-ready .welcome-ufo-track   { animation: welcomeUfoStory 12s linear infinite; }
+        #welcome-screen.welcome-anim-ready .welcome-bonk-fx     { transform-origin: 0px 0px; animation: welcomeBonkPop 12s ease-out infinite; }
+        #welcome-screen.welcome-anim-ready .welcome-dizzy-stars { transform-origin: 0px 0px; animation: welcomeDizzyShow 12s ease-out infinite; }
+        #welcome-screen.welcome-anim-ready .welcome-tos-bubble  { transform-origin: 0px 0px; animation: welcomeTosBubble 12s ease-out infinite; }
+        #welcome-screen.welcome-anim-ready .welcome-bird-wing   { transform-origin: 0px 0px; will-change: transform; animation: birdWingFlap 0.28s ease-in-out infinite; }
+        #welcome-screen.welcome-anim-ready .bird-eyes-ok        { animation: birdEyesNormal 12s linear infinite; }
+        #welcome-screen.welcome-anim-ready .bird-eyes-dizzy     { animation: birdEyesDizzy 12s linear infinite; }
+        #welcome-screen.welcome-anim-ready .tos-btn-nudge       { animation: tosBtnNudge 12s ease-in-out infinite; }
     </style>
 </head>
 <body class="min-h-screen relative">
@@ -3413,7 +3422,13 @@ Flip to Side B. Press play.`
             });
             sessionStorage.setItem('has_visited_harem', 'true');
         }
-
+        // 🐦 Đợi web tải xong hẳn + 1 giây rồi mới thả chim bay cho mượt 100%
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const ws = document.getElementById('welcome-screen');
+                if (ws) ws.classList.add('welcome-anim-ready');
+            }, 1000);
+        });
         window.addEventListener('DOMContentLoaded', () => {
             if (playlist.length > 0) {
                 bgMusic.src = playlist[currentTrackIndex];
