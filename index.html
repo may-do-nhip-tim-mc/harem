@@ -277,6 +277,288 @@
         #new-bots-modal.side-popup-active {
             animation: slideInSidePopup 0.5s ease-out forwards;
         }
+        /* 🌷 CHARACTER OF THE DAY & TIÊU ĐỀ BONG BÓNG (ĐÃ FIX LỖI CHỮ TRẮNG) 🌷 */
+        .cotd-wrapper {
+            --cotd-bg: #fff6f8;
+            --cotd-dot: #f2c2ce;
+            --cotd-frame: #ffb7c5;
+            --cotd-frame-hover: #ff85a2;
+            --cotd-stroke: #c46d82;
+            --cotd-shadow: #f7c2cf;
+            position: relative;
+            background-color: var(--cotd-bg);
+            background-image: radial-gradient(var(--cotd-dot) 1.3px, transparent 1.3px);
+            background-size: 14px 14px;
+            border: 3px solid var(--cotd-frame);
+            border-radius: 32px;
+            box-shadow:
+                inset 0 0 0 3px #ffffff,
+                0 7px 0px var(--cotd-shadow),
+                0 14px 24px rgba(255, 133, 162, 0.16);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.3s ease, background-color 0.35s ease;
+        }
+        .cotd-wrapper:hover {
+            transform: translateY(-4px);
+            border-color: var(--cotd-frame-hover);
+            box-shadow:
+                inset 0 0 0 3px #ffffff,
+                0 10px 0px var(--cotd-frame-hover),
+                0 18px 28px rgba(255, 97, 129, 0.2);
+        }
+        .cotd-title {
+            font-family: 'Baloo 2', cursive;
+            color: var(--cotd-stroke, #FF6181);
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+        }
+        .cotd-item {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px dashed var(--cotd-frame);
+            border-radius: 18px;
+            transition: all 0.25s ease;
+        }
+        .cotd-item:hover {
+            border-color: var(--cotd-frame-hover);
+            background: #ffffff;
+            transform: translateX(3px);
+        }
+
+        /* =========================================================
+           🌸 ĐỒNG BỘ STYLE SỔ TAY VƯỜN HOA PASTEL (KHÔNG VIỀN ĐEN) 🌸
+           ========================================================= */
+
+        /* 1. Khung Vườn Hoa Phía Trên Hậu Cung (Garden Header) */
+        .garden-header-card {
+            position: relative;
+            background-color: #fff9fb;
+            background-image: radial-gradient(#f5ccd7 1.2px, transparent 1.2px);
+            background-size: 16px 16px;
+            border: 3px solid #ffc7d6;
+            border-radius: 30px;
+            box-shadow:
+                inset 0 0 0 4px #ffffff,
+                0 8px 0px #ffccd9,
+                0 16px 28px rgba(255, 133, 162, 0.16);
+            overflow: hidden;
+        }
+        .garden-marquee-pill {
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px dashed #ffc2d1;
+            border-radius: 9999px;
+            box-shadow: inset 0 2px 6px rgba(255, 183, 197, 0.18);
+        }
+        .garden-nav-btn {
+            background: #ffffff;
+            border: 2px solid #ffd1dc;
+            color: #e85d7c;
+            border-radius: 16px;
+            box-shadow: 0 4px 0px #ffe0e8;
+            transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+            white-space: nowrap;
+        }
+        .garden-nav-btn:hover {
+            transform: translateY(-2.5px);
+            border-color: #ff85a2;
+            background: #fff7f9;
+            box-shadow: 0 6px 0px #ffc2d1;
+        }
+        .garden-nav-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0px #ffd1dc;
+        }
+        .garden-stats-pill {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px dashed #ffb7c5;
+            border-radius: 18px;
+            box-shadow: 0 4px 0px #ffe0e8;
+            color: #e85d7c;
+        }
+
+        /* Hiệu ứng hoa cỏ đung đưa nhẹ trong gió */
+        @keyframes flowerSway {
+            0%, 100% { transform: rotate(-1.5deg); }
+            50% { transform: rotate(1.5deg); }
+        }
+        .sway-slow {
+            transform-origin: bottom center;
+            animation: flowerSway 4.2s ease-in-out infinite;
+        }
+        .sway-fast {
+            transform-origin: bottom center;
+            animation: flowerSway 3.3s ease-in-out infinite reverse;
+        }
+
+        /* 2. Card mặc định trong Hậu Cung */
+        #harem-screen .aesthetic-card {
+            --card-bg: #fff9fa;
+            --card-dot: #f3cdd6;
+            --card-frame: #ffd1dc;
+            --card-frame-hover: #ff85a2;
+            --card-shadow: #ffc2d1;
+            background-color: var(--card-bg);
+            background-image: radial-gradient(var(--card-dot) 1.15px, transparent 1.15px);
+            background-size: 16px 16px;
+            backdrop-filter: none;
+            border: 3px solid var(--card-frame);
+            border-radius: 28px;
+            box-shadow:
+                inset 0 0 0 3px #ffffff,
+                0 7px 0px var(--card-shadow),
+                0 12px 20px rgba(255, 133, 162, 0.14);
+        }
+        #harem-screen .aesthetic-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--card-frame-hover);
+            box-shadow:
+                inset 0 0 0 3px #ffffff,
+                0 10px 0px var(--card-frame-hover),
+                0 16px 24px rgba(255, 97, 129, 0.18);
+        }
+
+        /* Bảng màu riêng cho 4 ô hoa ở cột trái */
+        #harem-screen .doodle-blue {
+            --card-bg: #f5faff;
+            --card-dot: #c4e1fa;
+            --card-frame: #b5ddff;
+            --card-frame-hover: #7cc2fc;
+            --card-shadow: #c7e6ff;
+        }
+        #harem-screen .doodle-white {
+            --card-bg: #ffffff;
+            --card-dot: #eedbe0;
+            --card-frame: #f2d5dc;
+            --card-frame-hover: #ffb7c5;
+            --card-shadow: #f5dfe5;
+        }
+        #harem-screen .doodle-yellow {
+            --card-bg: #fffdf2;
+            --card-dot: #f2dfa0;
+            --card-frame: #ffe08a;
+            --card-frame-hover: #f7be4b;
+            --card-shadow: #ffebad;
+        }
+        #harem-screen .doodle-purple {
+            --card-bg: #fbf7ff;
+            --card-dot: #decaf7;
+            --card-frame: #dcc2ff;
+            --card-frame-hover: #b98cf7;
+            --card-shadow: #e6d4ff;
+        }
+
+        /* Nút bấm, Tag & Quick Filter mềm mại */
+        #harem-screen .btn-melody {
+            border: 2.5px solid #ffffff;
+            box-shadow: 0 4px 0px rgba(255, 97, 129, 0.35);
+            border-radius: 16px;
+        }
+        #harem-screen .btn-melody:hover {
+            box-shadow: 0 6px 0px rgba(255, 97, 129, 0.45), 0 8px 14px rgba(255, 97, 129, 0.25);
+        }
+        #harem-screen .btn-cream {
+            border: 2px solid #ffd1dc;
+            box-shadow: 0 4px 0px #ffe0e8;
+            border-radius: 16px;
+            color: #e85d7c;
+        }
+        #harem-screen .btn-cream:hover {
+            border-color: #ff85a2;
+            box-shadow: 0 6px 0px #ffb7c5;
+        }
+        #harem-screen .tag-pill {
+            border: 1.5px solid #ffd1dc;
+            background: #ffffff;
+            color: #e85d7c;
+            border-radius: 12px;
+        }
+        #harem-screen .tag-pill:hover {
+            border-color: #ff85a2;
+            background: #fff0f3;
+        }
+        #harem-screen #qf-all,
+        #harem-screen #qf-single,
+        #harem-screen #qf-openworld {
+            border: 2px solid #ffd1dc !important;
+            box-shadow: 0 3px 0px #ffe0e8;
+        }
+        #harem-screen #qf-all.text-white,
+        #harem-screen #qf-single.text-white,
+        #harem-screen #qf-openworld.text-white {
+            border-color: #ffffff !important;
+            box-shadow: 0 4px 0px #ffb7c5;
+        }
+        #harem-screen #active-filter-bar {
+            border: 2px solid #ffb7c5 !important;
+            background-color: #fff9fa !important;
+            box-shadow: inset 0 0 0 2px #ffffff, 0 4px 0px #ffd6e0;
+        }
+        #harem-screen [class*="border-[#6b464e]"] {
+            border-color: var(--card-frame, #ffd1dc) !important;
+        }
+        #harem-screen #search-input:focus {
+            border-color: #ff85a2 !important;
+        }
+
+        /* 3. Loading Screen Khu Vườn Mini Pastel */
+        .loading-doodle-card {
+            --cotd-stroke: #cf6782;
+            --cotd-shadow: #ffc9d7;
+            position: relative;
+            background-color: #fff8fa;
+            background-image: radial-gradient(#f4c6d2 1.3px, transparent 1.3px);
+            background-size: 14px 14px;
+            border: 3px solid #ffb7c5;
+            border-radius: 36px;
+            box-shadow:
+                inset 0 0 0 4px #ffffff,
+                0 10px 0px #ffc5d3,
+                0 20px 36px rgba(255, 133, 162, 0.22);
+            overflow: hidden;
+        }
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-5px) rotate(1deg); }
+        }
+        .animate-gentle-float {
+            animation: gentleFloat 3.2s ease-in-out infinite;
+        }
+        .doodle-progress-track {
+            background: #ffffff;
+            border: 2px solid #ffb7c5;
+            box-shadow: inset 0 2px 5px rgba(255, 133, 162, 0.14);
+        }
+        /* 🛸 HIỆU ỨNG UFO HÚT BÒ SỮA 🐄 */
+        @keyframes ufoHover {
+            0%, 100% { transform: translateY(0px) rotate(-1.5deg); }
+            50% { transform: translateY(-6px) rotate(1.8deg); }
+        }
+        @keyframes cowAbduct1 {
+            0%, 100% { transform: translateY(12px) rotate(-14deg); }
+            50% { transform: translateY(-14px) rotate(12deg); }
+        }
+        @keyframes cowAbduct2 {
+            0%, 100% { transform: translateY(-8px) rotate(16deg); }
+            50% { transform: translateY(14px) rotate(-12deg); }
+        }
+        @keyframes cowAbduct3 {
+            0%, 100% { transform: translateY(8px) rotate(-6deg); }
+            50% { transform: translateY(-10px) rotate(8deg); }
+        }
+        @keyframes beamPulse {
+            0%, 100% { opacity: 0.48; }
+            50% { opacity: 0.82; }
+        }
+        @keyframes lightBlink {
+            0%, 100% { opacity: 0.45; }
+            50% { opacity: 1; }
+        }
+        .ufo-hover-1 { animation: ufoHover 3.4s ease-in-out infinite; }
+        .ufo-hover-2 { animation: ufoHover 4.1s ease-in-out infinite reverse; }
+        .ufo-hover-3 { animation: ufoHover 3.8s ease-in-out infinite 0.6s; }
+        .cow-float-1 { animation: cowAbduct1 3.6s ease-in-out infinite; }
+        .cow-float-2 { animation: cowAbduct2 4.2s ease-in-out infinite; }
+        .cow-float-3 { animation: cowAbduct3 3.2s ease-in-out infinite; }
+        .ufo-beam { animation: beamPulse 2.4s ease-in-out infinite; }
+        .ufo-light { animation: lightBlink 1.2s ease-in-out infinite; }
     </style>
 </head>
 <body class="min-h-screen relative">
@@ -358,106 +640,551 @@
     </div>
 
     <div id="loading-screen" class="hidden min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
-        <!-- Lớp nền phát sáng dịu ở tâm màn hình -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#fff0f3_55%,_#ffe4e9_100%)] opacity-90 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#fff2f6_55%,_#ffe6ee_100%)] opacity-95 pointer-events-none"></div>
         <div id="loading-hearts-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
 
-        <!-- Khung Card Loading Trung Tâm -->
-        <div class="aesthetic-card p-8 md:p-10 text-center z-10 space-y-5 max-w-md w-full mx-4 relative overflow-hidden">
-            <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
+        <!-- Khung Loading Khu Vườn Công Chúa -->
+        <div class="loading-doodle-card px-7 pt-8 pb-20 md:px-10 md:pt-9 md:pb-24 text-center z-10 space-y-5 max-w-md w-full mx-4">
+            <!-- Dây lá hoa góc trên trái & phải -->
+            <svg class="absolute top-2 left-3 w-20 h-14 pointer-events-none opacity-90" viewBox="0 0 90 60" fill="none">
+                <path d="M4 12 C22 26, 40 22, 58 10" stroke="#cde69b" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="20" cy="24" rx="7" ry="3.5" transform="rotate(20 20 24)" fill="#d4ec9f" stroke="#8c5e69" stroke-width="1.3"/>
+                <ellipse cx="42" cy="18" rx="6.5" ry="3.2" transform="rotate(-18 42 18)" fill="#cde69b" stroke="#8c5e69" stroke-width="1.3"/>
+                <g transform="translate(30,14) scale(0.7)">
+                    <circle cx="0" cy="-6" r="4.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="5.7" cy="-1.8" r="4.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="3.5" cy="4.8" r="4.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="-3.5" cy="4.8" r="4.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="-5.7" cy="-1.8" r="4.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="0" cy="0" r="2.6" fill="#ffe699" stroke="#8c5e69" stroke-width="1.2"/>
+                </g>
+            </svg>
+            <svg class="absolute top-2 right-3 w-20 h-14 pointer-events-none opacity-90 scale-x-[-1]" viewBox="0 0 90 60" fill="none">
+                <path d="M4 12 C22 26, 40 22, 58 10" stroke="#cde69b" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="20" cy="24" rx="7" ry="3.5" transform="rotate(20 20 24)" fill="#d4ec9f" stroke="#8c5e69" stroke-width="1.3"/>
+                <ellipse cx="42" cy="18" rx="6.5" ry="3.2" transform="rotate(-18 42 18)" fill="#cde69b" stroke="#8c5e69" stroke-width="1.3"/>
+                <g transform="translate(30,14) scale(0.7)">
+                    <circle cx="0" cy="-6" r="4.5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="5.7" cy="-1.8" r="4.5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="3.5" cy="4.8" r="4.5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="-3.5" cy="4.8" r="4.5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="-5.7" cy="-1.8" r="4.5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                    <circle cx="0" cy="0" r="2.6" fill="#ffe699" stroke="#8c5e69" stroke-width="1.2"/>
+                </g>
+            </svg>
 
-            <!-- Vòng tròn phép thuật & Icon trung tâm -->
-            <div class="relative w-28 h-28 mx-auto flex items-center justify-center mt-2">
-                <div class="magic-halo absolute inset-0 rounded-full border-4 border-dashed border-pink-300 bg-pink-50/50 shadow-inner"></div>
-                <div class="magic-halo absolute inset-2 rounded-full border-2 border-dotted border-pink-400" style="animation-direction: reverse; animation-duration: 5s;"></div>
-                <div class="relative z-10 text-5xl animate-bounce drop-shadow-md">🎀</div>
-                <span class="absolute -top-1 -right-1 text-xl animate-ping">✨</span>
-                <span class="absolute -bottom-1 -left-1 text-xl animate-pulse">🌸</span>
+            <!-- Nơ Ruy-Băng & Vòng Hoa Pastel vẽ tay nét mềm -->
+            <div class="w-28 h-24 mx-auto flex items-center justify-center animate-gentle-float relative z-10">
+                <svg class="w-full h-full drop-shadow-sm" viewBox="0 0 130 105" fill="none">
+                    <ellipse cx="32" cy="34" rx="12" ry="6" transform="rotate(-30 32 34)" fill="#cde69b" stroke="#8c5e69" stroke-width="1.8"/>
+                    <ellipse cx="98" cy="34" rx="12" ry="6" transform="rotate(30 98 34)" fill="#d9eeae" stroke="#8c5e69" stroke-width="1.8"/>
+                    <path d="M58 55 C50 72, 42 84, 34 92 L48 88 L54 96 C60 84, 62 70, 64 58 Z" fill="#ffc4d0" stroke="#8c5e69" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M72 55 C80 72, 88 84, 96 92 L82 88 L76 96 C70 84, 68 70, 66 58 Z" fill="#ffb7c5" stroke="#8c5e69" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M60 48 C42 28, 16 32, 18 52 C20 68, 44 68, 60 54 Z" fill="#ffb7c5" stroke="#8c5e69" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M70 48 C88 28, 114 32, 112 52 C110 68, 86 68, 70 54 Z" fill="#ffb7c5" stroke="#8c5e69" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M34 48 C42 48, 50 50, 56 51" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M96 48 C88 48, 80 50, 74 51" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                    <rect x="56" y="42" width="18" height="18" rx="7" fill="#ff9eb5" stroke="#8c5e69" stroke-width="2"/>
+                    <g transform="translate(65,24) scale(0.85)">
+                        <circle cx="0" cy="-6" r="4.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="5.7" cy="-1.8" r="4.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="3.5" cy="4.8" r="4.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="-3.5" cy="4.8" r="4.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="-5.7" cy="-1.8" r="4.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="0" cy="0" r="2.8" fill="#ffe082" stroke="#8c5e69" stroke-width="1.3"/>
+                    </g>
+                    <circle cx="43" cy="22" r="3.8" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.4"/>
+                    <circle cx="88" cy="22" r="3.8" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.4"/>
+                </svg>
             </div>
 
-            <div class="space-y-1">
-                <div class="kawaii-text text-xs text-pink-400">⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆</div>
-                <h2 class="font-title text-2xl md:text-3xl text-[#FF6181] tracking-wide">Đang chuẩn bị hậu cung...</h2>
+            <!-- Tiêu đề nổi bật (đã sửa lỗi tàng hình) -->
+            <div class="space-y-1 relative z-10">
+                <h2 class="cotd-title text-2xl md:text-3xl font-bold tracking-wide">
+                    Đang chuẩn bị hậu cung...
+                </h2>
             </div>
-            
-            <!-- Thanh Loading Kẹo Ngọt + Số % -->
-            <div class="space-y-2">
+
+            <!-- Thanh Loading Kẹo Ngọt -->
+            <div class="space-y-2 relative z-10">
                 <div class="flex justify-between items-end px-1">
-                    <span class="text-[11px] font-bold uppercase tracking-wider text-pink-400">🍓 Tiến độ đón giá</span>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-[#b85d74]">🍓 Tiến độ đón giá</span>
                     <span id="loading-percent-text" class="font-title text-lg font-bold text-[#FF6181]">0%</span>
                 </div>
 
-                <div class="w-full h-7 bg-pink-50/80 rounded-full border-2 border-dashed border-pink-300 p-1 relative shadow-inner">
+                <div class="w-full h-7 doodle-progress-track rounded-full p-1 relative">
                     <div id="loading-bar-progress" class="h-full candy-progress-bar rounded-full w-0 transition-all duration-75 ease-out"></div>
                     <div id="loading-bar-heart" class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-75 z-20" style="left: 0%;">
-                        <div class="w-7 h-7 rounded-full bg-white border-2 border-[#FF6181] shadow-md flex items-center justify-center text-[#FF6181] text-xs animate-pulse">
+                        <div class="w-7 h-7 rounded-full bg-white border-2 border-[#ff85a2] shadow-sm flex items-center justify-center text-[#FF6181] text-xs">
                             <i class="fas fa-heart"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Dòng trạng thái thay đổi tự động -->
-            <p id="loading-status-text" class="text-xs text-[#704F55] font-bold bg-pink-50 py-2 px-4 rounded-xl border border-dashed border-pink-200 transition-all duration-300">
+            <!-- Dòng trạng thái -->
+            <p id="loading-status-text" class="text-xs text-[#7a4b56] font-bold bg-white/95 py-2.5 px-4 rounded-2xl border-2 border-dashed border-[#ffc2d1] transition-all duration-300 relative z-10">
                 Các tú nữ đang xếp hàng chờ thỉnh an công chúa ✨
             </p>
 
-            <div class="kawaii-text text-pink-300 text-xs">⏔⏔⏔ ꒰ ᧔ෆ᧓ ꒱ ⏔⏔⏔</div>
+            <!-- 🌷 VƯỜN HOA CỎ 5 SẮC NỞ DỌC CHÂN KHUNG LOADING 🌷 -->
+            <svg class="absolute bottom-0 left-0 w-full h-20 pointer-events-none z-0" viewBox="0 0 420 85" preserveAspectRatio="none" fill="none">
+                <!-- Thảm cỏ pastel 2 lớp mềm mại -->
+                <path d="M0 62 Q70 46 140 58 T280 56 T420 52 L420 85 L0 85 Z" fill="#e5f4c8"/>
+                <path d="M0 70 Q95 58 210 68 T420 62 L420 85 L0 85 Z" fill="#d3ebaa"/>
+                <!-- Cụm Tulip Hồng bên trái -->
+                <g class="sway-slow">
+                    <path d="M46 78 C45 62, 43 48, 42 36" stroke="#8c5e69" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M45 72 C36 64, 33 54, 36 48 C41 54, 44 63, 45 72 Z" fill="#b7de7b" stroke="#8c5e69" stroke-width="1.4"/>
+                    <path d="M33 27 C32 18, 38 14, 42 21 C46 14, 52 18, 50 27 C49 35, 45 38, 42 38 C38 38, 34 35, 33 27 Z" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.6"/>
+                </g>
+                <!-- Cụm Lưu Ly Xanh -->
+                <g class="sway-fast">
+                    <path d="M108 78 C107 66, 106 58, 105 48" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                    <g transform="translate(105,44) scale(0.75)">
+                        <circle cx="0" cy="-7" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="6.5" cy="-2" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="4" cy="5.5" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="-4" cy="5.5" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="-6.5" cy="-2" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="0" cy="0" r="3" fill="#fff2a6" stroke="#8c5e69" stroke-width="1.2"/>
+                    </g>
+                </g>
+                <!-- Cúc Họa Mi Trắng giữa -->
+                <g class="sway-slow">
+                    <path d="M174 80 C174 68, 175 60, 176 52" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                    <g transform="translate(176,48) scale(0.75)">
+                        <ellipse cx="0" cy="-9" rx="3.5" ry="6.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="0" cy="9" rx="3.5" ry="6.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="-9" cy="0" rx="6.5" ry="3.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="9" cy="0" rx="6.5" ry="3.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="4.5" fill="#ffe082" stroke="#8c5e69" stroke-width="1.4"/>
+                    </g>
+                </g>
+                <!-- Hướng Dương Vàng nhỏ -->
+                <g class="sway-fast">
+                    <path d="M248 79 C248 66, 249 56, 250 45" stroke="#8c5e69" stroke-width="1.7" stroke-linecap="round"/>
+                    <g transform="translate(250,41) scale(0.75)">
+                        <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="0" cy="10" rx="4" ry="7" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="-10" cy="0" rx="7" ry="4" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="10" cy="0" rx="7" ry="4" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="5.5" fill="#a87654" stroke="#8c5e69" stroke-width="1.5"/>
+                    </g>
+                </g>
+                <!-- Oải Hương Tím -->
+                <g class="sway-slow">
+                    <path d="M316 78 C316 62, 318 46, 320 34" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                    <ellipse cx="320" cy="30" rx="3.5" ry="5" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.3"/>
+                    <ellipse cx="315" cy="37" rx="4" ry="3" transform="rotate(-20 315 37)" fill="#c39df8" stroke="#8c5e69" stroke-width="1.3"/>
+                    <ellipse cx="324" cy="37" rx="4" ry="3" transform="rotate(20 324 37)" fill="#e3d0ff" stroke="#8c5e69" stroke-width="1.3"/>
+                    <ellipse cx="315" cy="45" rx="4" ry="3" transform="rotate(-15 315 45)" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.3"/>
+                    <ellipse cx="324" cy="45" rx="4" ry="3" transform="rotate(15 324 45)" fill="#c39df8" stroke="#8c5e69" stroke-width="1.3"/>
+                </g>
+                <!-- Cụm Hoa Hồng Phấn bên phải -->
+                <g class="sway-fast">
+                    <path d="M376 78 C377 62, 378 48, 379 38" stroke="#8c5e69" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M377 70 C386 62, 390 52, 387 46 C382 52, 378 61, 377 70 Z" fill="#b7de7b" stroke="#8c5e69" stroke-width="1.4"/>
+                    <g transform="translate(379,34) scale(0.85)">
+                        <circle cx="0" cy="-7" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="6.8" cy="-2" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="4.2" cy="5.8" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="-4.2" cy="5.8" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="-6.8" cy="-2" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="3.2" fill="#ffe082" stroke="#8c5e69" stroke-width="1.2"/>
+                    </g>
+                </g>
+            </svg>
         </div>
     </div>
 
     <div id="harem-screen" class="hidden max-w-5xl mx-auto px-4 py-8 relative z-10">
         
-        <div class="aesthetic-card py-2 px-4 mb-6 text-pink-500 font-bold text-sm marquee-container border-2 border-dashed border-pink-200 bg-white">
-            <div class="marquee-content">
-                ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆ Chào mừng công chúa giá lâm! Hôm nay người muốn lật thẻ bài của ai? 🍓 Đừng quên thả tim cho chatbot công chúa yêu thích nhé! ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆
-            </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-            <div class="flex flex-wrap gap-3 w-full sm:w-auto items-center">
-                <button onclick="goBack()" class="bg-white border-2 border-dashed border-pink-300 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
-                    <i class="fas fa-arrow-left mr-2"></i> Trở về
-                </button>
-                
-                <button onclick="openFortuneCookie()" class="bg-white border-2 border-dashed border-pink-300 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
-                    <i class="fas fa-cookie-bite text-yellow-600 mr-2"></i> Bánh Quy May Mắn
-                </button>
-
-                <!-- 🌟 NÚT ART GALLERY 🌟 -->
-                <button onclick="openModal('gallery-modal')" class="bg-white border-2 border-dashed border-pink-300 text-pink-400 hover:bg-pink-50 px-5 py-2 rounded-xl font-bold shadow-sm transition flex items-center shrink-0">
-                    <i class="fas fa-image text-pink-400 mr-2"></i> Art Gallery
-                </button>
-
-                <div class="bg-white border-2 border-dashed border-pink-300 rounded-xl px-4 py-1.5 flex items-center gap-4 shadow-sm w-full sm:w-auto justify-between">
-                    <div class="flex items-center gap-2 text-xs font-bold text-pink-400">
-                        <div class="disc-icon w-6 h-6 bg-pink-50 rounded-full flex items-center justify-center border border-dotted border-pink-300 text-pink-400 text-[10px]"><i class="fas fa-music"></i></div>
-                        <span>Music</span>
+        <!-- 🌸 KHUNG VƯỜN HOA CÔNG CHÚA (MARQUEE + THANH CÔNG CỤ + VƯỜN HOA TOÀN CẢNH) 🌸 -->
+        <div class="garden-header-card p-4 sm:p-5 pb-36 sm:pb-40 mb-8">
+            <!-- Hàng 1: Dải thông báo chạy chữ kèm cụm hoa nhỏ 2 đầu -->
+            <div class="garden-marquee-pill py-2 px-4 mb-4 flex items-center gap-2 relative z-10">
+                <span class="text-sm shrink-0">🌷</span>
+                <div class="marquee-container text-[#e85d7c] font-bold text-xs sm:text-sm">
+                    <div class="marquee-content">
+                        ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆ Chào mừng công chúa giá lâm! Hôm nay người muốn lật thẻ bài của ai? 🍓 Đừng quên thả tim cho chatbot công chúa yêu thích nhé! ⋆ ˚｡⋆୨♡୧⋆ ˚｡⋆
                     </div>
-                    <button onclick="toggleMusic()" class="music-btn w-7 h-7 rounded-full bg-pink-100 text-pink-500 flex items-center justify-center text-xs"><i class="fas fa-play"></i></button>
+                </div>
+                <span class="text-sm shrink-0">🌼</span>
+            </div>
+
+            <!-- Hàng 2: Toàn bộ nút chức năng + Thống kê căn thẳng hàng cân đối -->
+            <div class="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-3 relative z-10">
+                <!-- Cụm 4 nút bên trái (gọn gàng trên 1 hàng ở máy tính) -->
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="goBack()" class="garden-nav-btn px-3.5 py-2 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                        <i class="fas fa-arrow-left text-[#ff85a2]"></i> Trở về
+                    </button>
+
+                    <button onclick="openFortuneCookie()" class="garden-nav-btn px-3.5 py-2 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                        <i class="fas fa-cookie-bite text-amber-500"></i> Bánh Quy May Mắn
+                    </button>
+
+                    <button onclick="openModal('gallery-modal')" class="garden-nav-btn px-3.5 py-2 text-xs sm:text-sm font-bold flex items-center gap-1.5">
+                        <i class="fas fa-image text-[#ff85a2]"></i> Art Gallery
+                    </button>
+
+                    <div class="garden-nav-btn px-3 py-1.5 flex items-center gap-2.5">
+                        <div class="flex items-center gap-1.5 text-xs font-bold text-[#e85d7c]">
+                            <div class="disc-icon w-6 h-6 bg-pink-50 rounded-full flex items-center justify-center border border-dotted border-pink-300 text-[#ff85a2] text-[10px]">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <span>Music</span>
+                        </div>
+                        <button onclick="toggleMusic()" class="music-btn w-7 h-7 rounded-full bg-pink-100 text-[#ff6181] hover:bg-pink-200 transition flex items-center justify-center text-xs">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cụm Thống kê bên phải (không còn rớt chữ gãy dòng) -->
+                <div class="garden-stats-pill py-2 px-4 font-bold text-xs sm:text-sm flex flex-wrap sm:flex-nowrap items-center justify-center gap-3 divide-x-2 divide-dashed divide-pink-200 shrink-0">
+                    <div class="whitespace-nowrap">🍓 Hậu cung: <span id="total-count" class="text-[#ff6181]">0</span> tú nữ</div>
+                    <div class="pl-3 whitespace-nowrap">💃🏻 Ghé thăm: <span id="visitor-count" class="text-[#ff6181]">0</span> lượt</div>
                 </div>
             </div>
 
-            <div class="bg-white py-2 px-4 rounded-xl border-2 border-dashed border-pink-300 shadow-sm font-bold text-pink-500 w-full sm:w-auto text-center relative overflow-hidden flex flex-col sm:flex-row gap-1 sm:gap-4 items-center justify-center divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-dashed divide-pink-200">
-                <div class="px-2 w-full sm:w-auto">🍓 Hậu cung có: <span id="total-count">0</span> tú nữ</div>
-                <div class="px-2 pt-1 sm:pt-0 w-full sm:w-auto">💃🏻 Ghé thăm: <span id="visitor-count">0</span> lượt</div>
-            </div>
+            <!-- 🛸🐄 VƯỜN HOA 5 SẮC & ĐỘI QUÂN UFO HÚT BÒ SỮA 🐄🛸 -->
+            <svg class="absolute bottom-0 left-0 w-full h-36 sm:h-40 pointer-events-none z-0" viewBox="0 0 1000 155" preserveAspectRatio="xMidYMax slice" fill="none">
+                <defs>
+                    <linearGradient id="beamPurple" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#fff4b8" stop-opacity="0.85"/>
+                        <stop offset="60%" stop-color="#d6f7e8" stop-opacity="0.45"/>
+                        <stop offset="100%" stop-color="#e8f5cc" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="beamMint" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ccf7f0" stop-opacity="0.85"/>
+                        <stop offset="65%" stop-color="#fff3bf" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#e8f5cc" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="beamPink" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#ffe1ec" stop-opacity="0.85"/>
+                        <stop offset="65%" stop-color="#fff3bf" stop-opacity="0.42"/>
+                        <stop offset="100%" stop-color="#e8f5cc" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+
+                <!-- Đồi cỏ pastel 2 tầng -->
+                <path d="M0 131 Q125 111 250 127 T500 123 T750 127 T1000 119 L1000 155 L0 155 Z" fill="#e8f5cc"/>
+                <path d="M0 139 Q160 125 320 137 T660 133 T1000 137 L1000 155 L0 155 Z" fill="#d5ecad"/>
+
+                <!-- Cỏ mềm lưa thưa -->
+                <path d="M88 141 Q85 130 80 123 M92 141 Q96 129 100 124 M285 139 Q282 127 278 121 M482 139 Q485 128 490 121 M692 140 Q688 129 684 123 M898 140 Q902 129 906 123" stroke="#9ec96b" stroke-width="2" stroke-linecap="round"/>
+
+                <!-- ========================================== -->
+                <!-- 🛸 CỤM 1 (BÊN TRÁI - x=192): UFO HỒNG HÚT BÒ MỚI NHẤC CHÂN -->
+                <!-- ========================================== -->
+                <g transform="translate(192, 34)">
+                    <g class="ufo-hover-3">
+                        <!-- Tia sáng hút -->
+                        <polygon points="-16,6 16,6 42,104 -42,104" fill="url(#beamPink)" class="ufo-beam"/>
+                        <!-- Vòng sáng lơ lửng -->
+                        <ellipse cx="0" cy="48" rx="18" ry="3.5" stroke="#ffffff" stroke-width="1.3" stroke-dasharray="4 3" opacity="0.8"/>
+                        <!-- Vòm kính + Alien nhỏ -->
+                        <path d="M-15 -1 C-15 -16, 15 -16, 15 -1 Z" fill="#e5f6ff" fill-opacity="0.9" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="0" cy="-6" rx="6" ry="5" fill="#c3edaa" stroke="#8c5e69" stroke-width="1.2"/>
+                        <circle cx="-2.2" cy="-6.5" r="1.2" fill="#5c3d46"/>
+                        <circle cx="2.2" cy="-6.5" r="1.2" fill="#5c3d46"/>
+                        <!-- Thân đĩa bay hồng pastel -->
+                        <ellipse cx="0" cy="4" rx="17" ry="4.8" fill="#ff9eb5" stroke="#8c5e69" stroke-width="1.4"/>
+                        <ellipse cx="0" cy="0" rx="26" ry="7.5" fill="#ffc4d6" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="-15" cy="0.8" r="2" fill="#ffe082" stroke="#8c5e69" stroke-width="0.9" class="ufo-light"/>
+                        <circle cx="0" cy="2.2" r="2.2" fill="#a8d8ff" stroke="#8c5e69" stroke-width="0.9" class="ufo-light" style="animation-delay:0.4s"/>
+                        <circle cx="15" cy="0.8" r="2" fill="#fffdf2" stroke="#8c5e69" stroke-width="0.9" class="ufo-light" style="animation-delay:0.8s"/>
+                    </g>
+                    <!-- Bé bò sữa 1 vừa bị nhấc khỏi bãi cỏ -->
+                    <g transform="translate(0, 68) scale(0.78)">
+                        <g class="cow-float-3">
+                            <text x="-28" y="-14" font-size="13" font-weight="bold" fill="#ff6181">?</text>
+                            <rect x="-14" y="8" width="4.5" height="9" rx="2.2" transform="rotate(15 -12 10)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="-6" y="9" width="4.5" height="9" rx="2.2" transform="rotate(-12 -4 11)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="4" y="9" width="4.5" height="9" rx="2.2" transform="rotate(14 6 11)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="11" y="7" width="4.5" height="9" rx="2.2" transform="rotate(-18 13 9)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <path d="M17 0 Q23 -3 22 3" stroke="#8c5e69" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="22" cy="4" r="2" fill="#7a5c63"/>
+                            <rect x="-17" y="-9" width="35" height="21" rx="10.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                            <path d="M-4 -8.5 C2 -8.5 5 -4 3 0 C1 3 -5 2 -6 -2 C-7 -6 -6 -8.5 -4 -8.5 Z" fill="#7a5c63"/>
+                            <ellipse cx="10" cy="4" rx="5" ry="3.8" fill="#7a5c63"/>
+                            <circle cx="-11" cy="6" r="2.8" fill="#7a5c63"/>
+                            <path d="M2 11.5 Q5 15 8 11.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.2"/>
+                            <path d="M-19 -11 Q-21 -16 -17 -15" fill="#ffe699" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                            <path d="M-11 -12 Q-9 -17 -13 -16" fill="#ffe699" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                            <ellipse cx="-23" cy="-8" rx="4" ry="2.3" transform="rotate(-25 -23 -8)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.4"/>
+                            <ellipse cx="-7" cy="-9" rx="4" ry="2.3" transform="rotate(20 -7 -9)" fill="#7a5c63" stroke="#8c5e69" stroke-width="1.4"/>
+                            <circle cx="-15" cy="-5" r="8.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                            <ellipse cx="-16" cy="-1" rx="6.5" ry="4.2" fill="#ffd1dc" stroke="#8c5e69" stroke-width="1.3"/>
+                            <circle cx="-18" cy="-1.2" r="0.9" fill="#8c5e69"/>
+                            <circle cx="-14" cy="-1.2" r="0.9" fill="#8c5e69"/>
+                            <circle cx="-18.5" cy="-6.8" r="1.4" fill="#5c3d46"/>
+                            <circle cx="-12.5" cy="-6.8" r="1.4" fill="#5c3d46"/>
+                        </g>
+                    </g>
+                </g>
+
+                <!-- ========================================== -->
+                <!-- 🛸 CỤM 2 (TRUNG TÂM - x=505): UFO TÍM TO HÚT BÒ BAY CHỔNG VÓ -->
+                <!-- ========================================== -->
+                <g transform="translate(505, 28)">
+                    <g class="ufo-hover-1">
+                        <!-- Tia sáng hút -->
+                        <polygon points="-22,8 22,8 56,112 -56,112" fill="url(#beamPurple)" class="ufo-beam"/>
+                        <!-- Vòng sóng hút -->
+                        <ellipse cx="0" cy="40" rx="22" ry="4" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.85"/>
+                        <ellipse cx="0" cy="86" rx="34" ry="5" stroke="#ffffff" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.7"/>
+                        <!-- Vòm kính + Bé Alien vẫy tay -->
+                        <path d="M-20 -2 C-20 -22, 20 -22, 20 -2 Z" fill="#dff4ff" fill-opacity="0.9" stroke="#8c5e69" stroke-width="1.6"/>
+                        <path d="M-4 -14 L-6 -19 M4 -14 L6 -19" stroke="#8c5e69" stroke-width="1.3" stroke-linecap="round"/>
+                        <circle cx="-6.5" cy="-19.5" r="1.7" fill="#b7e89c" stroke="#8c5e69" stroke-width="1"/>
+                        <circle cx="6.5" cy="-19.5" r="1.7" fill="#b7e89c" stroke="#8c5e69" stroke-width="1"/>
+                        <ellipse cx="0" cy="-8" rx="8" ry="6.5" fill="#c3edaa" stroke="#8c5e69" stroke-width="1.3"/>
+                        <circle cx="-3" cy="-8.5" r="1.5" fill="#5c3d46"/>
+                        <circle cx="3" cy="-8.5" r="1.5" fill="#5c3d46"/>
+                        <ellipse cx="-5.2" cy="-6.5" rx="1.5" ry="0.8" fill="#ffb7c5"/>
+                        <ellipse cx="5.2" cy="-6.5" rx="1.5" ry="0.8" fill="#ffb7c5"/>
+                        <!-- Thân đĩa bay tím pastel -->
+                        <ellipse cx="0" cy="5" rx="22" ry="6" fill="#c3a4f5" stroke="#8c5e69" stroke-width="1.5"/>
+                        <ellipse cx="0" cy="0" rx="34" ry="9.5" fill="#e2ccff" stroke="#8c5e69" stroke-width="1.7"/>
+                        <circle cx="-20" cy="1" r="2.6" fill="#ffe082" stroke="#8c5e69" stroke-width="1" class="ufo-light"/>
+                        <circle cx="0" cy="3" r="2.8" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1" class="ufo-light" style="animation-delay:0.4s"/>
+                        <circle cx="20" cy="1" r="2.6" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1" class="ufo-light" style="animation-delay:0.8s"/>
+                        <!-- Sao nhỏ quanh UFO -->
+                        <text x="-44" y="-4" font-size="10" fill="#ffb7c5">✦</text>
+                        <text x="38" y="-8" font-size="9" fill="#ffd166">✦</text>
+                    </g>
+                    <!-- Bé bò sữa 2 mập ú đang bay lơ lửng trong tia sáng -->
+                    <g transform="translate(0, 66) scale(0.95)">
+                        <g class="cow-float-1">
+                            <text x="20" y="-12" font-size="12" font-weight="bold" fill="#ff6181">!</text>
+                            <rect x="-14" y="8" width="4.5" height="9" rx="2.2" transform="rotate(24 -12 10)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="-6" y="9" width="4.5" height="9" rx="2.2" transform="rotate(-20 -4 11)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="4" y="9" width="4.5" height="9" rx="2.2" transform="rotate(22 6 11)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="11" y="7" width="4.5" height="9" rx="2.2" transform="rotate(-26 13 9)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <path d="M17 0 Q24 -4 23 3" stroke="#8c5e69" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="23" cy="4" r="2.2" fill="#7a5c63"/>
+                            <rect x="-17" y="-9" width="35" height="21" rx="10.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                            <path d="M-4 -8.5 C2 -8.5 5 -4 3 0 C1 3 -5 2 -6 -2 C-7 -6 -6 -8.5 -4 -8.5 Z" fill="#7a5c63"/>
+                            <ellipse cx="10" cy="4" rx="5.2" ry="4" fill="#7a5c63"/>
+                            <circle cx="-11" cy="6" r="2.8" fill="#7a5c63"/>
+                            <path d="M2 11.5 Q5 15.5 8 11.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.2"/>
+                            <path d="M-19 -11 Q-21 -16 -17 -15" fill="#ffe699" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                            <path d="M-11 -12 Q-9 -17 -13 -16" fill="#ffe699" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                            <ellipse cx="-23" cy="-8" rx="4" ry="2.3" transform="rotate(-25 -23 -8)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.4"/>
+                            <ellipse cx="-7" cy="-9" rx="4" ry="2.3" transform="rotate(20 -7 -9)" fill="#7a5c63" stroke="#8c5e69" stroke-width="1.4"/>
+                            <circle cx="-15" cy="-5" r="8.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                            <ellipse cx="-16" cy="-1" rx="6.5" ry="4.2" fill="#ffd1dc" stroke="#8c5e69" stroke-width="1.3"/>
+                            <circle cx="-18" cy="-1.2" r="0.9" fill="#8c5e69"/>
+                            <circle cx="-14" cy="-1.2" r="0.9" fill="#8c5e69"/>
+                            <!-- Mắt tròn xoe hoảng hốt -->
+                            <circle cx="-18.5" cy="-6.8" r="1.7" fill="#5c3d46"/>
+                            <circle cx="-18.9" cy="-7.2" r="0.5" fill="#ffffff"/>
+                            <circle cx="-12.5" cy="-6.8" r="1.7" fill="#5c3d46"/>
+                            <circle cx="-12.9" cy="-7.2" r="0.5" fill="#ffffff"/>
+                        </g>
+                    </g>
+                </g>
+
+                <!-- ========================================== -->
+                <!-- 🛸 CỤM 3 (BÊN PHẢI - x=800): UFO XANH MINT HÚT BÒ NGHIÊNG NGƯỜI -->
+                <!-- ========================================== -->
+                <g transform="translate(800, 32)">
+                    <g class="ufo-hover-2">
+                        <!-- Tia sáng hút -->
+                        <polygon points="-18,7 18,7 48,108 -48,108" fill="url(#beamMint)" class="ufo-beam"/>
+                        <ellipse cx="0" cy="46" rx="19" ry="3.5" stroke="#ffffff" stroke-width="1.3" stroke-dasharray="4 3" opacity="0.8"/>
+                        <!-- Vòm kính + Alien -->
+                        <path d="M-17 -1 C-17 -18, 17 -18, 17 -1 Z" fill="#fff7fb" fill-opacity="0.92" stroke="#8c5e69" stroke-width="1.5"/>
+                        <path d="M-3 -12 L-5 -16 M3 -12 L5 -16" stroke="#8c5e69" stroke-width="1.2" stroke-linecap="round"/>
+                        <ellipse cx="0" cy="-6.5" rx="6.8" ry="5.5" fill="#c3edaa" stroke="#8c5e69" stroke-width="1.2"/>
+                        <circle cx="-2.5" cy="-7" r="1.3" fill="#5c3d46"/>
+                        <circle cx="2.5" cy="-7" r="1.3" fill="#5c3d46"/>
+                        <!-- Thân đĩa bay xanh trời pastel -->
+                        <ellipse cx="0" cy="4.5" rx="19" ry="5" fill="#8cc9fa" stroke="#8c5e69" stroke-width="1.4"/>
+                        <ellipse cx="0" cy="0" rx="29" ry="8.2" fill="#bce2ff" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="-17" cy="0.8" r="2.2" fill="#ffe082" stroke="#8c5e69" stroke-width="0.9" class="ufo-light"/>
+                        <circle cx="0" cy="2.5" r="2.4" fill="#ffb7c5" stroke="#8c5e69" stroke-width="0.9" class="ufo-light" style="animation-delay:0.5s"/>
+                        <circle cx="17" cy="0.8" r="2.2" fill="#d4b5ff" stroke="#8c5e69" stroke-width="0.9" class="ufo-light" style="animation-delay:0.9s"/>
+                        <text x="32" y="-5" font-size="10" fill="#a8d8ff">✦</text>
+                    </g>
+                    <!-- Bé bò sữa 3 (quay mặt sang phải) đang bay lên -->
+                    <g transform="translate(0, 62) scale(-0.84, 0.84)">
+                        <g class="cow-float-2">
+                            <rect x="-14" y="8" width="4.5" height="9" rx="2.2" transform="rotate(25 -12 10)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="-6" y="9" width="4.5" height="9" rx="2.2" transform="rotate(-18 -4 11)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="4" y="9" width="4.5" height="9" rx="2.2" transform="rotate(20 6 11)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <rect x="11" y="7" width="4.5" height="9" rx="2.2" transform="rotate(-24 13 9)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <path d="M17 0 Q23 -3 22 3" stroke="#8c5e69" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="22" cy="4" r="2" fill="#7a5c63"/>
+                            <rect x="-17" y="-9" width="35" height="21" rx="10.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                            <path d="M-4 -8.5 C2 -8.5 5 -4 3 0 C1 3 -5 2 -6 -2 C-7 -6 -6 -8.5 -4 -8.5 Z" fill="#7a5c63"/>
+                            <ellipse cx="10" cy="4" rx="5" ry="3.8" fill="#7a5c63"/>
+                            <path d="M2 11.5 Q5 15 8 11.5" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.2"/>
+                            <path d="M-19 -11 Q-21 -16 -17 -15" fill="#ffe699" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                            <path d="M-11 -12 Q-9 -17 -13 -16" fill="#ffe699" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                            <ellipse cx="-23" cy="-8" rx="4" ry="2.3" transform="rotate(-25 -23 -8)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.4"/>
+                            <ellipse cx="-7" cy="-9" rx="4" ry="2.3" transform="rotate(20 -7 -9)" fill="#7a5c63" stroke="#8c5e69" stroke-width="1.4"/>
+                            <circle cx="-15" cy="-5" r="8.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.6"/>
+                            <ellipse cx="-16" cy="-1" rx="6.5" ry="4.2" fill="#ffd1dc" stroke="#8c5e69" stroke-width="1.3"/>
+                            <circle cx="-18" cy="-1.2" r="0.9" fill="#8c5e69"/>
+                            <circle cx="-14" cy="-1.2" r="0.9" fill="#8c5e69"/>
+                            <circle cx="-18.5" cy="-6.8" r="1.5" fill="#5c3d46"/>
+                            <circle cx="-12.5" cy="-6.8" r="1.5" fill="#5c3d46"/>
+                        </g>
+                    </g>
+                </g>
+
+                <!-- 🌸 HÀNG HOA 5 SẮC DƯỚI CHÂN VƯỜN (GIỮ NGUYÊN 10 BÔNG) 🌸 -->
+                <g transform="translate(0, 65)">
+                    <!-- 1. Tulip Hồng (Trái) -->
+                    <g class="sway-slow">
+                        <path d="M52 84 C51 66, 49 52, 48 38" stroke="#8c5e69" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M51 76 C41 68, 38 56, 41 50 C47 56, 50 66, 51 76 Z" fill="#b7de7b" stroke="#8c5e69" stroke-width="1.4"/>
+                        <path d="M38 28 C37 18, 44 13, 48 21 C52 13, 59 18, 57 28 C55 37, 51 40, 48 40 C44 40, 40 37, 38 28 Z" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.6"/>
+                    </g>
+
+                    <!-- 2. Cúc Họa Mi Trắng -->
+                    <g class="sway-fast">
+                        <path d="M138 82 C138 70, 139 60, 140 48" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                        <g transform="translate(140,44) scale(0.8)">
+                            <ellipse cx="0" cy="-9" rx="3.5" ry="6.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="9" rx="3.5" ry="6.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="-9" cy="0" rx="6.5" ry="3.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="9" cy="0" rx="6.5" ry="3.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="-6.5" cy="-6.5" rx="3.2" ry="6" transform="rotate(-45 -6.5 -6.5)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="6.5" cy="-6.5" rx="3.2" ry="6" transform="rotate(45 6.5 -6.5)" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="4.5" fill="#ffe082" stroke="#8c5e69" stroke-width="1.4"/>
+                        </g>
+                    </g>
+
+                    <!-- 3. Lưu Ly Xanh -->
+                    <g class="sway-slow">
+                        <path d="M256 82 C255 68, 254 56, 253 44" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                        <path d="M255 72 C263 65, 267 57, 264 52 C259 57, 256 64, 255 72 Z" fill="#c3e38a" stroke="#8c5e69" stroke-width="1.3"/>
+                        <g transform="translate(253,40) scale(0.85)">
+                            <circle cx="0" cy="-7" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="6.5" cy="-2" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="4" cy="5.5" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="-4" cy="5.5" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="-6.5" cy="-2" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="3" fill="#fff2a6" stroke="#8c5e69" stroke-width="1.2"/>
+                        </g>
+                    </g>
+
+                    <!-- 4. Hướng Dương Vàng -->
+                    <g class="sway-fast">
+                        <path d="M352 84 C353 68, 355 54, 356 42" stroke="#8c5e69" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M353 74 C343 67, 340 57, 344 51 C349 57, 353 65, 353 74 Z" fill="#b7de7b" stroke="#8c5e69" stroke-width="1.4"/>
+                        <g transform="translate(356,37) scale(0.85)">
+                            <ellipse cx="0" cy="-10" rx="4" ry="7" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="10" rx="4" ry="7" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="-10" cy="0" rx="7" ry="4" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="10" cy="0" rx="7" ry="4" fill="#ffe082" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="-7.5" cy="-7.5" rx="3.8" ry="6.5" transform="rotate(-45 -7.5 -7.5)" fill="#ffd166" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="7.5" cy="-7.5" rx="3.8" ry="6.5" transform="rotate(45 7.5 -7.5)" fill="#ffd166" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="5.5" fill="#a87654" stroke="#8c5e69" stroke-width="1.5"/>
+                        </g>
+                    </g>
+
+                    <!-- 5. Oải Hương Tím -->
+                    <g class="sway-slow">
+                        <path d="M432 82 C432 66, 434 48, 436 32" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                        <ellipse cx="436" cy="27" rx="3.6" ry="5.5" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="430" cy="35" rx="4.2" ry="3.2" transform="rotate(-20 430 35)" fill="#c39df8" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="441" cy="35" rx="4.2" ry="3.2" transform="rotate(20 441 35)" fill="#e3d0ff" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="430" cy="44" rx="4.2" ry="3.2" transform="rotate(-15 430 44)" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="441" cy="44" rx="4.2" ry="3.2" transform="rotate(15 441 44)" fill="#c39df8" stroke="#8c5e69" stroke-width="1.3"/>
+                    </g>
+
+                    <!-- 6. Hoa Anh Đào Hồng 5 cánh -->
+                    <g class="sway-fast">
+                        <path d="M582 83 C582 68, 583 56, 584 44" stroke="#8c5e69" stroke-width="1.7" stroke-linecap="round"/>
+                        <g transform="translate(584,40) scale(0.9)">
+                            <circle cx="0" cy="-7" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="6.8" cy="-2" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="4.2" cy="5.8" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="-4.2" cy="5.8" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="-6.8" cy="-2" r="5.2" fill="#ffc4d0" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="3" fill="#ffe699" stroke="#8c5e69" stroke-width="1.2"/>
+                        </g>
+                    </g>
+
+                    <!-- 7. Cúc Họa Mi Trắng -->
+                    <g class="sway-slow">
+                        <path d="M664 82 C664 70, 665 60, 666 50" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                        <g transform="translate(666,46) scale(0.75)">
+                            <ellipse cx="0" cy="-9" rx="3.5" ry="6.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="0" cy="9" rx="3.5" ry="6.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="-9" cy="0" rx="6.5" ry="3.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <ellipse cx="9" cy="0" rx="6.5" ry="3.5" fill="#ffffff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="4.5" fill="#ffe082" stroke="#8c5e69" stroke-width="1.4"/>
+                        </g>
+                    </g>
+
+                    <!-- 8. Lưu Ly Xanh -->
+                    <g class="sway-fast">
+                        <path d="M734 83 C733 68, 732 56, 731 44" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                        <g transform="translate(731,40) scale(0.85)">
+                            <circle cx="0" cy="-7" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="6.5" cy="-2" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="4" cy="5.5" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="-4" cy="5.5" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="-6.5" cy="-2" r="5" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1.5"/>
+                            <circle cx="0" cy="0" r="3" fill="#fff2a6" stroke="#8c5e69" stroke-width="1.2"/>
+                        </g>
+                    </g>
+
+                    <!-- 9. Oải Hương Tím -->
+                    <g class="sway-slow">
+                        <path d="M874 84 C874 66, 876 50, 878 34" stroke="#8c5e69" stroke-width="1.6" stroke-linecap="round"/>
+                        <ellipse cx="878" cy="29" rx="3.6" ry="5.5" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="872" cy="37" rx="4.2" ry="3.2" transform="rotate(-20 872 37)" fill="#c39df8" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="883" cy="37" rx="4.2" ry="3.2" transform="rotate(20 883 37)" fill="#e3d0ff" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="872" cy="46" rx="4.2" ry="3.2" transform="rotate(-15 872 46)" fill="#d4b5ff" stroke="#8c5e69" stroke-width="1.3"/>
+                        <ellipse cx="883" cy="46" rx="4.2" ry="3.2" transform="rotate(15 883 46)" fill="#c39df8" stroke="#8c5e69" stroke-width="1.3"/>
+                    </g>
+
+                    <!-- 10. Tulip Hồng + Nụ Vàng (Phải) -->
+                    <g class="sway-fast">
+                        <path d="M944 84 C945 66, 947 52, 948 38" stroke="#8c5e69" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M945 76 C955 68, 958 56, 955 50 C949 56, 946 66, 945 76 Z" fill="#b7de7b" stroke="#8c5e69" stroke-width="1.4"/>
+                        <path d="M938 28 C937 18, 944 13, 948 21 C952 13, 959 18, 957 28 C955 37, 951 40, 948 40 C944 40, 940 37, 938 28 Z" fill="#ffb7c5" stroke="#8c5e69" stroke-width="1.6"/>
+                        <circle cx="918" cy="54" r="4.5" fill="#ffe082" stroke="#8c5e69" stroke-width="1.4"/>
+                    </g>
+                </g>
+            </svg>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="lg:col-span-1 space-y-6">
-                <div class="aesthetic-card p-6 bg-gradient-to-br from-white to-pink-50/30">
+                <!-- 🩵 1. HƯỚNG DẪN - LƯU LY XANH 🩵 -->
+                <div class="aesthetic-card doodle-blue p-6 overflow-visible">
+                    <svg class="absolute -top-4 -right-2.5 w-14 h-14 pointer-events-none drop-shadow-sm" viewBox="0 0 60 65" fill="none">
+                        <path d="M32 34 C33 45, 36 54, 38 62" stroke="#4a3539" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M36 54 C27 48, 24 39, 27 34 C33 39, 36 47, 36 54 Z" fill="#cde69b" stroke="#4a3539" stroke-width="1.8" stroke-linejoin="round"/>
+                        <g transform="translate(27,23)">
+                            <circle cx="0" cy="-7.5" r="5.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.7"/>
+                            <circle cx="7.2" cy="-2.2" r="5.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.7"/>
+                            <circle cx="4.5" cy="6.2" r="5.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.7"/>
+                            <circle cx="-4.5" cy="6.2" r="5.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.7"/>
+                            <circle cx="-7.2" cy="-2.2" r="5.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.7"/>
+                            <circle cx="0" cy="0" r="3.3" fill="#fff2a6" stroke="#4a3539" stroke-width="1.4"/>
+                        </g>
+                    </svg>
                     <button onclick="toggleGuide()" class="w-full flex items-center justify-between focus:outline-none group">
                         <div class="text-left">
-                            <h3 class="font-title text-xl text-pink-500"><i class="fas fa-magic mr-2"></i> Hướng Dẫn</h3>
-                            <p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider font-bold">📖 Bấm để xem</p>
+                            <h3 class="font-title text-xl text-[#4d7ea8]"><i class="fas fa-magic mr-2"></i> Hướng Dẫn</h3>
+                            <p class="text-[11px] text-[#7a8b99] mt-1 uppercase tracking-wider font-bold">📖 Bấm để xem</p>
                         </div>
-                        <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-400 flex items-center justify-center border border-dotted border-pink-300 group-hover:bg-pink-200 transition">
+                        <div class="w-8 h-8 rounded-full bg-white text-[#4d7ea8] flex items-center justify-center border-2 border-[#6b464e] group-hover:bg-blue-50 transition">
                             <i id="guide-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
                         </div>
                     </button>
                     
-                    <div id="guide-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-pink-200 origin-top transition-all duration-300 flex-col gap-3">
+                    <div id="guide-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-[#a8d8ff] origin-top transition-all duration-300 flex-col gap-3">
                         <a href="https://drive.google.com/drive/folders/1kq7uoe6hZbI17MRzSX9fOzqoWS6g9IXp?usp=drive_link" target="_blank" class="w-full btn-melody py-2.5 text-sm font-bold flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform shadow-sm relative overflow-hidden">
                             <span class="absolute left-3 opacity-50">୨୧</span>
                             HD Giao Diện Mới
@@ -471,48 +1198,112 @@
                     </div>
                 </div>
 
-                <!-- Khối Tìm kiếm (Đã tách riêng) -->
-                <div class="aesthetic-card p-6 space-y-4">
-                    <div class="drip-text absolute top-1 left-0">꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦ ꒷꒦︶꒷꒦︶</div>
-                    <h3 class="font-title text-xl text-pink-500 mt-2"><i class="fas fa-search mr-2"></i> Tìm kiếm</h3>
+                <!-- 🌼 2. TÌM KIẾM - CÚC HỌA MI TRẮNG 🌼 -->
+                <div class="aesthetic-card doodle-white p-6 space-y-3 overflow-visible">
+                    <svg class="absolute -top-4 -right-2.5 w-14 h-14 pointer-events-none drop-shadow-sm" viewBox="0 0 60 65" fill="none">
+                        <path d="M30 34 C31 45, 34 54, 36 62" stroke="#4a3539" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M34 54 C26 48, 23 39, 26 34 C31 39, 34 47, 34 54 Z" fill="#cde69b" stroke="#4a3539" stroke-width="1.8" stroke-linejoin="round"/>
+                        <g transform="translate(30,22)">
+                            <ellipse cx="0" cy="-10" rx="3.5" ry="7" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="0" cy="10" rx="3.5" ry="7" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="-10" cy="0" rx="7" ry="3.5" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="10" cy="0" rx="7" ry="3.5" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="-7" cy="-7" rx="3.5" ry="6.5" transform="rotate(-45 -7 -7)" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="7" cy="-7" rx="3.5" ry="6.5" transform="rotate(45 7 -7)" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="-7" cy="7" rx="3.5" ry="6.5" transform="rotate(45 -7 7)" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="7" cy="7" rx="3.5" ry="6.5" transform="rotate(-45 7 7)" fill="#ffffff" stroke="#4a3539" stroke-width="1.6"/>
+                            <circle cx="0" cy="0" r="5" fill="#ffe082" stroke="#4a3539" stroke-width="1.6"/>
+                        </g>
+                    </svg>
+                    <h3 class="font-title text-xl text-[#6b464e]"><i class="fas fa-search mr-2 text-[#ff85a2]"></i> Tìm kiếm</h3>
                     <input type="text" id="search-input" oninput="filterCharacters()" placeholder="Nhập tên tú nữ..." 
-                           class="w-full bg-pink-50 border-2 border-dashed border-pink-200 rounded-xl px-4 py-3 text-sm font-semibold focus:outline-none focus:border-pink-400 transition placeholder-pink-300">
+                           class="w-full bg-[#fff9fa] border-2 border-[#6b464e] rounded-2xl px-4 py-2.5 text-sm font-semibold focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#ffb7c5] transition placeholder-[#c99aa6]">
                 </div>
 
-                <!-- Nút Lật Thẻ Độc Lập -->
-                <button onclick="randomPick()" class="w-full btn-melody py-4 font-bold text-base shadow-md hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
-                    <span class="text-2xl animate-bounce">🎲</span> Lật Thẻ Ngẫu Nhiên
-                </button>
+                <!-- 🌷 3. CHARACTER OF THE DAY (GHIM 2 CHAR MỖI NGÀY + ĐỔI HOA) 🌷 -->
+                <div id="cotd-card" class="cotd-wrapper p-5 pt-6 pb-5 overflow-visible">
+                    <svg class="absolute -top-3 -left-2 w-16 h-12 pointer-events-none z-20" viewBox="0 0 80 55" fill="none">
+                        <path id="cotd-ribbon-path" d="M4 10 C18 35, 34 34, 30 22 C26 12, 16 20, 28 28 C44 36, 58 20, 74 28" stroke="#f7a8b8" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                    <div id="cotd-flower-top" class="absolute -top-6 -right-3 w-16 h-20 pointer-events-none drop-shadow-sm z-20"></div>
+                    <div id="cotd-flower-left" class="absolute top-10 -left-3.5 w-8 h-44 pointer-events-none z-20"></div>
+                    <svg class="absolute -bottom-3 -left-3 w-12 h-12 pointer-events-none z-20" viewBox="0 0 55 55" fill="none">
+                        <path d="M26 48 C14 38, 8 22, 10 10 C20 18, 26 32, 26 48 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M26 48 C34 38, 38 25, 34 15 C27 25, 25 36, 26 48 Z" fill="#d9eeae" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
 
-                <div class="aesthetic-card p-6 bg-gradient-to-br from-white to-pink-50/30">
+                    <div class="text-center mb-3.5 relative z-10 px-3">
+                        <h3 class="cotd-title text-2xl leading-tight font-bold">
+                            Character<br>of the Day
+                        </h3>
+                        <p id="cotd-date-label" class="text-[11px] font-bold text-[#6b464e] mt-1 tracking-wide">
+                            ✦ Gợi ý hôm nay ✦
+                        </p>
+                        <button onclick="cycleCotdFlower()" id="cotd-flower-btn" class="mt-2 inline-flex items-center gap-1.5 bg-white/90 hover:bg-white text-[#6b464e] border border-dashed border-[#d99aa7] rounded-full px-3 py-0.5 text-[10px] font-bold shadow-sm transition active:scale-95">
+                            💐 Đổi hoa: Vườn 5 sắc
+                        </button>
+                    </div>
+
+                    <div id="cotd-list" class="space-y-2.5 relative z-10 pl-2"></div>
+                </div>
+
+                <!-- 🌻 4. BẢNG VÀNG SỦNG ÁI - HƯỚNG DƯƠNG VÀNG 🌻 -->
+                <div class="aesthetic-card doodle-yellow p-6 overflow-visible">
+                    <svg class="absolute -top-4 -right-2.5 w-14 h-14 pointer-events-none drop-shadow-sm" viewBox="0 0 60 65" fill="none">
+                        <path d="M30 35 C31 46, 34 55, 36 62" stroke="#4a3539" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M34 54 C26 48, 23 40, 26 35 C31 40, 34 47, 34 54 Z" fill="#cde69b" stroke="#4a3539" stroke-width="1.8" stroke-linejoin="round"/>
+                        <g transform="translate(30,22)">
+                            <ellipse cx="0" cy="-11" rx="4" ry="7" fill="#ffe082" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="0" cy="11" rx="4" ry="7" fill="#ffe082" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="-11" cy="0" rx="7" ry="4" fill="#ffe082" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="11" cy="0" rx="7" ry="4" fill="#ffe082" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="-8" cy="-8" rx="4" ry="6.5" transform="rotate(-45 -8 -8)" fill="#ffd166" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="8" cy="-8" rx="4" ry="6.5" transform="rotate(45 8 -8)" fill="#ffd166" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="-8" cy="8" rx="4" ry="6.5" transform="rotate(45 -8 8)" fill="#ffd166" stroke="#4a3539" stroke-width="1.6"/>
+                            <ellipse cx="8" cy="8" rx="4" ry="6.5" transform="rotate(-45 8 8)" fill="#ffd166" stroke="#4a3539" stroke-width="1.6"/>
+                            <circle cx="0" cy="0" r="6.5" fill="#9c6b4e" stroke="#4a3539" stroke-width="1.8"/>
+                        </g>
+                    </svg>
                     <button onclick="toggleLeaderboard()" class="w-full flex items-center justify-between focus:outline-none group">
                         <div class="text-left">
-                            <h3 class="font-title text-xl text-[#FF85A2]"><i class="fas fa-crown text-yellow-400 mr-2"></i> Bảng Vàng Sủng Ái</h3>
-                            <p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider font-bold">💎 Bấm để xem top 3</p>
+                            <h3 class="font-title text-xl text-[#a8762c]"><i class="fas fa-crown text-yellow-400 mr-2"></i> Bảng Vàng Sủng Ái</h3>
+                            <p class="text-[11px] text-[#9e8762] mt-1 uppercase tracking-wider font-bold">💎 Bấm để xem top 3</p>
                         </div>
-                        <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-400 flex items-center justify-center border border-dotted border-pink-300 group-hover:bg-pink-200 transition">
+                        <div class="w-8 h-8 rounded-full bg-white text-[#a8762c] flex items-center justify-center border-2 border-[#6b464e] group-hover:bg-yellow-50 transition">
                             <i id="leaderboard-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
                         </div>
                     </button>
                     
-                    <div id="leaderboard-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-pink-200 origin-top transition-all duration-300">
-                        <div class="kawaii-text mb-3 text-pink-300">──── ୨୧ ────</div>
+                    <div id="leaderboard-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-[#ffd97d] origin-top transition-all duration-300">
+                        <div class="kawaii-text mb-3 text-[#d9a84e]">──── ୨୧ ────</div>
                         <div id="leaderboard-container" class="space-y-2.5"></div>
                     </div>
                 </div>
 
-                <div class="aesthetic-card p-6 bg-gradient-to-br from-white to-pink-50/30">
+                <!-- 🪻 5. PHÂN LOẠI - OẢI HƯƠNG TÍM 🪻 -->
+                <div class="aesthetic-card doodle-purple p-6 overflow-visible">
+                    <svg class="absolute -top-5 -right-2.5 w-12 h-16 pointer-events-none drop-shadow-sm" viewBox="0 0 55 75" fill="none">
+                        <path d="M28 18 C29 38, 31 56, 33 70" stroke="#4a3539" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M32 62 C23 54, 20 45, 23 39 C28 44, 32 53, 32 62 Z" fill="#cde69b" stroke="#4a3539" stroke-width="1.8" stroke-linejoin="round"/>
+                        <ellipse cx="28" cy="12" rx="4.2" ry="6" fill="#d4b5ff" stroke="#4a3539" stroke-width="1.6"/>
+                        <ellipse cx="22" cy="20" rx="4.8" ry="3.8" transform="rotate(-25 22 20)" fill="#c39df8" stroke="#4a3539" stroke-width="1.6"/>
+                        <ellipse cx="34" cy="20" rx="4.8" ry="3.8" transform="rotate(25 34 20)" fill="#e3d0ff" stroke="#4a3539" stroke-width="1.6"/>
+                        <ellipse cx="22" cy="29" rx="5" ry="4" transform="rotate(-20 22 29)" fill="#d4b5ff" stroke="#4a3539" stroke-width="1.6"/>
+                        <ellipse cx="34" cy="29" rx="5" ry="4" transform="rotate(20 34 29)" fill="#c39df8" stroke="#4a3539" stroke-width="1.6"/>
+                        <ellipse cx="24" cy="38" rx="4.5" ry="3.8" transform="rotate(-15 24 38)" fill="#e3d0ff" stroke="#4a3539" stroke-width="1.6"/>
+                        <ellipse cx="33" cy="38" rx="4.5" ry="3.8" transform="rotate(15 33 38)" fill="#d4b5ff" stroke="#4a3539" stroke-width="1.6"/>
+                    </svg>
                     <button onclick="toggleTags()" class="w-full flex items-center justify-between focus:outline-none group">
                         <div class="text-left">
-                            <h3 class="font-title text-xl text-pink-500"><i class="fas fa-tags mr-2"></i> Phân loại</h3>
-                            <p class="text-[11px] text-gray-400 mt-1 uppercase tracking-wider font-bold">🏷️ Bấm để thu/mở</p>
+                            <h3 class="font-title text-xl text-[#7b5aa6]"><i class="fas fa-tags mr-2"></i> Phân loại</h3>
+                            <p class="text-[11px] text-[#927da8] mt-1 uppercase tracking-wider font-bold">🏷️ Bấm để thu/mở</p>
                         </div>
-                        <div class="w-8 h-8 rounded-full bg-pink-100 text-pink-400 flex items-center justify-center border border-dotted border-pink-300 group-hover:bg-pink-200 transition">
+                        <div class="w-8 h-8 rounded-full bg-white text-[#7b5aa6] flex items-center justify-center border-2 border-[#6b464e] group-hover:bg-purple-50 transition">
                             <i id="tags-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
                         </div>
                     </button>
                     
-                    <div id="tags-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-pink-200 origin-top transition-all duration-300">
+                    <div id="tags-content" class="hidden mt-4 pt-4 border-t-2 border-dashed border-[#d4b5ff] origin-top transition-all duration-300">
                         <div class="flex flex-wrap gap-2 max-h-[250px] overflow-y-auto pr-2 pb-2 custom-scrollbar" id="tag-container"></div>
                     </div>
                 </div>
@@ -546,6 +1337,8 @@
 
                 <div class="space-y-5" id="character-list"></div>
             </div>
+        </div>
+    </div>
 
     <div id="new-bots-modal" class="modal fixed top-1/2 right-4 transform -translate-y-1/2 w-full max-w-sm z-50 pointer-events-none opacity-0 transition-all duration-500">
         <div class="modal-container bg-white w-11/12 mx-auto rounded-3xl border-4 border-dashed border-pink-300 z-50 shadow-2xl p-6 relative">
@@ -2273,6 +3066,7 @@ Flip to Side B. Press play.`
         function enterHarem() {
             document.getElementById('harem-screen').classList.remove('hidden');
             updateQuickFilterUI();
+            renderCharOfTheDay();
             renderTags();
             filterCharacters();
             renderLeaderboard();
@@ -2645,27 +3439,272 @@ function vote(id) {
             // Không cần gõ hàm load lại giao diện ở đây nữa, Database sẽ lo việc đó.
         }
 
-        // 🌟 TÍNH NĂNG LẬT THẺ THỊ TẨM (CHỌN TÚ NỮ) 🌟
-        function randomPick() {
-            const randomIndex = Math.floor(Math.random() * database.length);
-            const pick = database[randomIndex];
-            
-            document.getElementById('random-pick-name').innerText = pick.name;
-            
-            let firstLink = pick.aiLink;
-            if (pick.links) {
-                firstLink = Object.values(pick.links)[0]; 
+        // 💐 BỘ SƯU TẬP 6 LOẠI HOA VẼ TAY CHO CHARACTER OF THE DAY 💐
+        const cotdFlowerThemes = [
+            {
+                name: "Vườn 5 sắc",
+                icon: "💐",
+                bg: "#fff6f8", dot: "#f2c2ce", frame: "#ffb7c5", hover: "#ff85a2", stroke: "#b86b7a", shadow: "#f4b6c2", ribbon: "#f7a8b8",
+                vineColors: ["#ffb7c5", "#ffe082", "#a8d8ff", "#d4b5ff", "#ffffff"],
+                topSvg: `
+                    <svg class="w-full h-full" viewBox="0 0 70 90" fill="none">
+                        <path d="M36 42 C38 58, 43 72, 46 84" stroke="#4a3539" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M44 76 C33 65, 29 50, 32 42 C39 50, 44 63, 45 76 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M46 78 C55 62, 62 44, 59 30 C52 44, 48 60, 46 78 Z" fill="#d9eeae" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M22 25 C20 12, 30 6, 36 16 C42 6, 52 12, 48 25 C46 38, 39 43, 35 43 C30 43, 24 38, 22 25 Z" fill="#ffb7c5" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <g transform="translate(52,20) scale(0.75)">
+                            <circle cx="0" cy="-7" r="5" fill="#d4b5ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="6.5" cy="-2" r="5" fill="#d4b5ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="4" cy="5.5" r="5" fill="#d4b5ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="-4" cy="5.5" r="5" fill="#d4b5ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="-6.5" cy="-2" r="5" fill="#d4b5ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="0" cy="0" r="3.2" fill="#ffe082" stroke="#4a3539" stroke-width="1.5"/>
+                        </g>
+                    </svg>`
+            },
+            {
+                name: "Tulip Hồng",
+                icon: "🌷",
+                bg: "#fff6f8", dot: "#f2c2ce", frame: "#ffb7c5", hover: "#ff85a2", stroke: "#b86b7a", shadow: "#f4b6c2", ribbon: "#f7a8b8",
+                vineColors: ["#ffb7c5", "#ffc8d6", "#ffa6ba", "#ffd6e0", "#ffb7c5"],
+                topSvg: `
+                    <svg class="w-full h-full" viewBox="0 0 70 90" fill="none">
+                        <path d="M36 42 C38 58, 43 72, 46 84" stroke="#4a3539" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M44 76 C33 65, 29 50, 32 42 C39 50, 44 63, 45 76 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M46 78 C55 62, 62 44, 59 30 C52 44, 48 60, 46 78 Z" fill="#d9eeae" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M22 25 C20 12, 30 6, 36 16 C42 6, 52 12, 48 25 C46 38, 39 43, 35 43 C30 43, 24 38, 22 25 Z" fill="#ffb7c5" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M30 14 C34 10, 40 12, 42 22 C43 32, 39 40, 35 43" stroke="#4a3539" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>`
+            },
+            {
+                name: "Hướng Dương Vàng",
+                icon: "🌻",
+                bg: "#fffcf0", dot: "#f2dc9b", frame: "#ffd97d", hover: "#f7be4b", stroke: "#a8762c", shadow: "#fae29f", ribbon: "#f7cc6a",
+                vineColors: ["#ffe082", "#fff0a8", "#ffd466", "#ffe999", "#ffe082"],
+                topSvg: `
+                    <svg class="w-full h-full" viewBox="0 0 70 90" fill="none">
+                        <path d="M36 45 C38 60, 42 74, 45 85" stroke="#4a3539" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M42 73 C31 66, 26 56, 30 48 C37 54, 42 63, 42 73 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <g transform="translate(36,28)">
+                            <ellipse cx="0" cy="-15" rx="5" ry="9" fill="#ffe082" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="0" cy="15" rx="5" ry="9" fill="#ffe082" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="-15" cy="0" rx="9" ry="5" fill="#ffe082" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="15" cy="0" rx="9" ry="5" fill="#ffe082" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="-11" cy="-11" rx="5" ry="8" transform="rotate(-45 -11 -11)" fill="#ffd166" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="11" cy="-11" rx="5" ry="8" transform="rotate(45 11 -11)" fill="#ffd166" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="-11" cy="11" rx="5" ry="8" transform="rotate(45 -11 11)" fill="#ffd166" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="11" cy="11" rx="5" ry="8" transform="rotate(-45 11 11)" fill="#ffd166" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="0" cy="0" r="8.5" fill="#9c6b4e" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="-2.5" cy="-2" r="1.2" fill="#ffe082"/>
+                            <circle cx="2.5" cy="1" r="1.2" fill="#ffe082"/>
+                        </g>
+                    </svg>`
+            },
+            {
+                name: "Lưu Ly Xanh",
+                icon: "🩵",
+                bg: "#f4faff", dot: "#badcf7", frame: "#a8d8ff", hover: "#7cc2fc", stroke: "#4d7ea8", shadow: "#c5e4ff", ribbon: "#94ccf8",
+                vineColors: ["#a8d8ff", "#c7e7ff", "#8ec5fc", "#bae0ff", "#a8d8ff"],
+                topSvg: `
+                    <svg class="w-full h-full" viewBox="0 0 70 90" fill="none">
+                        <path d="M38 40 C38 56, 42 72, 45 84" stroke="#4a3539" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M43 74 C32 64, 28 52, 32 45 C39 52, 43 63, 43 74 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <g transform="translate(30,28)">
+                            <circle cx="0" cy="-9" r="6.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="8.5" cy="-2.5" r="6.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="5.5" cy="7.5" r="6.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="-5.5" cy="7.5" r="6.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="-8.5" cy="-2.5" r="6.5" fill="#a8d8ff" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="0" cy="0" r="4" fill="#fff2a6" stroke="#4a3539" stroke-width="1.5"/>
+                        </g>
+                        <g transform="translate(50,18) scale(0.7)">
+                            <circle cx="0" cy="-8" r="6" fill="#c7e7ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="7.5" cy="-2" r="6" fill="#c7e7ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="4.5" cy="6.5" r="6" fill="#c7e7ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="-4.5" cy="6.5" r="6" fill="#c7e7ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="-7.5" cy="-2" r="6" fill="#c7e7ff" stroke="#4a3539" stroke-width="2"/>
+                            <circle cx="0" cy="0" r="3.5" fill="#fff2a6" stroke="#4a3539" stroke-width="1.6"/>
+                        </g>
+                    </svg>`
+            },
+            {
+                name: "Oải Hương Tím",
+                icon: "🪻",
+                bg: "#faf5ff", dot: "#d9c2f5", frame: "#d4b5ff", hover: "#b98cf7", stroke: "#7b5aa6", shadow: "#e2ccff", ribbon: "#c8a3f8",
+                vineColors: ["#d4b5ff", "#e5d1ff", "#c39df8", "#dec4ff", "#d4b5ff"],
+                topSvg: `
+                    <svg class="w-full h-full" viewBox="0 0 70 90" fill="none">
+                        <path d="M36 22 C37 46, 40 68, 43 85" stroke="#4a3539" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M41 75 C30 65, 26 54, 30 47 C36 53, 41 64, 41 75 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M42 77 C51 66, 56 54, 53 45 C47 54, 43 65, 42 77 Z" fill="#d9eeae" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <ellipse cx="36" cy="14" rx="5" ry="7" fill="#d4b5ff" stroke="#4a3539" stroke-width="1.8"/>
+                        <ellipse cx="29" cy="23" rx="5.5" ry="4.5" transform="rotate(-25 29 23)" fill="#c39df8" stroke="#4a3539" stroke-width="1.8"/>
+                        <ellipse cx="43" cy="23" rx="5.5" ry="4.5" transform="rotate(25 43 23)" fill="#e3d0ff" stroke="#4a3539" stroke-width="1.8"/>
+                        <ellipse cx="29" cy="34" rx="6" ry="4.8" transform="rotate(-20 29 34)" fill="#d4b5ff" stroke="#4a3539" stroke-width="1.8"/>
+                        <ellipse cx="43" cy="34" rx="6" ry="4.8" transform="rotate(20 43 34)" fill="#c39df8" stroke="#4a3539" stroke-width="1.8"/>
+                        <ellipse cx="31" cy="45" rx="5.5" ry="4.5" transform="rotate(-15 31 45)" fill="#e3d0ff" stroke="#4a3539" stroke-width="1.8"/>
+                        <ellipse cx="42" cy="45" rx="5.5" ry="4.5" transform="rotate(15 42 45)" fill="#d4b5ff" stroke="#4a3539" stroke-width="1.8"/>
+                    </svg>`
+            },
+            {
+                name: "Cúc Họa Mi Trắng",
+                icon: "🌼",
+                bg: "#ffffff", dot: "#e2d5d8", frame: "#f0dce0", hover: "#ffb7c5", stroke: "#7a5b62", shadow: "#f3dfe3", ribbon: "#e8cfd4",
+                vineColors: ["#ffffff", "#fff9f0", "#ffffff", "#fff5f7", "#ffffff"],
+                topSvg: `
+                    <svg class="w-full h-full" viewBox="0 0 70 90" fill="none">
+                        <path d="M36 44 C38 59, 42 73, 45 85" stroke="#4a3539" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M43 75 C32 65, 28 53, 32 46 C38 53, 43 64, 43 75 Z" fill="#cde69b" stroke="#4a3539" stroke-width="2" stroke-linejoin="round"/>
+                        <g transform="translate(36,28)">
+                            <ellipse cx="0" cy="-14" rx="4.5" ry="9" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="0" cy="14" rx="4.5" ry="9" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="-14" cy="0" rx="9" ry="4.5" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="14" cy="0" rx="9" ry="4.5" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="-10" cy="-10" rx="4.5" ry="8.5" transform="rotate(-45 -10 -10)" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="10" cy="-10" rx="4.5" ry="8.5" transform="rotate(45 10 -10)" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="-10" cy="10" rx="4.5" ry="8.5" transform="rotate(45 -10 10)" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <ellipse cx="10" cy="10" rx="4.5" ry="8.5" transform="rotate(-45 10 10)" fill="#ffffff" stroke="#4a3539" stroke-width="1.8"/>
+                            <circle cx="0" cy="0" r="6.8" fill="#ffe082" stroke="#4a3539" stroke-width="1.8"/>
+                        </g>
+                    </svg>`
             }
-            
-            const linkBtn = document.getElementById('random-pick-link');
-            if (!firstLink || firstLink === "#") {
-                linkBtn.classList.add('hidden');
-            } else {
-                linkBtn.classList.remove('hidden');
-                linkBtn.href = firstLink;
+        ];
+
+        // Lưu kiểu hoa yêu thích (mặc định: 0 = Vườn 5 sắc)
+        let currentCotdFlowerIdx = parseInt(localStorage.getItem('harem_cotd_flower_idx') || '0', 10);
+        if (isNaN(currentCotdFlowerIdx) || currentCotdFlowerIdx >= cotdFlowerThemes.length) {
+            currentCotdFlowerIdx = 0;
+        }
+
+        function buildFlowerVineSvg(colors) {
+            const positions = [18, 55, 92, 129, 166];
+            const items = positions.map((y, idx) => {
+                const c = colors[idx % colors.length];
+                const center = c === "#ffe082" || c === "#ffd466" ? "#9c6b4e" : "#ffe699";
+                const leaf = idx < positions.length - 1
+                    ? `<ellipse cx="17" cy="${y + 18.5}" rx="5.5" ry="2.8" transform="rotate(${idx % 2 === 0 ? -22 : 22} 17 ${y + 18.5})" fill="#cde69b" stroke="#4a3539" stroke-width="1.5"/>`
+                    : '';
+                return `
+                    <g transform="translate(17,${y})">
+                        <circle cx="0" cy="-6" r="4.3" fill="${c}" stroke="#4a3539" stroke-width="1.5"/>
+                        <circle cx="5.7" cy="-1.8" r="4.3" fill="${c}" stroke="#4a3539" stroke-width="1.5"/>
+                        <circle cx="3.5" cy="4.8" r="4.3" fill="${c}" stroke="#4a3539" stroke-width="1.5"/>
+                        <circle cx="-3.5" cy="4.8" r="4.3" fill="${c}" stroke="#4a3539" stroke-width="1.5"/>
+                        <circle cx="-5.7" cy="-1.8" r="4.3" fill="${c}" stroke="#4a3539" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="2.5" fill="${center}" stroke="#4a3539" stroke-width="1.2"/>
+                    </g>
+                    ${leaf}
+                `;
+            }).join('');
+            return `<svg class="w-full h-full" viewBox="0 0 34 185" fill="none">${items}</svg>`;
+        }
+
+        function applyCotdFlowerTheme(idx) {
+            const theme = cotdFlowerThemes[idx];
+            const card = document.getElementById('cotd-card');
+            const topEl = document.getElementById('cotd-flower-top');
+            const leftEl = document.getElementById('cotd-flower-left');
+            const ribbonEl = document.getElementById('cotd-ribbon-path');
+            const btnEl = document.getElementById('cotd-flower-btn');
+
+            if (card) {
+                card.style.setProperty('--cotd-bg', theme.bg);
+                card.style.setProperty('--cotd-dot', theme.dot);
+                card.style.setProperty('--cotd-frame', theme.frame);
+                card.style.setProperty('--cotd-frame-hover', theme.hover);
+                card.style.setProperty('--cotd-stroke', theme.stroke);
+                card.style.setProperty('--cotd-shadow', theme.shadow);
             }
-            
-            openModal('random-pick-modal');
+            if (topEl) topEl.innerHTML = theme.topSvg;
+            if (leftEl) leftEl.innerHTML = buildFlowerVineSvg(theme.vineColors);
+            if (ribbonEl) ribbonEl.setAttribute('stroke', theme.ribbon);
+            if (btnEl) btnEl.innerText = `${theme.icon} Đổi hoa: ${theme.name}`;
+        }
+
+        function cycleCotdFlower() {
+            currentCotdFlowerIdx = (currentCotdFlowerIdx + 1) % cotdFlowerThemes.length;
+            localStorage.setItem('harem_cotd_flower_idx', currentCotdFlowerIdx);
+            applyCotdFlowerTheme(currentCotdFlowerIdx);
+        }
+
+        // 🌷 CHARACTER OF THE DAY: CỐ ĐỊNH 1 CHAR LẺ + 1 OPEN WORLD MỖI NGÀY 🌷
+        function renderCharOfTheDay() {
+            applyCotdFlowerTheme(currentCotdFlowerIdx);
+
+            const listEl = document.getElementById('cotd-list');
+            const dateLabel = document.getElementById('cotd-date-label');
+            if (!listEl || database.length === 0) return;
+
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+
+            if (dateLabel) {
+                dateLabel.innerText = `✦ Đề cử ngày ${day}/${month} ✦`;
+            }
+
+            let seed = parseInt(`${year}${month}${day}`, 10);
+            const seededRandom = () => {
+                seed = (seed + 0x6D2B79F5) | 0;
+                let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+                t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+
+            const singlePool = database.filter(c => !isOpenWorldBot(c));
+            const openWorldPool = database.filter(isOpenWorldBot);
+
+            const dailyPicks = [];
+            if (singlePool.length > 0) {
+                const singleChar = singlePool[Math.floor(seededRandom() * singlePool.length)];
+                dailyPicks.push({
+                    char: singleChar,
+                    icon: '🌷',
+                    badge: 'Char lẻ',
+                    badgeClass: 'bg-pink-100 text-pink-500 border-pink-200'
+                });
+            }
+            if (openWorldPool.length > 0) {
+                const owChar = openWorldPool[Math.floor(seededRandom() * openWorldPool.length)];
+                dailyPicks.push({
+                    char: owChar,
+                    icon: '🌍',
+                    badge: 'Open World',
+                    badgeClass: 'bg-purple-50 text-purple-500 border-purple-200'
+                });
+            }
+
+            listEl.innerHTML = dailyPicks.map(({ char, icon, badge, badgeClass }) => {
+                let firstLink = char.aiLink;
+                if (char.links) firstLink = Object.values(char.links)[0];
+                const hasLink = firstLink && firstLink !== "#";
+                const previewTags = char.tags.slice(0, 3).map(t => `<span class="text-[10px] bg-pink-50 text-pink-500 px-2 py-0.5 rounded-full font-semibold">#${t}</span>`).join('');
+
+                return `
+                    <div class="cotd-item p-3 space-y-2 shadow-sm">
+                        <div class="flex items-start justify-between gap-2">
+                            <h4 class="font-title text-base text-[#FF6181] font-bold leading-snug">
+                                ${icon} ${char.name}
+                            </h4>
+                            <span class="text-[9px] font-bold px-2 py-0.5 rounded-full border shrink-0 mt-0.5 ${badgeClass}">
+                                ${badge}
+                            </span>
+                        </div>
+                        <div class="flex flex-wrap gap-1">${previewTags}</div>
+                        <div class="flex gap-1.5 pt-0.5">
+                            <button onclick="showBackground(${char.id})" class="flex-1 bg-pink-50 hover:bg-pink-100 text-pink-500 border border-dashed border-pink-300 rounded-xl py-1.5 text-[11px] font-bold transition">
+                                📖 Background
+                            </button>
+                            ${hasLink ? `
+                                <a href="${firstLink}" target="_blank" class="flex-1 bg-[#FF85A2] hover:bg-[#FF6181] text-white rounded-xl py-1.5 text-[11px] font-bold text-center shadow-sm transition">
+                                    Gặp ngay ↗
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         // 🌟 TÍNH NĂNG BÁNH QUY MAY MẮN (FORTUNE COOKIE) 🌟
