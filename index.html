@@ -765,6 +765,90 @@
         .doodle-butterfly {
             animation: tinyFloatAlt 3.4s ease-in-out infinite;
         }
+        /* 🐦🛸 MÀN HÌNH WELCOME: CHIM BAY ĐỤNG UFO RƠI NGAY DƯỚI NÚT TOS 🛸🐦 */
+        @keyframes welcomeBirdStory {
+            0%   { transform: translate(-250px, -125px) rotate(0deg); opacity: 0; }
+            3%   { transform: translate(-220px, -134px) rotate(-4deg); opacity: 1; }
+            9%   { transform: translate(-155px, -124px) rotate(4deg); opacity: 1; }
+            15%  { transform: translate(-90px, -138px) rotate(-4deg); opacity: 1; }
+            21%  { transform: translate(-28px, -128px) rotate(3deg); opacity: 1; }
+            /* 24%: Đụng trúng đĩa bay -> Bốp! */
+            24%  { transform: translate(-4px, -135px) rotate(0deg); opacity: 1; }
+            28%  { transform: translate(-22px, -108px) rotate(-115deg); opacity: 1; }
+            33%  { transform: translate(-10px, -35px) rotate(-255deg); opacity: 1; }
+            /* 38%: Rơi bịch xuống cỏ ngay dưới nút TOS + nảy nhẹ */
+            38%  { transform: translate(0px, 42px) rotate(-360deg); opacity: 1; }
+            41%  { transform: translate(0px, 28px) rotate(-352deg); opacity: 1; }
+            44%, 83% { transform: translate(0px, 42px) rotate(-360deg); opacity: 1; }
+            /* 84%: Hết choáng, vỗ cánh bay đi */
+            87%  { transform: translate(35px, 16px) rotate(-366deg); opacity: 1; }
+            95%  { transform: translate(340px, -55px) rotate(-360deg); opacity: 0; }
+            96%, 100% { transform: translate(-250px, -125px) rotate(0deg); opacity: 0; }
+        }
+
+        @keyframes welcomeUfoStory {
+            0%, 17% { transform: translate(420px, -148px) rotate(-14deg); opacity: 0; }
+            18%     { transform: translate(360px, -146px) rotate(-14deg); opacity: 1; }
+            24%     { transform: translate(24px, -135px) rotate(-16deg); opacity: 1; }
+            /* Khựng lại vì đụng chim rồi phóng tẩu thoát */
+            27%     { transform: translate(46px, -142px) rotate(12deg); opacity: 1; }
+            35%     { transform: translate(420px, -210px) rotate(-18deg); opacity: 0; }
+            100%    { transform: translate(420px, -148px) rotate(-14deg); opacity: 0; }
+        }
+
+        @keyframes welcomeBonkPop {
+            0%, 23%   { opacity: 0; transform: scale(0.3) rotate(-15deg); }
+            24.5%     { opacity: 1; transform: scale(1.18) rotate(5deg); }
+            28%       { opacity: 1; transform: scale(1) rotate(0deg); }
+            30%, 100% { opacity: 0; transform: scale(0.5) rotate(10deg); }
+        }
+
+        @keyframes welcomeDizzyShow {
+            0%, 38%   { opacity: 0; transform: translateY(4px) scale(0.6); }
+            42%, 81%  { opacity: 1; transform: translateY(0px) scale(1); }
+            84%, 100% { opacity: 0; transform: translateY(-4px) scale(0.6); }
+        }
+
+        @keyframes welcomeTosBubble {
+            0%, 42%   { opacity: 0; transform: translateY(6px) scale(0.6); }
+            46%, 80%  { opacity: 1; transform: translateY(0px) scale(1); }
+            84%, 100% { opacity: 0; transform: translateY(-4px) scale(0.7); }
+        }
+
+        @keyframes birdWingFlap {
+            0%, 100% { transform: rotate(-22deg); }
+            50%      { transform: rotate(28deg); }
+        }
+
+        @keyframes birdEyesNormal {
+            0%, 23.5%   { opacity: 1; }
+            24%, 83.5%  { opacity: 0; }
+            84%, 100%   { opacity: 1; }
+        }
+
+        @keyframes birdEyesDizzy {
+            0%, 23.5%   { opacity: 0; }
+            24%, 83.5%  { opacity: 1; }
+            84%, 100%   { opacity: 0; }
+        }
+
+        @keyframes tosBtnNudge {
+            0%, 37%   { transform: translateY(0); box-shadow: 0 4px 0px #ffe0e8; }
+            39.5%     { transform: translateY(-5px) scale(1.04); box-shadow: 0 8px 0px #ffb7c5, 0 0 16px rgba(255, 133, 162, 0.45); }
+            43%       { transform: translateY(0) scale(1); box-shadow: 0 4px 0px #ffe0e8; }
+            45.5%     { transform: translateY(-2.5px) scale(1.02); box-shadow: 0 6px 0px #ffc2d1; }
+            49%, 100% { transform: translateY(0) scale(1); box-shadow: 0 4px 0px #ffe0e8; }
+        }
+
+        .welcome-bird-track   { animation: welcomeBirdStory 12s linear infinite; }
+        .welcome-ufo-track    { animation: welcomeUfoStory 12s linear infinite; }
+        .welcome-bonk-fx      { transform-origin: 0px 0px; animation: welcomeBonkPop 12s ease-out infinite; }
+        .welcome-dizzy-stars  { transform-origin: 0px 0px; animation: welcomeDizzyShow 12s ease-out infinite; }
+        .welcome-tos-bubble   { transform-origin: 0px 0px; animation: welcomeTosBubble 12s ease-out infinite; }
+        .welcome-bird-wing    { transform-origin: 0px 0px; animation: birdWingFlap 0.28s ease-in-out infinite; }
+        .bird-eyes-ok         { animation: birdEyesNormal 12s linear infinite; }
+        .bird-eyes-dizzy      { animation: birdEyesDizzy 12s linear infinite; }
+        .tos-btn-nudge        { animation: tosBtnNudge 12s ease-in-out infinite; }
     </style>
 </head>
 <body class="min-h-screen relative">
@@ -852,16 +936,93 @@
                         Vào Hậu Cung <i class="fas fa-heart animate-pulse"></i>
                         <span class="absolute right-4 opacity-70">୨୧</span>
                     </button>
-                    <div class="grid grid-cols-3 gap-2.5">
-                        <button onclick="openModal('tos-modal')" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1">
+                    <div class="grid grid-cols-3 gap-2.5 relative">
+                        <button onclick="openModal('tos-modal')" class="btn-cream tos-btn-nudge py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 relative z-10">
                             <i class="fas fa-scroll"></i> TOS
                         </button>
-                        <a href="https://discord.gg/AFbvUv658K" target="_blank" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 !text-indigo-500">
+                        <a href="https://discord.gg/AFbvUv658K" target="_blank" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 !text-indigo-500 relative z-10">
                             <i class="fab fa-discord"></i> Discord
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=61584680827026" target="_blank" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 !text-blue-600">
+                        <a href="https://www.facebook.com/profile.php?id=61584680827026" target="_blank" class="btn-cream py-3 text-[11px] sm:text-xs font-bold flex items-center justify-center gap-1 !text-blue-600 relative z-10">
                             <i class="fab fa-facebook"></i> Facebook
                         </a>
+
+                        <!-- 🐦🛸 TIỂU PHẨM CHIM BAY ĐỤNG UFO RƠI NGAY DƯỚI NÚT TOS 🛸🐦 -->
+                        <svg class="absolute left-[16.66%] bottom-0 w-1 h-1 overflow-visible pointer-events-none z-30" style="overflow: visible;" fill="none">
+                            <!-- 1. Bé Chim Vàng mập ú bay từ trái -> đụng UFO -> rơi ngay dưới TOS -->
+                            <g class="welcome-bird-track">
+                                <!-- Đuôi chim -->
+                                <path d="M-13 1 L-21 -3 L-19 2 L-21 6 L-13 4 Z" fill="#ffd466" stroke="#8c5e69" stroke-width="1.4" stroke-linejoin="round"/>
+                                <!-- Thân chim tròn xoe -->
+                                <ellipse cx="0" cy="0" rx="14" ry="11.5" fill="#ffe699" stroke="#8c5e69" stroke-width="1.6"/>
+                                <ellipse cx="3" cy="3" rx="8" ry="6.5" fill="#fff6d6"/>
+                                <!-- Chỏm lông đầu -->
+                                <path d="M-2 -11 Q0 -16 3 -11 M2 -11 Q5 -15 6 -10" stroke="#8c5e69" stroke-width="1.4" stroke-linecap="round"/>
+                                <!-- Chân bé xíu -->
+                                <path d="M-3 11 L-4 15 M3 11 L4 15" stroke="#ff9e6d" stroke-width="1.6" stroke-linecap="round"/>
+                                <!-- Mỏ cam -->
+                                <path d="M13 -2 L19 0.5 L13 3 Z" fill="#ff9e6d" stroke="#8c5e69" stroke-width="1.3" stroke-linejoin="round"/>
+                                <!-- Má hồng -->
+                                <ellipse cx="8.5" cy="2" rx="2.4" ry="1.4" fill="#ffb7c5"/>
+                                <!-- Mắt tròn khi đang bay bình thường -->
+                                <g class="bird-eyes-ok">
+                                    <circle cx="8" cy="-2.2" r="1.8" fill="#5c3d46"/>
+                                    <circle cx="8.5" cy="-2.7" r="0.6" fill="#ffffff"/>
+                                </g>
+                                <!-- Mắt X choáng váng khi bị đụng rơi xuống -->
+                                <g class="bird-eyes-dizzy">
+                                    <path d="M6.2 -3.8 L9.8 -0.6 M9.8 -3.8 L6.2 -0.6" stroke="#5c3d46" stroke-width="1.5" stroke-linecap="round"/>
+                                </g>
+                                <!-- Cánh vỗ -->
+                                <g transform="translate(-3, 0)">
+                                    <ellipse class="welcome-bird-wing" cx="-3" cy="1" rx="6.5" ry="4" fill="#ffd466" stroke="#8c5e69" stroke-width="1.4"/>
+                                </g>
+                                <!-- Vòng sao quay mòng mòng trên đầu lúc rơi xuống -->
+                                <g transform="translate(0, -18)">
+                                    <g class="welcome-dizzy-stars">
+                                        <ellipse cx="0" cy="0" rx="13" ry="3.5" stroke="#ffb7c5" stroke-width="1.3" stroke-dasharray="3 3"/>
+                                        <text x="-15" y="2" font-size="9" fill="#ff6181">✦</text>
+                                        <text x="9" y="-2" font-size="9" fill="#f7be4b">✦</text>
+                                    </g>
+                                </g>
+                            </g>
+
+                            <!-- 2. Đĩa Bay Tím phóng ngang gây tai nạn rồi chuồn lẹ -->
+                            <g class="welcome-ufo-track">
+                                <!-- Vệt gió tốc độ -->
+                                <line x1="34" y1="-4" x2="68" y2="-4" stroke="#ffb7c5" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="38" y1="2" x2="78" y2="2" stroke="#d4b5ff" stroke-width="1.8" stroke-linecap="round"/>
+                                <!-- Giọt mồ hôi hoảng hốt của alien -->
+                                <path d="M-24 -12 Q-27 -7 -24 -5 Q-21 -7 -24 -12 Z" fill="#a8d8ff" stroke="#8c5e69" stroke-width="1"/>
+                                <!-- Vòm kính + Alien -->
+                                <path d="M-16 -2 C-16 -18, 16 -18, 16 -2 Z" fill="#dff4ff" fill-opacity="0.92" stroke="#8c5e69" stroke-width="1.5"/>
+                                <ellipse cx="0" cy="-6.5" rx="6.5" ry="5" fill="#c3edaa" stroke="#8c5e69" stroke-width="1.2"/>
+                                <circle cx="-2.4" cy="-7" r="1.3" fill="#5c3d46"/>
+                                <circle cx="2.4" cy="-7" r="1.3" fill="#5c3d46"/>
+                                <!-- Thân UFO -->
+                                <ellipse cx="0" cy="4" rx="18" ry="5" fill="#c3a4f5" stroke="#8c5e69" stroke-width="1.4"/>
+                                <ellipse cx="0" cy="0" rx="28" ry="8" fill="#e2ccff" stroke="#8c5e69" stroke-width="1.6"/>
+                                <circle cx="-16" cy="0.8" r="2.2" fill="#ffe082" stroke="#8c5e69" stroke-width="0.9"/>
+                                <circle cx="0" cy="2.3" r="2.4" fill="#ffb7c5" stroke="#8c5e69" stroke-width="0.9"/>
+                                <circle cx="16" cy="0.8" r="2.2" fill="#a8d8ff" stroke="#8c5e69" stroke-width="0.9"/>
+                            </g>
+
+                            <!-- 3. Hiệu ứng "bốp!" chớp sáng lúc va chạm -->
+                            <g transform="translate(8, -135)">
+                                <g class="welcome-bonk-fx">
+                                    <path d="M0 -18 L4 -6 L17 -10 L8 0 L18 9 L5 7 L2 19 L-4 7 L-17 11 L-8 1 L-18 -9 L-5 -6 Z" fill="#fff3b0" stroke="#ff6181" stroke-width="1.6" stroke-linejoin="round"/>
+                                    <text x="0" y="3.5" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#ff6181">bốp!</text>
+                                </g>
+                            </g>
+
+                            <!-- 4. Bong bóng thoại hiện lên bên cạnh bé chim chỉ thẳng lên nút TOS -->
+                            <g transform="translate(56, 36)">
+                                <g class="welcome-tos-bubble">
+                                    <rect x="-38" y="-12" width="76" height="21" rx="10.5" fill="#ffffff" stroke="#ff85a2" stroke-width="1.6" stroke-dasharray="3 2"/>
+                                    <text x="0" y="2" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#e85d7c">↑ TOS nè~</text>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
                 </div>
             </div>
