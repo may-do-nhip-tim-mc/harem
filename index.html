@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Máy đo nhịp tim MC - Hậu Cung Của Công Chúa</title>
-    <link rel="icon" href="https://i.postimg.cc/d3trJ4jf/image-82346d.jpg" type="image/jpeg">
+    <!-- Mở kết nối sớm tới các máy chủ ngoài để giảm độ trễ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tải Font Awesome bất đồng bộ để không chặn hiển thị giao diện -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <style>
         :root {
             /* 🎀 BẢNG MÀU MY MELODY CẢI TIẾN 🎀 */
@@ -917,7 +925,7 @@
 <body class="min-h-screen relative">
 
 
-    <audio id="bg-music" autoplay></audio>
+    <audio id="bg-music" preload="none"></audio>
 
     <div id="welcome-screen" class="min-h-screen flex items-center justify-center p-4">
         <div class="max-w-5xl w-full welcome-garden-card px-6 pt-8 pb-24 md:px-10 md:pt-10 md:pb-28 grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -3894,12 +3902,160 @@ Flip to Side B. Press play.`
             return presets[index % presets.length];
         }
 
+        let currentRenderList = [];
+        let currentRenderLimit = 20;
+        let lastRenderSignature = '';
+        const PAGE_SIZE = 20;
+
+        function buildCharacterCardHTML(char, index, top3Ids) {
+            const voteCount = votes[char.id] || 0;
+            const tagsHTML = char.tags.map(t => `<button onclick="filterByTag('${t}')" class="tag-pill active:scale-95 shadow-sm">#${t}</button>`).join('');
+            const hasLiked = userLikes[char.id] ? true : false;
+
+            const cCount = globalComments[char.id] ? Object.keys(globalComments[char.id]).length : 0;
+            const cText = cCount > 0 ? `${cCount} bình luận` : `Bình luận`;
+
+            const isNewBot = top3Ids.includes(char.id);
+            const newTagHTML = isNewBot ? `
+                <span class="new-tag-melody text-[10px] font-bold px-3 py-1 rounded-full tracking-wider mt-1 md:mt-0 md:ml-3">
+                    NEW ✨
+                </span>` : '';
+
+            let linkButtonsHTML = '';
+            if (char.links) {
+                linkButtonsHTML = Object.entries(char.links).map(([type, url]) =>
+                    `<a href="${url}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold flex-1 text-center">${type}</a>`
+                ).join('');
+            } else if (char.aiLink && char.aiLink !== "#") {
+                linkButtonsHTML = `<a href="${char.aiLink}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold flex-1 text-center">Link AI</a>`;
+            } else {
+                linkButtonsHTML = `<button class="btn-melody py-2 px-1 text-xs font-bold flex-1 opacity-50 cursor-not-allowed">Chưa có</button>`;
+            }
+
+            const hasGuide = char.guideLink && char.guideLink !== "" && char.guideLink !== "#";
+            const guideBtnHTML = hasGuide
+                ? `<a href="${char.guideLink}" target="_blank" class="btn-cream flex-1 py-2 text-[11px] font-bold flex items-center justify-center border-pink-300"><i class="fas fa-book mr-1"></i> Lệnh</a>`
+                : ``;
+
+            const staggerDelay = Math.min((index % PAGE_SIZE) * 0.03, 0.35);
+            const doodleHTML = getCardDoodleDecoration(index);
+            const isHorror = char.tags.some(t => {
+                const lower = t.toLowerCase();
+                return lower.includes('horror') || lower.includes('linh dị');
+            });
+            const horrorFxHTML = isHorror ? `
+                <svg overflow="visible" class="horror-spooky-fx absolute -top-7 right-3 w-24 h-14 z-30" viewBox="0 0 100 58" fill="none">
+                    <ellipse class="spooky-wisp" cx="62" cy="48" rx="22" ry="5" fill="#b695e6" fill-opacity="0.45"/>
+                    <g transform="translate(50, 14)">
+                        <path d="M4 34 L4 14 C4 4, 24 4, 24 14 L24 34 Z" fill="#cfc3de" stroke="#574473" stroke-width="1.8" stroke-linejoin="round"/>
+                        <rect x="0" y="32" width="28" height="5" rx="2.5" fill="#b4a4c9" stroke="#574473" stroke-width="1.6"/>
+                        <path d="M14 11 L14 22 M10 15 L18 15" stroke="#574473" stroke-width="1.8" stroke-linecap="round"/>
+                        <path d="M7 27 Q14 25 21 27" stroke="#856fa3" stroke-width="1.3" stroke-linecap="round"/>
+                    </g>
+                    <g transform="translate(22, 18)">
+                        <g class="spooky-bat-1">
+                            <path d="M0 0 C-5 -6, -12 -5, -14 2 C-10 0, -7 2, -5 5 C-3 3, -1 3, 0 5 C1 3, 3 3, 5 5 C7 2, 10 0, 14 2 C12 -5, 5 -6, 0 0 Z" fill="#6d548f" stroke="#3b2b52" stroke-width="1.4" stroke-linejoin="round"/>
+                            <circle cx="-2.2" cy="-0.5" r="1" fill="#ffe699"/>
+                            <circle cx="2.2" cy="-0.5" r="1" fill="#ffe699"/>
+                        </g>
+                    </g>
+                    <g transform="translate(82, 12) scale(0.75)">
+                        <g class="spooky-bat-2">
+                            <path d="M0 0 C-5 -6, -12 -5, -14 2 C-10 0, -7 2, -5 5 C-3 3, -1 3, 0 5 C1 3, 3 3, 5 5 C7 2, 10 0, 14 2 C12 -5, 5 -6, 0 0 Z" fill="#8f72b8" stroke="#3b2b52" stroke-width="1.5" stroke-linejoin="round"/>
+                            <circle cx="-2.2" cy="-0.5" r="1.1" fill="#ffe699"/>
+                            <circle cx="2.2" cy="-0.5" r="1.1" fill="#ffe699"/>
+                        </g>
+                    </g>
+                </svg>` : '';
+
+            return `
+                <div class="aesthetic-card char-card-enter group/card p-5 flex flex-col gap-3 overflow-visible relative ${isHorror ? 'is-horror-card' : ''}" style="animation-delay: ${staggerDelay}s;">
+                    ${doodleHTML}
+                    ${horrorFxHTML}
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
+                        <div class="flex-grow text-center md:text-left space-y-3 w-full">
+                            <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-0">
+                                <h3 class="font-title text-3xl text-pink-600 transition-colors duration-300 group-hover/card:text-[#FF6181]">${char.name}</h3>
+                                ${newTagHTML}
+                            </div>
+                            <div class="flex flex-wrap justify-center md:justify-start gap-1.5">${tagsHTML}</div>
+                        </div>
+                        <div class="flex flex-col gap-2 w-full md:w-48 shrink-0 z-10">
+                            <div class="flex gap-2 w-full">${linkButtonsHTML}</div>
+                            <div class="flex gap-2 w-full">
+                                <button onclick="showBackground(${char.id})" class="btn-cream ${hasGuide ? 'flex-1' : 'w-full'} py-2 text-[11px] font-bold">Background</button>
+                                ${guideBtnHTML}
+                            </div>
+                            <div class="flex gap-2 w-full">
+                                <button onclick="vote(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group/like border-pink-200">
+                                    <i class="fas fa-heart ${hasLiked ? 'text-pink-600 scale-110' : 'text-pink-200'} group-hover/like:text-pink-500 group-hover/like:scale-125 transition-all duration-300"></i>
+                                    <span class="text-[11px] font-bold text-pink-500">${voteCount} tim</span>
+                                </button>
+                                <button onclick="toggleComments(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group/cmt border-pink-200">
+                                    <i class="fas fa-comment-dots text-pink-400 group-hover/cmt:scale-110 transition-transform"></i>
+                                    <span id="comment-count-badge-${char.id}" class="text-[11px] font-bold text-pink-500">${cText}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="comment-section-${char.id}" class="hidden flex-col gap-2 w-full border-t-2 border-dashed border-pink-200 pt-3 mt-1">
+                        <div id="comment-list-${char.id}" class="max-h-32 overflow-y-auto pr-2 space-y-2 custom-scrollbar">
+                            <div class="text-xs text-center text-pink-300 italic">Chưa có tâm tình nào. Hãy là người đầu tiên!</div>
+                        </div>
+                        <div class="flex gap-2 mt-1">
+                            <input type="text" id="comment-input-${char.id}" placeholder="Viết ẩn danh (tối đa 150 ký tự)..." maxlength="150" class="flex-1 bg-pink-50 border-2 border-dashed border-pink-200 rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-pink-400 focus:bg-white transition-all text-[#704F55] placeholder-pink-300">
+                            <button onclick="submitComment(${char.id})" class="btn-melody px-4 py-1.5 text-xs font-bold rounded-xl flex items-center justify-center">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateLoadMoreButton() {
+            const listContainer = document.getElementById('character-list');
+            const oldBtn = document.getElementById('load-more-chars-wrap');
+            if (oldBtn) oldBtn.remove();
+
+            const remaining = currentRenderList.length - currentRenderLimit;
+            if (remaining > 0) {
+                const nextBatch = Math.min(PAGE_SIZE, remaining);
+                listContainer.insertAdjacentHTML('beforeend', `
+                    <div id="load-more-chars-wrap" class="pt-2 text-center">
+                        <button onclick="loadMoreCharacters()" class="btn-melody px-7 py-3 text-sm font-bold inline-flex items-center gap-2">
+                            <span>🌸 Xem thêm ${nextBatch} tú nữ nữa (còn ${remaining})</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                `);
+            }
+        }
+
+        function loadMoreCharacters() {
+            const listContainer = document.getElementById('character-list');
+            const oldBtn = document.getElementById('load-more-chars-wrap');
+            if (oldBtn) oldBtn.remove();
+
+            const top3Ids = [...database].sort((a, b) => b.id - a.id).slice(0, 3).map(bot => bot.id);
+            const start = currentRenderLimit;
+            const end = Math.min(start + PAGE_SIZE, currentRenderList.length);
+            const batchHTML = [];
+
+            for (let i = start; i < end; i++) {
+                batchHTML.push(buildCharacterCardHTML(currentRenderList[i], i, top3Ids));
+            }
+            listContainer.insertAdjacentHTML('beforeend', batchHTML.join(''));
+            currentRenderLimit = end;
+            updateLoadMoreButton();
+        }
+
         function renderList(data) {
             const listContainer = document.getElementById('character-list');
             document.getElementById('total-count').innerText = data.length;
-            listContainer.innerHTML = "";
 
             if (data.length === 0) {
+                currentRenderList = [];
                 listContainer.innerHTML = `
                     <div class="aesthetic-card p-8 text-center text-pink-400 font-bold text-sm">
                         🍓 Không tìm thấy tú nữ nào khớp với bộ lọc này rồi công chúa ơi~
@@ -3909,123 +4065,22 @@ Flip to Side B. Press play.`
 
             const top3Ids = [...database].sort((a, b) => b.id - a.id).slice(0, 3).map(bot => bot.id);
             const displayData = [...data].sort((a, b) => b.id - a.id);
+            const sig = `${displayData.length}-${displayData[0].id}-${displayData[displayData.length - 1].id}`;
 
-            displayData.forEach((char, index) => {
-                const voteCount = votes[char.id] || 0;
-                const tagsHTML = char.tags.map(t => `<button onclick="filterByTag('${t}')" class="tag-pill active:scale-95 shadow-sm">#${t}</button>`).join('');
-                const hasLiked = userLikes[char.id] ? true : false;
-                
-                const cCount = globalComments[char.id] ? Object.keys(globalComments[char.id]).length : 0;
-                const cText = cCount > 0 ? `${cCount} bình luận` : `Bình luận`;
+            if (sig !== lastRenderSignature) {
+                currentRenderLimit = PAGE_SIZE;
+                lastRenderSignature = sig;
+            }
+            currentRenderList = displayData;
 
-                const isNewBot = top3Ids.includes(char.id);
-                const newTagHTML = isNewBot ? `
-                    <span class="new-tag-melody text-[10px] font-bold px-3 py-1 rounded-full tracking-wider mt-1 md:mt-0 md:ml-3">
-                        NEW ✨
-                    </span>` : '';
+            const sliceCount = Math.min(currentRenderLimit, displayData.length);
+            const cardsHTML = [];
+            for (let i = 0; i < sliceCount; i++) {
+                cardsHTML.push(buildCharacterCardHTML(displayData[i], i, top3Ids));
+            }
 
-                let linkButtonsHTML = '';
-                if (char.links) {
-                    linkButtonsHTML = Object.entries(char.links).map(([type, url]) => 
-                        `<a href="${url}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold flex-1 text-center">${type}</a>`
-                    ).join('');
-                } else if (char.aiLink && char.aiLink !== "#") {
-                    linkButtonsHTML = `<a href="${char.aiLink}" target="_blank" class="btn-melody py-2 px-1 text-xs font-bold flex-1 text-center">Link AI</a>`;
-                } else {
-                    linkButtonsHTML = `<button class="btn-melody py-2 px-1 text-xs font-bold flex-1 opacity-50 cursor-not-allowed">Chưa có</button>`;
-                }
-
-                const hasGuide = char.guideLink && char.guideLink !== "" && char.guideLink !== "#";
-                const guideBtnHTML = hasGuide 
-                    ? `<a href="${char.guideLink}" target="_blank" class="btn-cream flex-1 py-2 text-[11px] font-bold flex items-center justify-center border-pink-300"><i class="fas fa-book mr-1"></i> Lệnh</a>` 
-                    : ``;
-                
-                const staggerDelay = Math.min(index * 0.05, 0.6);
-                const doodleHTML = getCardDoodleDecoration(index);
-                const isHorror = char.tags.some(t => {
-                    const lower = t.toLowerCase();
-                    return lower.includes('horror') || lower.includes('linh dị');
-                });
-                const horrorFxHTML = isHorror ? `
-                    <svg overflow="visible" class="horror-spooky-fx absolute -top-7 right-3 w-24 h-14 z-30" viewBox="0 0 100 58" fill="none">
-                        <!-- Làn sương tím mờ sau bia mộ -->
-                        <ellipse class="spooky-wisp" cx="62" cy="48" rx="22" ry="5" fill="#b695e6" fill-opacity="0.45"/>
-                        <!-- Bia mộ vẽ tay (Tomb) -->
-                        <g transform="translate(50, 14)">
-                            <path d="M4 34 L4 14 C4 4, 24 4, 24 14 L24 34 Z" fill="#cfc3de" stroke="#574473" stroke-width="1.8" stroke-linejoin="round"/>
-                            <rect x="0" y="32" width="28" height="5" rx="2.5" fill="#b4a4c9" stroke="#574473" stroke-width="1.6"/>
-                            <path d="M14 11 L14 22 M10 15 L18 15" stroke="#574473" stroke-width="1.8" stroke-linecap="round"/>
-                            <path d="M7 27 Q14 25 21 27" stroke="#856fa3" stroke-width="1.3" stroke-linecap="round"/>
-                        </g>
-                        <!-- Bé Dơi 1 bay góc trái bia mộ -->
-                        <g transform="translate(22, 18)">
-                            <g class="spooky-bat-1">
-                                <path d="M0 0 C-5 -6, -12 -5, -14 2 C-10 0, -7 2, -5 5 C-3 3, -1 3, 0 5 C1 3, 3 3, 5 5 C7 2, 10 0, 14 2 C12 -5, 5 -6, 0 0 Z" fill="#6d548f" stroke="#3b2b52" stroke-width="1.4" stroke-linejoin="round"/>
-                                <circle cx="-2.2" cy="-0.5" r="1" fill="#ffe699"/>
-                                <circle cx="2.2" cy="-0.5" r="1" fill="#ffe699"/>
-                            </g>
-                        </g>
-                        <!-- Bé Dơi 2 nhỏ hơn bay phía trên bên phải -->
-                        <g transform="translate(82, 12) scale(0.75)">
-                            <g class="spooky-bat-2">
-                                <path d="M0 0 C-5 -6, -12 -5, -14 2 C-10 0, -7 2, -5 5 C-3 3, -1 3, 0 5 C1 3, 3 3, 5 5 C7 2, 10 0, 14 2 C12 -5, 5 -6, 0 0 Z" fill="#8f72b8" stroke="#3b2b52" stroke-width="1.5" stroke-linejoin="round"/>
-                                <circle cx="-2.2" cy="-0.5" r="1.1" fill="#ffe699"/>
-                                <circle cx="2.2" cy="-0.5" r="1.1" fill="#ffe699"/>
-                            </g>
-                        </g>
-                    </svg>` : '';
-
-                const card = `
-                    <div class="aesthetic-card char-card-enter group/card p-5 flex flex-col gap-3 overflow-visible relative ${isHorror ? 'is-horror-card' : ''}" style="animation-delay: ${staggerDelay}s;">
-                        ${doodleHTML}
-                        ${horrorFxHTML}
-                        ${doodleHTML}
-                        <!-- Khối Thông Tin & Nút Bấm -->
-                        <div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
-                            <div class="flex-grow text-center md:text-left space-y-3 w-full">
-                                <div class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 md:gap-0">
-                                    <h3 class="font-title text-3xl text-pink-600 transition-colors duration-300 group-hover/card:text-[#FF6181]">${char.name}</h3>
-                                    ${newTagHTML} 
-                                </div>
-                                <div class="flex flex-wrap justify-center md:justify-start gap-1.5">${tagsHTML}</div>
-                            </div>
-                            <div class="flex flex-col gap-2 w-full md:w-48 shrink-0 z-10">
-                                <div class="flex gap-2 w-full">
-                                    ${linkButtonsHTML}
-                                </div>
-                                <div class="flex gap-2 w-full">
-                                    <button onclick="showBackground(${char.id})" class="btn-cream ${hasGuide ? 'flex-1' : 'w-full'} py-2 text-[11px] font-bold">Background</button>
-                                    ${guideBtnHTML}
-                                </div>
-                                <div class="flex gap-2 w-full">
-                                    <button onclick="vote(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group/like border-pink-200">
-                                        <i class="fas fa-heart ${hasLiked ? 'text-pink-600 scale-110' : 'text-pink-200'} group-hover/like:text-pink-500 group-hover/like:scale-125 transition-all duration-300"></i>
-                                        <span class="text-[11px] font-bold text-pink-500">${voteCount} tim</span>
-                                    </button>
-                                    <button onclick="toggleComments(${char.id})" class="btn-cream flex-1 py-2 flex items-center justify-center gap-1 group/cmt border-pink-200">
-                                        <i class="fas fa-comment-dots text-pink-400 group-hover/cmt:scale-110 transition-transform"></i>
-                                        <span id="comment-count-badge-${char.id}" class="text-[11px] font-bold text-pink-500">${cText}</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Khối Bình Luận (Ẩn mặc định) -->
-                        <div id="comment-section-${char.id}" class="hidden flex-col gap-2 w-full border-t-2 border-dashed border-pink-200 pt-3 mt-1">
-                            <div id="comment-list-${char.id}" class="max-h-32 overflow-y-auto pr-2 space-y-2 custom-scrollbar">
-                                <div class="text-xs text-center text-pink-300 italic">Chưa có tâm tình nào. Hãy là người đầu tiên!</div>
-                            </div>
-                            <div class="flex gap-2 mt-1">
-                                <input type="text" id="comment-input-${char.id}" placeholder="Viết ẩn danh (tối đa 150 ký tự)..." maxlength="150" class="flex-1 bg-pink-50 border-2 border-dashed border-pink-200 rounded-xl px-3 py-1.5 text-xs font-semibold focus:outline-none focus:border-pink-400 focus:bg-white transition-all text-[#704F55] placeholder-pink-300">
-                                <button onclick="submitComment(${char.id})" class="btn-melody px-4 py-1.5 text-xs font-bold rounded-xl flex items-center justify-center">
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                listContainer.innerHTML += card;
-            });
+            listContainer.innerHTML = cardsHTML.join('');
+            updateLoadMoreButton();
         }
 
         function filterCharacters() {
