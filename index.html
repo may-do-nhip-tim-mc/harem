@@ -4649,7 +4649,7 @@ function vote(id) {
                 }[tag])
             );
         }
-        // 🦇 RANDOM 1 Ô HORROR / LINH DỊ ĐỔI MÀU + HIỆN BIA MỘ & DƠI MỖI VÀI GIÂY
+        // 🦇 RANDOM 1 Ô HORROR / LINH DỊ ĐỔI MÀU + HIỆN BIA MỘ & DƠI (COOLDOWN DÀI)
         let horrorSpookyTimer = null;
         let lastSpookyCard = null;
 
@@ -4657,38 +4657,45 @@ function vote(id) {
             if (horrorSpookyTimer) return;
 
             const triggerRandomHorrorCard = () => {
+                let extraRest = 0;
                 const haremEl = document.getElementById('harem-screen');
+
                 if (haremEl && !haremEl.classList.contains('hidden')) {
                     const allHorrorCards = Array.from(document.querySelectorAll('#character-list .is-horror-card'));
-                    if (allHorrorCards.length > 0) {
-                        // Ưu tiên chọn các ô đang nằm trong màn hình để người chơi nhìn thấy ngay
-                        const visibleCards = allHorrorCards.filter(card => {
-                            const rect = card.getBoundingClientRect();
-                            return rect.bottom > 80 && rect.top < window.innerHeight - 80;
-                        });
-                        const pool = visibleCards.length > 0 ? visibleCards : allHorrorCards;
+                    // Chỉ nháy khi có ít nhất 1 ô horror/linh dị đang nằm trong khung hình
+                    const visibleCards = allHorrorCards.filter(card => {
+                        const rect = card.getBoundingClientRect();
+                        return rect.bottom > 80 && rect.top < window.innerHeight - 80;
+                    });
 
-                        // Tránh lặp lại đúng ô vừa nháy nếu có từ 2 ô trở lên
-                        let candidates = pool.filter(c => c !== lastSpookyCard);
-                        if (candidates.length === 0) candidates = pool;
+                    if (visibleCards.length > 0) {
+                        // Tránh lặp lại đúng ô vừa nháy nếu đang thấy từ 2 ô trở lên
+                        let candidates = visibleCards.filter(c => c !== lastSpookyCard);
+                        if (candidates.length === 0) candidates = visibleCards;
 
                         const picked = candidates[Math.floor(Math.random() * candidates.length)];
                         lastSpookyCard = picked;
                         picked.classList.add('spooky-active');
 
-                        // Giữ hiệu ứng trong 4.2 giây rồi trả về màu hồng pastel bình thường
+                        // Giữ hiệu ứng trong 3.8 giây rồi tắt
                         setTimeout(() => {
                             picked.classList.remove('spooky-active');
-                        }, 4200);
+                        }, 3800);
+
+                        // Nếu trên màn hình chỉ có duy nhất 1 ô horror thì cho nghỉ lâu hơn thêm 8 giây
+                        if (visibleCards.length === 1) {
+                            extraRest = 8000;
+                        }
                     }
                 }
 
-                // Chờ ngẫu nhiên 5.5 - 8 giây cho lượt tiếp theo
-                const nextDelay = 5500 + Math.floor(Math.random() * 2500);
+                // Cooldown ngẫu nhiên từ 15 đến 25 giây (+8 giây nếu chỉ có 1 ô)
+                const nextDelay = 15000 + Math.floor(Math.random() * 10000) + extraRest;
                 horrorSpookyTimer = setTimeout(triggerRandomHorrorCard, nextDelay);
             };
 
-            horrorSpookyTimer = setTimeout(triggerRandomHorrorCard, 2500);
+            // Lần đầu chờ 7 giây sau khi mở web mới bắt đầu kiểm tra
+            horrorSpookyTimer = setTimeout(triggerRandomHorrorCard, 7000);
         }
 
         // Tự khởi động bộ đếm khi vào web
